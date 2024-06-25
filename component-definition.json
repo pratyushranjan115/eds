@@ -159,7 +159,31 @@
             }
           }
         }
-        
+
+      ]
+    },
+    {
+      "title": "Brand 1",
+      "id": "blocks",
+      "components": [
+        {
+          "title": "Quote",
+          "id": "quote",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Quote",
+                  "model": "quote",
+                  "quote": "<p>Think, McFly! Think!</p>",
+                  "author": "Biff Tannen"
+                }
+              }
+            }
+          }
+        }
+
       ]
     }
     
