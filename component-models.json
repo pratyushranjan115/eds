@@ -223,14 +223,14 @@
         "valueType": "string",
         "name": "link",
         "value": "#",
-        "label": "Link"
+        "label": "CTA Link"
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "linktext",
         "value": "Button",
-        "label": "Text"
+        "label": "CTA Text"
       }
            
      ]
