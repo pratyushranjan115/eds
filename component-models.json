@@ -216,11 +216,8 @@
         "name": "alt",
         "value": "Default alt",
         "label": "Alt Text"
-      },
-      {
-        "heading": "Getting started",
-        "headingType": "h2"
       }
+     
      ]
   }  
 ]
