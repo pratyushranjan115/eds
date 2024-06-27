@@ -221,16 +221,16 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "quote_link",
+        "name": "link",
         "value": "#",
-        "label": "Quote CTA Link"
+        "label": "CTA Link"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "quote_linkText",
+        "name": "linkText",
         "value": "Hello",
-        "label": "Quote CTA Text"
+        "label": "CTA Text"
       }    
      ]
   }  
