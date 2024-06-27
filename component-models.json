@@ -189,6 +189,13 @@
   {
     "id": "quote",
     "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "quote",
+        "label": "quote",
+        "multi": false
+      },
        {
          "component": "text-area",
          "name": "quote",
