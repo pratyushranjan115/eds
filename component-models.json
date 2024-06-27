@@ -216,10 +216,22 @@
         "name": "alt",
         "value": "Default alt",
         "label": "Alt Text"
-      }
+      },
 
-      
-           
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "quote_link",
+        "value": "#",
+        "label": "Quote CTA Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "quote_linkText",
+        "value": "Hello",
+        "label": "Quote CTA Text"
+      }    
      ]
   }  
 ]
