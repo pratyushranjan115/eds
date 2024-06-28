@@ -1,121 +1,52 @@
-export default function decorate(block) {
-  const [quoteWrapper] = block.children;
-
-  const blockquote = document.createElement('blockquote');
-  blockquote.textContent = quoteWrapper.textContent.trim();
-
-  // Create a cite element
-  const cite = document.createElement('cite');
-  cite.textContent = "— Author Name";  // Replace with actual author/source
-
-  // Append cite to blockquote
-  blockquote.appendChild(cite);
-
-  // Add a class for styling purposes
-  blockquote.className = 'custom-blockquote';
-  
-  // Replace quoteWrapper children with the new blockquote
-  quoteWrapper.replaceChildren(blockquote);
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Create form elements
+// Function to create and append form using JavaScript DOM
+function createForm() {
   const form = document.createElement('form');
-  form.id = 'ajaxForm';
+  form.name = 'myForm'; // Set form name
+  form.action = '#'; // Set form action (replace '#' with actual action URL if needed)
+  form.method = 'post'; // Set form method
 
+  // Create label for Name input
   const nameLabel = document.createElement('label');
-  nameLabel.setAttribute('for', 'name');
   nameLabel.textContent = 'Name:';
+  form.appendChild(nameLabel);
 
+  // Create input field for Name
   const nameInput = document.createElement('input');
   nameInput.type = 'text';
-  nameInput.id = 'name';
-  nameInput.name = 'name';
-  nameInput.required = true;
-
-  const emailLabel = document.createElement('label');
-  emailLabel.setAttribute('for', 'email');
-  emailLabel.textContent = 'Email:';
-
-  const emailInput = document.createElement('input');
-  emailInput.type = 'email';
-  emailInput.id = 'email';
-  emailInput.name = 'email';
-  emailInput.required = true;
-
-  const submitButton = document.createElement('input');
-  submitButton.type = 'submit';
-  submitButton.value = 'Submit';
-
-  const resultDiv = document.createElement('div');
-  resultDiv.id = 'result';
-
-  // Append elements to form
-  form.appendChild(nameLabel);
+  nameInput.name = 'fname';
   form.appendChild(nameInput);
-  form.appendChild(document.createElement('br'));
-  form.appendChild(emailLabel);
-  form.appendChild(emailInput);
-  form.appendChild(document.createElement('br'));
-  form.appendChild(submitButton);
 
-  // Append form and resultDiv to body
-  document.body.appendChild(form);
-  document.body.appendChild(resultDiv);
-
-  console.log('Form and result div appended to the body');
+  // Create submit button
+  const submitBtn = document.createElement('input');
+  submitBtn.type = 'submit';
+  submitBtn.value = 'Submit';
+  form.appendChild(submitBtn);
 
   // Add event listener for form submission
   form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent the default form submission
-
-    // Validate form
-    if (!validateForm()) {
-      return;
+    event.preventDefault(); // Prevent default form submission
+    if (validateForm()) {
+      alert('Form submitted successfully!');
+      // Perform further actions like sending data to server
     }
-
-    // Get form data
-    const formData = new FormData(form);
-    const data = {};
-    formData.forEach((value, key) => {
-      data[key] = value;
-    });
-
-    // Create an XMLHttpRequest object
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'YOUR_API_ENDPOINT_HERE', true);
-    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-
-    // Define a callback function to handle the response
-    xhr.onreadystatechange = function() {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          resultDiv.innerHTML = 'Success: ' + xhr.responseText;
-        } else {
-          resultDiv.innerHTML = 'Error: ' + xhr.status;
-        }
-      }
-    };
-
-    // Send the request with the form data
-    xhr.send(JSON.stringify(data));
   });
 
-  // Function to validate the form
-  function validateForm() {
-    let x = nameInput.value.trim();
-    if (x === '') {
-      alert('Name must be filled out');
-      return false;
-    }
-    return true;
-  }
+  // Append form to the document body or any desired container
+  document.body.appendChild(form);
+}
 
-  // Example usage of decorate function
-  const block = document.createElement('div');
-  const quoteWrapper = document.createElement('div');
-  quoteWrapper.textContent = 'This is a quote';
-  block.appendChild(quoteWrapper);
-  decorate(block);
-  document.body.appendChild(block);
-});
+// Function to validate form
+function validateForm() {
+  let x = document.forms['myForm']['fname'].value;
+  if (x === '') {
+    alert('Name must be filled out');
+    return false;
+  }
+  // You can add more validation logic as needed
+
+  // Return true if all validations pass
+  return true;
+}
+
+// Example usage
+createForm(); // Call to create the form dynamically
