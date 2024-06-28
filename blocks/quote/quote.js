@@ -1,60 +1,19 @@
-// Function to create and append form using JavaScript DOM
-function createForm() {
-  // Create a container div for the form
-  const container = document.createElement('div');
+export default function decorate(block) {
+  const [quoteWrapper] = block.children;
+
+  const blockquote = document.createElement('blockquote');
+  blockquote.textContent = quoteWrapper.textContent.trim();
+
+  // Create a cite element
+  const cite = document.createElement('cite');
+  cite.textContent = "— Author Name";  // Replace with actual author/source
+
+  // Append cite to blockquote
+  blockquote.appendChild(cite);
+
+  // Add a class for styling purposes
+  blockquote.className = 'custom-blockquote';
   
-  // Create form element
-  const form = document.createElement('form');
-  form.name = 'myForm'; // Set form name
-  form.action = '#'; // Set form action (replace '#' with actual action URL if needed)
-  form.method = 'post'; // Set form method
-
-  // Create label for Name input
-  const nameLabel = document.createElement('label');
-  nameLabel.textContent = 'Name:';
-  form.appendChild(nameLabel);
-
-  // Create input field for Name
-  const nameInput = document.createElement('input');
-  nameInput.type = 'text';
-  nameInput.name = 'fname';
-  form.appendChild(nameInput);
-
-  // Create submit button
-  const submitBtn = document.createElement('input');
-  submitBtn.type = 'submit';
-  submitBtn.value = 'Submit';
-  form.appendChild(submitBtn);
-
-  // Add event listener for form submission
-  form.addEventListener('submit', function(event) {
-    event.preventDefault(); // Prevent default form submission
-    if (validateForm()) {
-      // If form is valid, log the entered data (you can send it to server or perform other actions)
-      console.log('Submitted Name:', nameInput.value);
-      alert('Form submitted successfully!');
-    }
-  });
-
-  // Append form to the container div
-  container.appendChild(form);
-
-  // Append the container div to the document body
-  document.body.appendChild(container);
+  // Replace quoteWrapper children with the new blockquote
+  quoteWrapper.replaceChildren(blockquote);
 }
-
-// Function to validate form
-function validateForm() {
-  let x = document.forms['myForm']['fname'].value;
-  if (x === '') {
-    alert('Name must be filled out');
-    return false;
-  }
-  // You can add more validation logic as needed
-
-  // Return true if all validations pass
-  return true;
-}
-
-// Example usage
-createForm(); // Call to create the form dynamically
