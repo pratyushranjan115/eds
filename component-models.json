@@ -250,23 +250,25 @@
         "valueType": "string"
       },
       {
-        "component": "button",
-        "name": "submit",
-        "label": "Submit Button",
-        "fields": [
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "text",
-            "label": "Button Text"
-          },
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "href",
-            "label": "Button Link"
-          }
-        ]
+        "component": "text",
+        "valueType": "string",
+        "name": "href",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "text",
+        "value": "",
+        "label": "Text"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title"
       }
     ]
   }
