@@ -1,5 +1,6 @@
 // Function to create and append form using JavaScript DOM
 function createForm() {
+  // Create form element
   const form = document.createElement('form');
   form.name = 'myForm'; // Set form name
   form.action = '#'; // Set form action (replace '#' with actual action URL if needed)
@@ -26,12 +27,13 @@ function createForm() {
   form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent default form submission
     if (validateForm()) {
+      // If form is valid, log the entered data (you can send it to server or perform other actions)
+      console.log('Submitted Name:', nameInput.value);
       alert('Form submitted successfully!');
-      // Perform further actions like sending data to server
     }
   });
 
-  // Append form to the document body or any desired container
+  // Append form to the document body
   document.body.appendChild(form);
 }
 
