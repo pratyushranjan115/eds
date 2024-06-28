@@ -1,6 +1,24 @@
-document.addEventListener('DOMContentLoaded', function() {
-  console.log('DOM fully loaded and parsed');
+export default function decorate(block) {
+  const [quoteWrapper] = block.children;
+
+  const blockquote = document.createElement('blockquote');
+  blockquote.textContent = quoteWrapper.textContent.trim();
+
+  // Create a cite element
+  const cite = document.createElement('cite');
+  cite.textContent = "— Author Name";  // Replace with actual author/source
+
+  // Append cite to blockquote
+  blockquote.appendChild(cite);
+
+  // Add a class for styling purposes
+  blockquote.className = 'custom-blockquote';
   
+  // Replace quoteWrapper children with the new blockquote
+  quoteWrapper.replaceChildren(blockquote);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
   // Create form elements
   const form = document.createElement('form');
   form.id = 'ajaxForm';
@@ -51,7 +69,10 @@ document.addEventListener('DOMContentLoaded', function() {
   form.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
 
-    console.log('Form submitted');
+    // Validate form
+    if (!validateForm()) {
+      return;
+    }
 
     // Get form data
     const formData = new FormData(form);
@@ -69,16 +90,32 @@ document.addEventListener('DOMContentLoaded', function() {
     xhr.onreadystatechange = function() {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
-          console.log('Success:', xhr.responseText);
           resultDiv.innerHTML = 'Success: ' + xhr.responseText;
         } else {
-          console.log('Error:', xhr.status, xhr.statusText);
-          resultDiv.innerHTML = 'Error: ' + xhr.status + ' ' + xhr.statusText;
+          resultDiv.innerHTML = 'Error: ' + xhr.status;
         }
       }
     };
 
-    console.log('Sending request');
+    // Send the request with the form data
     xhr.send(JSON.stringify(data));
   });
+
+  // Function to validate the form
+  function validateForm() {
+    let x = nameInput.value.trim();
+    if (x === '') {
+      alert('Name must be filled out');
+      return false;
+    }
+    return true;
+  }
+
+  // Example usage of decorate function
+  const block = document.createElement('div');
+  const quoteWrapper = document.createElement('div');
+  quoteWrapper.textContent = 'This is a quote';
+  block.appendChild(quoteWrapper);
+  decorate(block);
+  document.body.appendChild(block);
 });
