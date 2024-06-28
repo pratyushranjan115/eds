@@ -1,5 +1,8 @@
 // Function to create and append form using JavaScript DOM
 function createForm() {
+  // Create a container div for the form
+  const container = document.createElement('div');
+  
   // Create form element
   const form = document.createElement('form');
   form.name = 'myForm'; // Set form name
@@ -33,8 +36,11 @@ function createForm() {
     }
   });
 
-  // Append form to the document body
-  document.body.appendChild(form);
+  // Append form to the container div
+  container.appendChild(form);
+
+  // Append the container div to the document body
+  document.body.appendChild(container);
 }
 
 // Function to validate form
