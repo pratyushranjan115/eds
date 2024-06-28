@@ -248,6 +248,12 @@
         "name": "textarea2",
         "label": "Text Area 2",
         "valueType": "string"
+      },
+      {
+        "component": "button",
+        "name": "submit",
+        "label": "Submit",
+        "valueType": "string"
       }
     ]
   }
