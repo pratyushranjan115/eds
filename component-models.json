@@ -255,6 +255,13 @@
         "name": "href",
         "value": "",
         "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "text",
+        "value": "",
+        "label": "Text"
       }
     ]
   }
