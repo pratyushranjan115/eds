@@ -264,27 +264,7 @@
             "component": "text",
             "valueType": "string",
             "name": "href",
-            "label": "Button Link"
-          },
-          {
-            "component": "select",
-            "name": "type",
-            "valueType": "string",
-            "label": "Button Type",
-            "options": [
-              {
-                "name": "Default",
-                "value": ""
-              },
-              {
-                "name": "Primary",
-                "value": "primary"
-              },
-              {
-                "name": "Secondary",
-                "value": "secondary"
-              }
-            ]
+            "label": "CTA Link"
           }
         ]
       }
