@@ -233,5 +233,23 @@
         "label": "CTA Text"
       }    
      ]
-  }  
+  },
+  {
+    "id": "custom-form",
+    "fields": [
+      {
+        "component": "text-area",
+        "name": "textarea1",
+        "label": "Text Area 1",
+        "valueType": "string"
+      },
+      {
+        "component": "text-area",
+        "name": "textarea2",
+        "label": "Text Area 2",
+        "valueType": "string"
+      }
+    ]
+  }
+    
 ]
