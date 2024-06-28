@@ -1,24 +1,6 @@
-export default function decorate(block) {
-  const [quoteWrapper] = block.children;
-
-  const blockquote = document.createElement('blockquote');
-  blockquote.textContent = quoteWrapper.textContent.trim();
-
-  // Create a cite element
-  const cite = document.createElement('cite');
-  cite.textContent = "— Author Name";  // Replace with actual author/source
-
-  // Append cite to blockquote
-  blockquote.appendChild(cite);
-
-  // Add a class for styling purposes
-  blockquote.className = 'custom-blockquote';
-  
-  // Replace quoteWrapper children with the new blockquote
-  quoteWrapper.replaceChildren(blockquote);
-}
-
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM fully loaded and parsed');
+  
   // Create form elements
   const form = document.createElement('form');
   form.id = 'ajaxForm';
@@ -63,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.appendChild(form);
   document.body.appendChild(resultDiv);
 
-  // Log to ensure form and result div are appended
   console.log('Form and result div appended to the body');
 
   // Add event listener for form submission
@@ -100,13 +81,4 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Sending request');
     xhr.send(JSON.stringify(data));
   });
-
-  // Example usage of decorate function
-  const block = document.createElement('div');
-  const quoteWrapper = document.createElement('div');
-  quoteWrapper.textContent = 'This is a quote';
-  block.appendChild(quoteWrapper);
-  decorate(block);
-  document.body.appendChild(block);
-  console.log('Decorate function applied and block appended');
 });
