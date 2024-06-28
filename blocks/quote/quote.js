@@ -19,6 +19,9 @@ export default function decorate(block) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+  // Log to ensure the DOM is fully loaded
+  console.log('DOM fully loaded and parsed');
+
   // Create form elements
   const form = document.createElement('form');
   form.id = 'ajaxForm';
@@ -54,10 +57,8 @@ document.addEventListener('DOMContentLoaded', function() {
   form.appendChild(nameLabel);
   form.appendChild(nameInput);
   form.appendChild(document.createElement('br'));
-  form.appendChild(document.createElement('br'));
   form.appendChild(emailLabel);
   form.appendChild(emailInput);
-  form.appendChild(document.createElement('br'));
   form.appendChild(document.createElement('br'));
   form.appendChild(submitButton);
 
@@ -65,35 +66,42 @@ document.addEventListener('DOMContentLoaded', function() {
   document.body.appendChild(form);
   document.body.appendChild(resultDiv);
 
+  // Log to ensure form and result div are appended
+  console.log('Form and result div appended to the body');
+
   // Add event listener for form submission
   form.addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); // Prevent the default form submission
 
-      // Get form data
-      const formData = new FormData(form);
-      const data = {};
-      formData.forEach((value, key) => {
-          data[key] = value;
-      });
+    console.log('Form submitted');
 
-      // Create an XMLHttpRequest object
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', 'YOUR_API_ENDPOINT_HERE', true);
-      xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    // Get form data
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
 
-      // Define a callback function to handle the response
-      xhr.onreadystatechange = function() {
-          if (xhr.readyState === XMLHttpRequest.DONE) {
-              if (xhr.status === 200) {
-                  resultDiv.innerHTML = 'Success: ' + xhr.responseText;
-              } else {
-                  resultDiv.innerHTML = 'Error: ' + xhr.status + ' ' + xhr.statusText;
-              }
-          }
-      };
+    // Create an XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'YOUR_API_ENDPOINT_HERE', true);
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
 
-      // Send the request with the form data
-      xhr.send(JSON.stringify(data));
+    // Define a callback function to handle the response
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          console.log('Success:', xhr.responseText);
+          resultDiv.innerHTML = 'Success: ' + xhr.responseText;
+        } else {
+          console.log('Error:', xhr.status, xhr.statusText);
+          resultDiv.innerHTML = 'Error: ' + xhr.status + ' ' + xhr.statusText;
+        }
+      }
+    };
+
+    console.log('Sending request');
+    xhr.send(JSON.stringify(data));
   });
 
   // Example usage of decorate function
@@ -103,4 +111,5 @@ document.addEventListener('DOMContentLoaded', function() {
   block.appendChild(quoteWrapper);
   decorate(block);
   document.body.appendChild(block);
+  console.log('Decorate function applied and block appended');
 });
