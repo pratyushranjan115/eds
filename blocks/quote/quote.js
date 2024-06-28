@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
               if (xhr.status === 200) {
                   resultDiv.innerHTML = 'Success: ' + xhr.responseText;
               } else {
-                  resultDiv.innerHTML = 'Error: ' + xhr.status;
+                  resultDiv.innerHTML = 'Error: ' + xhr.status + ' ' + xhr.statusText;
               }
           }
       };
