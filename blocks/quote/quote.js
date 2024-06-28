@@ -19,9 +19,6 @@ export default function decorate(block) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Log to ensure the DOM is fully loaded
-  console.log('DOM fully loaded and parsed');
-
   // Create form elements
   const form = document.createElement('form');
   form.id = 'ajaxForm';
