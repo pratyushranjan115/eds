@@ -238,15 +238,15 @@
     "id": "custom-form",
     "fields": [
       {
-        "component": "text-area",
-        "name": "textarea1",
-        "label": "Text Area 1",
+        "component": "text",
+        "name": "text1",
+        "label": "Text1",
         "valueType": "string"
       },
       {
-        "component": "text-area",
-        "name": "textarea2",
-        "label": "Text Area 2",
+        "component": "text",
+        "name": "text2",
+        "label": "Text2",
         "valueType": "string"
       },
       {
@@ -255,13 +255,6 @@
         "name": "href",
         "value": "",
         "label": "Link"
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "text",
-        "value": "",
-        "label": "Text"
       }
     ]
   },
