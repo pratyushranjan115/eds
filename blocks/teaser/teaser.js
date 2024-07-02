@@ -1,16 +1,6 @@
 export default function decorateTeaser(block) {
-    console.log('decorateTeaser function called');  // Debug line
-  
-    function getTeaserData() {
-      console.log('getTeaserData function called');  // Debug line
-  
-      // Adjusting the children selection based on provided HTML structure
-      const [
-        backgroundImageContainer,
-        contentContainer
-      ] = block.children;
-  
-      console.log('block children:', block.children);  // Debug line
+    function getTeaserData(block) {
+      const [backgroundImageContainer, contentContainer] = block.children;
   
       const backgroundImgEl = backgroundImageContainer.querySelector('picture');
       const backgroundImgAltEl = backgroundImgEl?.querySelector('img');
@@ -38,7 +28,6 @@ export default function decorateTeaser(block) {
     }
   
     const teaserData = getTeaserData(block);
-    console.log('teaserData:', teaserData);  // Debug line
   
     const teaserHtml = `
       <div class="teaser__wrapper">
@@ -51,7 +40,6 @@ export default function decorateTeaser(block) {
       </div>
     `;
   
-    console.log('teaserHtml:', teaserHtml);  // Debug line
     block.innerHTML = teaserHtml;
   }
   
