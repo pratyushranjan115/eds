@@ -1,0 +1,37 @@
+.block.quote {
+    background-color: green;
+    padding: 0 0 24px;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+  }
+  
+  .block.quote form {
+    margin: 16px;
+    text-indent: 0;
+  }
+  
+  .block.quote label {
+    font-weight: bold;
+  }
+  
+  .block.quote input[type="text"] {
+    margin-bottom: 8px;
+  }
+  
+  .block.quote input[type="submit"] {
+    margin-top: 8px;
+  }
+  
+  .block.quote p {
+    margin-top: 16px;
+    font-size: small;
+    font-style: italic;
+  }
+  
+  .block.quote #response {
+    margin-top: 16px;
+    font-size: medium;
+    font-weight: bold;
+  }
+  
