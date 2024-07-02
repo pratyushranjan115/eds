@@ -299,7 +299,7 @@
       {
         "component": "select",
         "name": "foreground_titletype",
-        "value": "h3",
+        "value": " ",
         "label": "Title Type",
         "valueType": "string",
         "options": [
