@@ -1,4 +1,4 @@
-.block.quote {
+.block.custom-form {
     background-color: green;
     padding: 0 0 24px;
     display: flex;
@@ -6,30 +6,34 @@
     margin: 1rem 0;
   }
   
-  .block.quote form {
+  .block.custom-form form {
     margin: 16px;
     text-indent: 0;
   }
   
-  .block.quote label {
+  .block.custom-form label {
     font-weight: bold;
   }
   
-  .block.quote input[type="text"] {
+  .block.custom-form textarea {
     margin-bottom: 8px;
   }
   
-  .block.quote input[type="submit"] {
+  .block.custom-form input[type="text"] {
+    margin-bottom: 8px;
+  }
+  
+  .block.custom-form input[type="submit"] {
     margin-top: 8px;
   }
   
-  .block.quote p {
+  .block.custom-form p {
     margin-top: 16px;
     font-size: small;
     font-style: italic;
   }
   
-  .block.quote #response {
+  .block.custom-form #response {
     margin-top: 16px;
     font-size: medium;
     font-weight: bold;
