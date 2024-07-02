@@ -205,16 +205,16 @@
                 "template": {
                   "name": "Teaser",
                   "model": "teaser",
-                  "foreground_title":"New Teaser",
-                  "foreground_tileType":"h3"
+                  "foreground_title": "New Teaser",
+                  "foreground_tileType": "h3"
                 }
               }
             }
           }
         }
-
       ]
     }
+    
     
   ]
 }
