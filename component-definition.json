@@ -206,7 +206,7 @@
                   "name": "Teaser",
                   "model": "teaser",
                   "foreground_title":"New Teaser",
-                  "foreground_tileType":" "
+                  "foreground_tileType":"h3"
                 }
               }
             }
