@@ -259,8 +259,8 @@
     ]
   },
   {
-    "id":"teaser",
-    "fields":[
+    "id": "teaser",
+    "fields": [
       {
         "component": "reference",
         "valueType": "string",
@@ -296,9 +296,9 @@
         "label": "Title Type",
         "valueType": "string",
         "options": [
-          {"name": "h2","value": "h2"},
-          {"name": "h3","value": "h3"},
-          {"name": "h4","value": "h4"}
+          {"name": "h2", "value": "h2"},
+          {"name": "h3", "value": "h3"},
+          {"name": "h4", "value": "h4"}
         ]
       },
       {
@@ -310,5 +310,5 @@
       }
     ]
   }
-    
+      
 ]
