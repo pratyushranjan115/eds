@@ -52,7 +52,7 @@ body {
   width: 55%; /* Set the width of the content container */
   padding: 20px;
   text-align: left;
-  color: rgb(36, 36, 36); /* Ensure the text is visible over the background image */
+  color: rgb(45, 3, 3); /* Ensure the text is visible over the background image */
 }
 
 .teaser__content h2,
