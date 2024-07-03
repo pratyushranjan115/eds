@@ -1,23 +1,85 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Add a gray background color with some padding */
+body {
+  font-family: Arial;
+  padding: 20px;
+  background: #f1f1f1;
+}
+
+/* Main container */
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Right column */
+.rightcolumn {
+  width: 25%;
+  padding-left: 20px;
+}
+
+/* Teaser section */
 .teaser__wrapper {
-    text-align: center;
-    background-color: #942525;
-    position: relative;
-  }
-  
-  .teaser__content {
-    padding: 20px;
-    text-align: left;
-  }
-  
-  .teaser__content h2,
-  .teaser__content h3,
-  .teaser__content h4 {
-    margin: 0;
-    margin-bottom: 20px;
-  }
-  
-  .teaser__content p {
-    margin: 0;
-    margin-bottom: 10px;
-  }
-  
+  flex: 1;
+  max-width: 70%; /* Adjust this value to reduce width */
+  text-align: center;
+  background-color: #8c8c8cfd;
+  position: relative;
+  overflow: hidden; /* Ensure content doesn't overflow */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px; /* Add padding to the teaser section */
+}
+
+.teaser__background {
+  width: 40%; /* Set the width of the image container */
+  display: flex;
+  justify-content: center;
+}
+
+.teaser__background img {
+  width: 100%; /* Ensure the image takes full width of its container */
+  max-width: 100px; /* Set maximum width for the image */
+  height: auto;
+  display: block;
+}
+
+.teaser__content {
+  width: 55%; /* Set the width of the content container */
+  padding: 20px;
+  text-align: left;
+  color: rgb(36, 36, 36); /* Ensure the text is visible over the background image */
+}
+
+.teaser__content h2,
+.teaser__content h3,
+.teaser__content h4 {
+  margin: 0;
+  margin-bottom: 20px;
+  font-family: Arial;
+  font-size: 24px; /* Adjust font size as needed */
+}
+
+.teaser__content p {
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: Arial;
+  font-size: 16px; /* Adjust font size as needed */
+}
+
+.teaser__pretitle,
+.teaser__title,
+.teaser__description {
+  color: white; /* Ensure the text is visible over the background image */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
