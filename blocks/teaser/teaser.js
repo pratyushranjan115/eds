@@ -32,7 +32,7 @@ export default function decorateTeaser(block) {
     const teaserHtml = `
       <div class="teaser__wrapper">
         ${(teaserData.backgroundImg) ? teaserData.backgroundImg.outerHTML : ''}
-        <div class="teaser__content">
+        <div class="teaser__content_test">
           ${(teaserData.pretitle) ? `<p>${teaserData.pretitle}</p>` : ''}
           ${(teaserData.title) ? `<h3>${teaserData.title}</h3>` : ''}
           ${(teaserData.description) ? `${teaserData.description}` : ''}
@@ -43,10 +43,5 @@ export default function decorateTeaser(block) {
     block.innerHTML = teaserHtml;
   }
   
-  document.addEventListener('DOMContentLoaded', () => {
-    const teaserBlock = document.querySelector('.block.teaser');
-    if (teaserBlock) {
-      decorateTeaser(teaserBlock);
-    }
-  });
+  
   
