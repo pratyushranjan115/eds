@@ -268,7 +268,13 @@
         "label": "Background Image",
         "multi": false
       },
-
+      {
+        "component": "text",
+        "name": "background_imageAlt",
+        "value": "",
+        "label": "Image Alt",
+        "valueType": "string"
+      },
       {
         "component": "text",
         "name": "foreground_pretitle",
