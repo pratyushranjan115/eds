@@ -24,7 +24,7 @@ body {
 /* Teaser section */
 .teaser__wrapper {
   flex: 1;
-  max-width: 70%; /* Adjust this value to reduce width */
+  max-width: 100%; /* Adjust this value to reduce width */
   text-align: center;
   background-color: #8c8c8cfd;
   position: relative;
