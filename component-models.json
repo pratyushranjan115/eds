@@ -309,6 +309,94 @@
         "valueType": "string"
       }
     ]
-  }
+  },
+  {
+    "id": "dealer-menu",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "titleType",
+        "value": "h2",
+        "label": "Title Type",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "h1",
+            "value": "h1"
+          },
+          {
+            "name": "h2",
+            "value": "h2"
+          },
+          {
+            "name": "h3",
+            "value": "h3"
+          },
+          {
+            "name": "h4",
+            "value": "h4"
+          },
+          {
+            "name": "h5",
+            "value": "h5"
+          },
+          {
+            "name": "h6",
+            "value": "h6"
+          }
+        ]
+      },
+      {
+        "component": "list",
+        "name": "tiles",
+        "label": "Tiles",
+        "valueType": "array",
+        "fields": [
+          {
+            "component": "text-input",
+            "name": "link",
+            "value": "",
+            "label": "Link URL",
+            "valueType": "string"
+          },
+          {
+            "component": "text-input",
+            "name": "imgSrc",
+            "value": "",
+            "label": "Image Source",
+            "valueType": "string"
+          },
+          {
+            "component": "text-input",
+            "name": "imgAlt",
+            "value": "",
+            "label": "Image Alt Text",
+            "valueType": "string"
+          },
+          {
+            "component": "text-input",
+            "name": "imgTitle",
+            "value": "",
+            "label": "Image Title",
+            "valueType": "string"
+          },
+          {
+            "component": "text-input",
+            "name": "title",
+            "value": "",
+            "label": "Tile Title",
+            "valueType": "string"
+          }
+        ]
+      }
+    ]
+  }  
       
 ]
