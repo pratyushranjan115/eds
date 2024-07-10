@@ -375,12 +375,13 @@
         "label": "Title"
       },
       {
-        "component": "image",
+        "component": "reference",
         "valueType": "string",
-        "name": "image",
-        "value": "",
-        "label": "Image"
+        "name": "background_image",
+        "label": "Background Image",
+        "multi": false
       },
+      
       {
         "component": "aem-content",
         "valueType": "string",
