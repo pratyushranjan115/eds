@@ -11,6 +11,7 @@ export default function decorate(block) {
       dealerCard.className = "dealer-card";
       dealerCard.innerHTML = `
         <div class="dealer-content">
+          
           <img src="${imageSrc}" alt="${title}">
           <h2>${title}</h2>
         </div>
