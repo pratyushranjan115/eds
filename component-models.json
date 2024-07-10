@@ -311,19 +311,17 @@
     ]
   },
   {
-    "id": "dealermenu",
+    "id": "dealer-menu",
     "fields": [
       {
         "component": "text-input",
         "name": "title",
-        "value": "",
         "label": "Title",
         "valueType": "string"
       },
       {
         "component": "select",
         "name": "titleType",
-        "value": "h2",
         "label": "Title Type",
         "valueType": "string",
         "options": [
@@ -362,41 +360,36 @@
           {
             "component": "text-input",
             "name": "link",
-            "value": "",
             "label": "Link URL",
             "valueType": "string"
           },
           {
             "component": "text-input",
             "name": "imgSrc",
-            "value": "",
             "label": "Image Source",
             "valueType": "string"
           },
           {
             "component": "text-input",
             "name": "imgAlt",
-            "value": "",
             "label": "Image Alt Text",
             "valueType": "string"
           },
           {
             "component": "text-input",
             "name": "imgTitle",
-            "value": "",
             "label": "Image Title",
             "valueType": "string"
           },
           {
             "component": "text-input",
             "name": "title",
-            "value": "",
             "label": "Tile Title",
             "valueType": "string"
           }
         ]
       }
     ]
-  }  
+  }    
       
 ]
