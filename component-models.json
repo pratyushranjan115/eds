@@ -311,7 +311,7 @@
     ]
   },
   {
-    "id": "dealer-menu",
+    "id": "dealermenu",
     "fields": [
       {
         "component": "text-input",
