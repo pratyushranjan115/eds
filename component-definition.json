@@ -215,21 +215,19 @@
       ]
     },
     {
-      "title": "Teaser component_1",
+      "title": "Button Btn",
       "id": "blocks",
       "components": [
         {
-          "title": "Teaser-one",
-          "id": "teaser-one",
+          "title": "Btn",
+          "id": "btn",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
-                  "name": "Teaser-one",
-                  "model": "teaser-one",
-                  "foreground_title": "New Teaser",
-                  "foreground_tileType": "h3"
+                  "name": "Btn",
+                  "model": "btn"
                 }
               }
             }

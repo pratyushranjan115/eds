@@ -311,54 +311,49 @@
     ]
   },
   {
-    "id": "teaser-one",
+    "id": "btn",
     "fields": [
       {
-        "component": "reference",
+        "component": "text",
         "valueType": "string",
-        "name": "background_image",
-        "label": "Background Image",
-        "multi": false
+        "name": "logoutText",
+        "value": "",
+        "label": "Logout Text"
       },
       {
         "component": "text",
-        "name": "background_imageAlt",
-        "value": "",
-        "label": "Image Alt",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "foreground_pretitle",
-        "value": "",
-        "label": "Pre title",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "foreground_title",
-        "value": "",
-        "label": "Title",
-        "valueType": "string"
-      },
-      {
-        "component": "select",
-        "name": "foreground_titletype",
-        "value": "h3",
-        "label": "Title Type",
         "valueType": "string",
-        "options": [
-          {"name": "h2", "value": "h2"},
-          {"name": "h3", "value": "h3"},
-          {"name": "h4", "value": "h4"}
-        ]
+        "name": "popupHeading",
+        "value": "",
+        "label": "popup Heading"
       },
       {
-        "component": "richtext",
-        "name": "foreground_description",
+        "component": "text",
+        "valueType": "string",
+        "name": "popupDesc",
         "value": "",
-        "label": "Description",
-        "valueType": "string"
+        "label": "popup Desc"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "href",
+        "value": "",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "yes",
+        "value": "",
+        "label": "Yes"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "no",
+        "value": "",
+        "label": "No"
       }
     ]
   }
