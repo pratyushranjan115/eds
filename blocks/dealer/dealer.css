@@ -39,7 +39,7 @@
   .dealer-content img {
     width: 80px; /* Decrease the image size */
     height: 80px; /* Decrease the image size */
-    border-radius: 50%; /* Make the image circular */
+    border-radius: 100%; /* Make the image circular */
     object-fit: cover; /* Maintain aspect ratio and cover the circle */
     border: 3px solid #333; /* Add border to the image */
     margin-bottom: 10px; /* Add margin to separate from the title */
