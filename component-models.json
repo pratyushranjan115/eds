@@ -363,6 +363,33 @@
         "label": "No"
       }
     ]
+  },
+  {
+    "id": "dealer",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "image",
+        "valueType": "string",
+        "name": "image",
+        "value": "",
+        "label": "Image"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "href",
+        "value": "",
+        "label": "Link"
+      }
+    ]
   }
+  
       
 ]
