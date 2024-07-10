@@ -1,8 +1,13 @@
 .dealer-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     border: 1px solid #ccc;
     padding: 16px;
     transition: box-shadow 0.3s ease;
+    text-align: center; /* Ensure text is centered */
   }
   
   .dealer-card:hover {
