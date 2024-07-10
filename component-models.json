@@ -309,6 +309,22 @@
         "valueType": "string"
       }
     ]
+  },
+
+  {
+    "id": "dealer-menu",
+    "fields": [
+      {
+        "component": "text-input",
+        "name": "title",
+        "label": "Title",
+        "valueType": "string",
+        "required": true,
+        "placeholder": "Enter the title for the dealer menu"
+      }
+     
+      
+    ]
   }
   
      
