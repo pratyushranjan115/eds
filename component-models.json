@@ -312,7 +312,7 @@
   },
 
   {
-    "id": "dealer-menu",
+    "id": "dealer",
     "fields": [
       {
         "component": "richtext",
