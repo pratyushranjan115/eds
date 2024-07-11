@@ -396,8 +396,8 @@
         {
             "component": "text",
             "valueType": "string",
-            "name": "profile_name",
-            "label": "Profile_Name"
+            "name": "profile_n",
+            "label": "Profile_N"
         },
         {
             "component": "text",
