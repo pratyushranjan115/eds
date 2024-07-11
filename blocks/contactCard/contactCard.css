@@ -1,0 +1,54 @@
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 16px;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+    background: #fff;
+    max-width: 300px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.contact-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-content img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    object-fit: cover;
+    border: 3px solid #333;
+    margin-bottom: 10px;
+}
+
+.contact-content h2 {
+    margin: 10px 0 0;
+    font-size: 1.2rem;
+    color: #333;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.3;
+    text-align: center;
+    max-width: 100%;
+}
+
+.contact-content .post,
+.contact-content .address {
+    margin: 5px 0;
+    font-size: 1rem;
+    color: #666;
+    text-align: center;
+}

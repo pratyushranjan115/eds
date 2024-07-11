@@ -1,16 +1,16 @@
 export default function decorate(block) {
     function getContactCardData(block) {
-        const [imageContainer, nameEl, postEl, addressEl] = block.children;
+        const [imageContainer, titleEl, postEl, addressEl] = block.children;
         const imageEl = imageContainer?.querySelector('img');
         const imageSrc = imageEl?.src || 'https://via.placeholder.com/150';
-        const name = nameEl?.textContent?.trim() || 'Default Name';
+        const title = titleEl?.textContent?.trim() || 'Default Name';
         const post = postEl?.textContent?.trim() || 'Default Post';
         const address = addressEl?.textContent?.trim() || 'Default Address';
 
-        return { imageSrc, name, post, address };
+        return { imageSrc, title, post, address };
     }
 
-    const { imageSrc, name, post, address } = getContactCardData(block);
+    const { imageSrc, title, post, address } = getContactCardData(block);
 
     function createContactCard() {
         const contactCard = document.createElement('div');
@@ -18,7 +18,7 @@ export default function decorate(block) {
         contactCard.innerHTML = `
             <div class="contact-content">
                 <img src="${imageSrc}" alt="${name}">
-                <h2>${name}</h2>
+                <h2>${title}</h2>
                 <p class="post">${post}</p>
                 <p class="address">${address}</p>
             </div>
