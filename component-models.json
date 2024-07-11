@@ -382,7 +382,36 @@
         "label": "Link"
       }
     ]
-  }
-  
-      
+  },
+  {
+    "id": "contactCard",
+    "fields": [
+        {
+            "component": "reference",
+            "valueType": "string",
+            "name": "profile_image",
+            "label": "Profile Image",
+            "multi": false
+        },
+        {
+            "component": "text",
+            "valueType": "string",
+            "name": "name",
+            "label": "Name"
+        },
+        {
+            "component": "text",
+            "valueType": "string",
+            "name": "post",
+            "label": "Post"
+        },
+        {
+            "component": "text",
+            "valueType": "string",
+            "name": "address",
+            "label": "Address"
+        }
+    ]
+}
+        
 ]
