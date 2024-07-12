@@ -40,9 +40,42 @@ export default function decorate(block) {
     return dealerCard;
   }
 
+  function createModal() {
+    const modal = document.createElement('div');
+    modal.id = 'dealerModal';
+    modal.innerHTML = `
+      <div class="modal-content">
+        <img src="${popupImageSrc}" alt="${popupTitle}">
+        <h2>${popupTitle}</h2>
+        <a href="${popupLink}" class="blue-button">Go to link</a>
+        <button class="blue-button" id="closeModal">Close</button>
+      </div>
+    `;
+    return modal;
+  }
+
   function setupEventListener(dealerCard) {
     dealerCard.addEventListener('click', () => {
-      window.location.href = reveal ? popupLink : link;
+      if (parentReveal && !reveal) {
+        window.location.href = link;
+      } else if (reveal) {
+        const modal = createModal();
+        document.body.appendChild(modal);
+        modal.style.display = 'block';
+
+        const closeModalButton = modal.querySelector('#closeModal');
+        closeModalButton.addEventListener('click', () => {
+          modal.style.display = 'none';
+          document.body.removeChild(modal);
+        });
+
+        window.addEventListener('click', (event) => {
+          if (event.target === modal) {
+            modal.style.display = 'none';
+            document.body.removeChild(modal);
+          }
+        });
+      }
     });
   }
 
