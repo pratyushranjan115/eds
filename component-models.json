@@ -375,15 +375,22 @@
         "label": "Title"
       },
       {
+        "component": "boolean",
+        "label": "Shall the parent link field be revealed?",
+        "name": "parent_reveal",
+        "valueType": "boolean"
+      },
+      {
         "component": "aem-content",
         "valueType": "string",
         "name": "href",
         "value": "",
-        "label": "Link"
+        "label": "Link",
+        "condition": { "===": [{"var" : "parent_reveal"}, true] }
       },
       {
         "component": "boolean",
-        "label": "Shall the text field be revealed?",
+        "label": "Shall the popup fields be revealed?",
         "name": "reveal",
         "valueType": "boolean"
       },
@@ -420,7 +427,7 @@
         "condition": { "===": [{"var" : "reveal"}, true] }
       }
     ]
-  },
+  },  
   {
     "id": "contactCard",
     "fields": [
