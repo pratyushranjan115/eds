@@ -383,43 +383,41 @@
       },
       {
         "component": "boolean",
-        "label": "Shall the popup be revealed?",
+        "label": "Shall the text field be revealed?",
         "name": "reveal",
         "valueType": "boolean"
       },
       {
-        "component": "composite",
-        "name": "popupFields",
-        "label": "Popup Fields",
-        "condition": { "===": [{ "var": "reveal" }, true] },
-        "fields": [
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "popupTitle",
-            "label": "Popup Title"
-          },
-          {
-            "component": "reference",
-            "valueType": "string",
-            "name": "popup_background_image",
-            "label": "Popup Background Image",
-            "multi": false
-          },
-          {
-            "component": "text",
-            "valueType": "string",
-            "name": "popup_title",
-            "label": "Popup Title"
-          },
-          {
-            "component": "aem-content",
-            "valueType": "string",
-            "name": "popup_href",
-            "value": "",
-            "label": "Popup Link"
-          }
-        ]
+        "component": "text",
+        "valueType": "string",
+        "name": "popup-title",
+        "label": "Popup Title",
+        "value": "",
+        "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "popup_background_image",
+        "label": "Popup Background Image",
+        "multi": false,
+        "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "popup-title",
+        "label": "Popup Title",
+        "value": "",
+        "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "popup-href",
+        "label": "Popup Link",
+        "value": "",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       }
     ]
   },
