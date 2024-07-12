@@ -21,7 +21,7 @@ export default function decorate(block) {
         <div class="dealer-content">
           <img src="${imageSrc}" alt="${title}">
           <h2>${title}</h2>
-          <h2>${hidden-text}</h2>
+          
         </div>
       `;
       return dealerCard;
