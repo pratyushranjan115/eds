@@ -1,64 +1,59 @@
 export default function decorate(block) {
   function getDealerData(block) {
-    // Extract elements from the block
-    const [backgroundImageContainer, titleEl, linkEl, revealEl, hiddenTextEl] = block.children;
-
-    // Extract image, title, and link data
+    const [backgroundImageContainer, titleEl, linkEl, revealEl, ...popupFieldsEls] = block.children;
+    
     const backgroundImgEl = backgroundImageContainer?.querySelector('img');
     const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
     const title = titleEl?.textContent?.trim() || 'Default Title';
     const link = linkEl?.querySelector('a')?.href || '#';
-    const reveal = revealEl?.textContent?.trim() === 'true'; // Assuming boolean value is stored as text
-    const hiddenText = hiddenTextEl?.textContent?.trim() || '';
+    const reveal = revealEl?.querySelector('input[type="checkbox"]')?.checked || false;
 
-    return { imageSrc, title, link, reveal, hiddenText };
+    let popupData = {};
+    if (reveal) {
+      popupData = {
+        popupTitle: popupFieldsEls[0]?.textContent?.trim() || '',
+        popupBackgroundImage: popupFieldsEls[1]?.querySelector('img')?.src || 'https://via.placeholder.com/150',
+        popupTitleField: popupFieldsEls[2]?.textContent?.trim() || '',
+        popupLink: popupFieldsEls[3]?.querySelector('a')?.href || '#'
+      };
+    }
+
+    return { imageSrc, title, link, reveal, popupData };
   }
 
-  const { imageSrc, title, link, reveal, hiddenText } = getDealerData(block);
+  const { imageSrc, title, link, reveal, popupData } = getDealerData(block);
 
-  function createDealerCard(imageSrc, title, link, hiddenText) {
+  function createDealerCard() {
     const dealerCard = document.createElement('div');
     dealerCard.className = 'dealer-card';
     dealerCard.innerHTML = `
       <div class="dealer-content">
         <img src="${imageSrc}" alt="${title}">
         <h2>${title}</h2>
-        ${hiddenText ? `<h1>${hiddenText}</h1>` : ''}
       </div>
     `;
+    if (reveal) {
+      dealerCard.innerHTML += `
+        <div class="popup-content">
+          <h3>${popupData.popupTitle}</h3>
+          <img src="${popupData.popupBackgroundImage}" alt="${popupData.popupTitleField}">
+          <p>${popupData.popupTitleField}</p>
+          <a href="${popupData.popupLink}">Go to Link</a>
+        </div>
+      `;
+    }
     return dealerCard;
   }
 
-  function setupEventListener(dealerCard, link) {
+  function setupEventListener(dealerCard) {
     dealerCard.addEventListener('click', () => {
       window.location.href = link;
     });
   }
 
-  function createPopup() {
-    const popup = document.createElement('div');
-    popup.className = 'dealer-popup';
-
-    const addButton = document.createElement('button');
-    addButton.textContent = 'Add Dealer';
-    addButton.addEventListener('click', () => {
-      const newDealerCard = createDealerCard(imageSrc, title, link, hiddenText);
-      setupEventListener(newDealerCard, link);
-      popup.appendChild(newDealerCard);
-    });
-
-    popup.appendChild(addButton);
-    return popup;
-  }
-
-  const dealerCard = createDealerCard(imageSrc, title, link, hiddenText);
-  setupEventListener(dealerCard, link);
+  const dealerCard = createDealerCard();
 
   block.innerHTML = '';
   block.appendChild(dealerCard);
-
-  if (reveal) {
-    const popup = createPopup();
-    block.appendChild(popup);
-  }
+  setupEventListener(dealerCard);
 }
