@@ -1,22 +1,24 @@
 export default function decorate(block) {
   function getDealerData(block) {
-    const [backgroundImageContainer, titleEl, linkEl, revealEl, popupTitleEl, popupBackgroundImageEl, popupHrefEl] = block.children;
+    // Extract elements from the block
+    const [backgroundImageContainer, titleEl, parentRevealEl, parentLinkEl, revealEl, popupTitleEl, popupBackgroundImageEl, popupLinkEl] = block.children;
 
+    // Extract image, title, and link data
     const backgroundImgEl = backgroundImageContainer?.querySelector('img');
     const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
     const title = titleEl?.textContent?.trim() || 'Default Title';
-    const link = linkEl?.querySelector('a')?.href || '#';
-    const reveal = revealEl?.querySelector('input')?.checked || false;
+    const link = parentLinkEl?.querySelector('a')?.href || '#';
 
+    // Extract popup data
     const popupTitle = popupTitleEl?.textContent?.trim() || '';
-    const popupBackgroundImgEl = popupBackgroundImageEl?.querySelector('img');
-    const popupImageSrc = popupBackgroundImgEl?.src || '';
-    const popupLink = popupHrefEl?.querySelector('a')?.href || '';
+    const popupImageEl = popupBackgroundImageEl?.querySelector('img');
+    const popupImageSrc = popupImageEl?.src || 'https://via.placeholder.com/150';
+    const popupLink = popupLinkEl?.querySelector('a')?.href || '#';
 
-    return { imageSrc, title, link, reveal, popupTitle, popupImageSrc, popupLink };
+    return { imageSrc, title, link, popupTitle, popupImageSrc, popupLink, reveal: revealEl?.querySelector('input')?.checked, parentReveal: parentRevealEl?.querySelector('input')?.checked };
   }
 
-  const { imageSrc, title, link, reveal, popupTitle, popupImageSrc, popupLink } = getDealerData(block);
+  const { imageSrc, title, link, popupTitle, popupImageSrc, popupLink, reveal, parentReveal } = getDealerData(block);
 
   function createDealerCard() {
     const dealerCard = document.createElement('div');
@@ -27,28 +29,26 @@ export default function decorate(block) {
         <h2>${title}</h2>
       </div>
     `;
-
     if (reveal) {
       dealerCard.innerHTML += `
         <div class="popup-content">
           <img src="${popupImageSrc}" alt="${popupTitle}">
           <h2>${popupTitle}</h2>
-          <a href="${popupLink}">Learn More</a>
         </div>
       `;
     }
-
     return dealerCard;
   }
 
   function setupEventListener(dealerCard) {
     dealerCard.addEventListener('click', () => {
-      window.location.href = link;
+      window.location.href = reveal ? popupLink : link;
     });
   }
 
   const dealerCard = createDealerCard();
 
+  // Clear the block and append the new dealer card
   block.innerHTML = '';
   block.appendChild(dealerCard);
   setupEventListener(dealerCard);
