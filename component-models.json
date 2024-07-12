@@ -388,11 +388,11 @@
         "valueType": "boolean"
       },
       {
-        "component": "text-input",
-        "label": "Hidden text field",
-        "name": "hidden-text",
+        "component": "text",
         "valueType": "string",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "name": "hidden-text",
+        "label": "Hidden text field",
+        "condition": { "===": [{ "var": "reveal" }, true] }
       }
     ]
   },
