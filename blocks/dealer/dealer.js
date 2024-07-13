@@ -4,7 +4,6 @@ export default function decorate(block) {
     const [
       backgroundImageContainer,
       titleEl,
-      parentRevealEl,
       parentLinkEl,
       revealEl,
       popupTitleEl,
@@ -24,6 +23,8 @@ export default function decorate(block) {
     const popupImageSrc = popupImageEl?.src || 'https://via.placeholder.com/150';
     const popupLink = popupLinkEl?.querySelector('a')?.href || '#';
 
+    const reveal = revealEl?.querySelector('input')?.checked ?? false;
+
     return {
       imageSrc,
       title,
@@ -31,8 +32,7 @@ export default function decorate(block) {
       popupTitle,
       popupImageSrc,
       popupLink,
-      reveal: revealEl?.querySelector('input')?.checked,
-      parentReveal: parentRevealEl?.querySelector('input')?.checked
+      reveal
     };
   }
 
@@ -43,8 +43,7 @@ export default function decorate(block) {
     popupTitle,
     popupImageSrc,
     popupLink,
-    reveal,
-    parentReveal
+    reveal
   } = getDealerData(block);
 
   function createDealerCard() {
@@ -68,7 +67,7 @@ export default function decorate(block) {
   }
 
   function setupEventListener(dealerCard) {
-    dealerCard.addEventListener('click', () => {
+    dealerCard.addEventListener('click', (event) => {
       if (!reveal) {
         window.location.href = link;
       }
