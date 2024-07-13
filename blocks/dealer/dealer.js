@@ -17,13 +17,11 @@ export default function decorate(block) {
     const title = titleEl?.textContent?.trim() || 'Default Title';
 
     // Initialize link variable
-    let link = '#';
+    let link = '';
     if (parentLinkEl) {
       const parentLinkAnchor = parentLinkEl.querySelector('a');
       if (parentLinkAnchor) {
         link = parentLinkAnchor.href;
-      } else {
-        console.error('No valid link found in parentLinkEl');
       }
     }
 
@@ -31,8 +29,8 @@ export default function decorate(block) {
     const popupTitle = popupTitleEl?.textContent?.trim() || '';
     const popupImageEl = popupBackgroundImageEl?.querySelector('img');
     const popupImageSrc = popupImageEl?.src || 'https://via.placeholder.com/150';
-    const popupLink = popupLinkEl?.querySelector('a')?.href || '#';
-    
+    const popupLink = popupLinkEl?.querySelector('a')?.href || '';
+
     // Extract reveal and parentReveal boolean values
     const reveal = revealEl?.querySelector('input')?.checked || false;
     const parentReveal = parentLinkEl?.querySelector('input')?.checked || false;
@@ -69,19 +67,16 @@ export default function decorate(block) {
 
   function setupEventListener(dealerCard) {
     dealerCard.addEventListener('click', () => {
-      // Check the conditions for redirection
       if (reveal) {
-        console.log('Reveal is true');
         // Show the popup with the link from popupLink
-        if (popupLink && popupLink !== '#') {
+        if (popupLink && popupLink !== '') {
           window.location.href = popupLink;
         } else {
           console.error('Popup link is invalid');
         }
       } else {
-        console.log('Reveal is false');
         // Redirect to the link from parentLinkEl
-        if (link && link !== '#') {
+        if (link && link !== '') {
           window.location.href = link;
         } else {
           console.error('Link is invalid');
