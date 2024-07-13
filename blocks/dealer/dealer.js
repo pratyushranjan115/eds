@@ -46,6 +46,8 @@ export default function decorate(block) {
     reveal
   } = getDealerData(block);
 
+  console.log('Dealer Data:', { imageSrc, title, link, popupTitle, popupImageSrc, popupLink, reveal });
+
   function createDealerCard() {
     const dealerCard = document.createElement('div');
     dealerCard.className = 'dealer-card';
@@ -69,7 +71,10 @@ export default function decorate(block) {
   function setupEventListener(dealerCard) {
     dealerCard.addEventListener('click', (event) => {
       if (!reveal) {
+        console.log('Redirecting to:', link);
         window.location.href = link;
+      } else {
+        console.log('Popup is revealed, not redirecting.');
       }
     });
   }
