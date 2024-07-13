@@ -16,12 +16,14 @@ export default function decorate(block) {
     const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
     const title = titleEl?.textContent?.trim() || 'Default Title';
 
-    // Extract parent link data
-    let link;
+    // Initialize link variable
+    let link = '#';
     if (parentLinkEl) {
       const parentLinkAnchor = parentLinkEl.querySelector('a');
       if (parentLinkAnchor) {
         link = parentLinkAnchor.href;
+      } else {
+        console.error('No valid link found in parentLinkEl');
       }
     }
 
@@ -30,32 +32,20 @@ export default function decorate(block) {
     const popupImageEl = popupBackgroundImageEl?.querySelector('img');
     const popupImageSrc = popupImageEl?.src || 'https://via.placeholder.com/150';
     const popupLink = popupLinkEl?.querySelector('a')?.href || '#';
+    
+    // Extract reveal and parentReveal boolean values
+    const reveal = revealEl?.querySelector('input')?.checked || false;
+    const parentReveal = parentLinkEl?.querySelector('input')?.checked || false;
 
-    // Extract reveal status
-    const reveal = revealEl?.querySelector('input')?.checked ?? false;
+    console.log('Reveal:', reveal);
+    console.log('Parent Reveal:', parentReveal);
+    console.log('Link:', link);
+    console.log('Popup Link:', popupLink);
 
-    return {
-      imageSrc,
-      title,
-      link,
-      popupTitle,
-      popupImageSrc,
-      popupLink,
-      reveal
-    };
+    return { imageSrc, title, link, popupTitle, popupImageSrc, popupLink, reveal, parentReveal };
   }
 
-  const {
-    imageSrc,
-    title,
-    link,
-    popupTitle,
-    popupImageSrc,
-    popupLink,
-    reveal
-  } = getDealerData(block);
-
-  console.log('Dealer Data:', { imageSrc, title, link, popupTitle, popupImageSrc, popupLink, reveal });
+  const { imageSrc, title, link, popupTitle, popupImageSrc, popupLink, reveal, parentReveal } = getDealerData(block);
 
   function createDealerCard() {
     const dealerCard = document.createElement('div');
@@ -78,15 +68,24 @@ export default function decorate(block) {
   }
 
   function setupEventListener(dealerCard) {
-    dealerCard.addEventListener('click', (event) => {
-      if (!reveal && link) {
-        console.log('Redirecting to:', link);
-        window.location.href = link;
-      } else if (reveal) {
-        console.log('Popup is revealed, not redirecting.');
-        // Here you can add the popup functionality if needed
+    dealerCard.addEventListener('click', () => {
+      // Check the conditions for redirection
+      if (reveal) {
+        console.log('Reveal is true');
+        // Show the popup with the link from popupLink
+        if (popupLink && popupLink !== '#') {
+          window.location.href = popupLink;
+        } else {
+          console.error('Popup link is invalid');
+        }
       } else {
-        console.log('No valid link found.');
+        console.log('Reveal is false');
+        // Redirect to the link from parentLinkEl
+        if (link && link !== '#') {
+          window.location.href = link;
+        } else {
+          console.error('Link is invalid');
+        }
       }
     });
   }
