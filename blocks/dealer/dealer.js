@@ -17,7 +17,7 @@ export default function decorate(block) {
     const title = titleEl?.textContent?.trim() || 'Default Title';
 
     // Extract parent link data
-    let link = '#';
+    let link;
     if (parentLinkEl) {
       const parentLinkAnchor = parentLinkEl.querySelector('a');
       if (parentLinkAnchor) {
@@ -79,11 +79,14 @@ export default function decorate(block) {
 
   function setupEventListener(dealerCard) {
     dealerCard.addEventListener('click', (event) => {
-      if (!reveal) {
+      if (!reveal && link) {
         console.log('Redirecting to:', link);
         window.location.href = link;
-      } else {
+      } else if (reveal) {
         console.log('Popup is revealed, not redirecting.');
+        // Here you can add the popup functionality if needed
+      } else {
+        console.log('No valid link found.');
       }
     });
   }
