@@ -1,7 +1,16 @@
 export default function decorate(block) {
   function getDealerData(block) {
     // Extract elements from the block
-    const [backgroundImageContainer, titleEl, parentRevealEl, parentLinkEl, revealEl, popupTitleEl, popupBackgroundImageEl, popupLinkEl] = block.children;
+    const [
+      backgroundImageContainer,
+      titleEl,
+      parentRevealEl,
+      parentLinkEl,
+      revealEl,
+      popupTitleEl,
+      popupBackgroundImageEl,
+      popupLinkEl
+    ] = block.children;
 
     // Extract image, title, and link data
     const backgroundImgEl = backgroundImageContainer?.querySelector('img');
@@ -15,10 +24,28 @@ export default function decorate(block) {
     const popupImageSrc = popupImageEl?.src || 'https://via.placeholder.com/150';
     const popupLink = popupLinkEl?.querySelector('a')?.href || '#';
 
-    return { imageSrc, title, link, popupTitle, popupImageSrc, popupLink, reveal: revealEl?.querySelector('input')?.checked, parentReveal: parentRevealEl?.querySelector('input')?.checked };
+    return {
+      imageSrc,
+      title,
+      link,
+      popupTitle,
+      popupImageSrc,
+      popupLink,
+      reveal: revealEl?.querySelector('input')?.checked,
+      parentReveal: parentRevealEl?.querySelector('input')?.checked
+    };
   }
 
-  const { imageSrc, title, link, popupTitle, popupImageSrc, popupLink, reveal, parentReveal } = getDealerData(block);
+  const {
+    imageSrc,
+    title,
+    link,
+    popupTitle,
+    popupImageSrc,
+    popupLink,
+    reveal,
+    parentReveal
+  } = getDealerData(block);
 
   function createDealerCard() {
     const dealerCard = document.createElement('div');
@@ -40,41 +67,10 @@ export default function decorate(block) {
     return dealerCard;
   }
 
-  function createModal() {
-    const modal = document.createElement('div');
-    modal.id = 'dealerModal';
-    modal.innerHTML = `
-      <div class="modal-content">
-        <img src="${popupImageSrc}" alt="${popupTitle}">
-        <h2>${popupTitle}</h2>
-        <a href="${popupLink}" class="blue-button">Go to link</a>
-        <button class="blue-button" id="closeModal">Close</button>
-      </div>
-    `;
-    return modal;
-  }
-
   function setupEventListener(dealerCard) {
     dealerCard.addEventListener('click', () => {
-      if (parentReveal && !reveal) {
+      if (!reveal) {
         window.location.href = link;
-      } else if (reveal) {
-        const modal = createModal();
-        document.body.appendChild(modal);
-        modal.style.display = 'block';
-
-        const closeModalButton = modal.querySelector('#closeModal');
-        closeModalButton.addEventListener('click', () => {
-          modal.style.display = 'none';
-          document.body.removeChild(modal);
-        });
-
-        window.addEventListener('click', (event) => {
-          if (event.target === modal) {
-            modal.style.display = 'none';
-            document.body.removeChild(modal);
-          }
-        });
       }
     });
   }
