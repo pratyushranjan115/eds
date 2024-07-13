@@ -18,10 +18,16 @@ export default function decorate(block) {
 
     let link = '#';
     if (parentLinkEl) {
+      console.log('Parent Link Element Found:', parentLinkEl);
       const parentLinkAnchor = parentLinkEl.querySelector('a');
       if (parentLinkAnchor) {
+        console.log('Parent Link Anchor Found:', parentLinkAnchor);
         link = parentLinkAnchor.href;
+      } else {
+        console.log('Parent Link Anchor Not Found');
       }
+    } else {
+      console.log('Parent Link Element Not Found');
     }
 
     // Extract popup data
