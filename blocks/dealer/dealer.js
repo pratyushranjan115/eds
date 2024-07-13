@@ -15,7 +15,14 @@ export default function decorate(block) {
     const backgroundImgEl = backgroundImageContainer?.querySelector('img');
     const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
     const title = titleEl?.textContent?.trim() || 'Default Title';
-    const link = parentLinkEl?.querySelector('a')?.href || '#';
+
+    let link = '#';
+    if (parentLinkEl) {
+      const parentLinkAnchor = parentLinkEl.querySelector('a');
+      if (parentLinkAnchor) {
+        link = parentLinkAnchor.href;
+      }
+    }
 
     // Extract popup data
     const popupTitle = popupTitleEl?.textContent?.trim() || '';
