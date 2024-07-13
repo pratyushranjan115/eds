@@ -16,18 +16,13 @@ export default function decorate(block) {
     const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
     const title = titleEl?.textContent?.trim() || 'Default Title';
 
+    // Extract parent link data
     let link = '#';
     if (parentLinkEl) {
-      console.log('Parent Link Element Found:', parentLinkEl);
       const parentLinkAnchor = parentLinkEl.querySelector('a');
       if (parentLinkAnchor) {
-        console.log('Parent Link Anchor Found:', parentLinkAnchor);
         link = parentLinkAnchor.href;
-      } else {
-        console.log('Parent Link Anchor Not Found');
       }
-    } else {
-      console.log('Parent Link Element Not Found');
     }
 
     // Extract popup data
@@ -36,6 +31,7 @@ export default function decorate(block) {
     const popupImageSrc = popupImageEl?.src || 'https://via.placeholder.com/150';
     const popupLink = popupLinkEl?.querySelector('a')?.href || '#';
 
+    // Extract reveal status
     const reveal = revealEl?.querySelector('input')?.checked ?? false;
 
     return {
