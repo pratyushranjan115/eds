@@ -1,6 +1,7 @@
 export default function decorate(block) {
     function getDealerData(block) {
       // Extract elements from the block
+      console.log(block);
       const [backgroundImageContainer, titleEl, linkEl] = block.children;
   
       // Extract image, title, and link data
@@ -14,7 +15,8 @@ export default function decorate(block) {
       console.log({b:block.querySelector('[data-name="reveal"]')?.textContent})
       
       // Extract the condition value for the href component
-      const hrefCondition = block.querySelector('[data-name="href"]')?.dataset.condition === 'false';
+     // const hrefCondition = block.querySelector('[data-name="href"]')?.dataset.condition === 'false';
+     const hrefCondition = true;
   
       return { imageSrc, title, link, reveal, hrefCondition };
     }
