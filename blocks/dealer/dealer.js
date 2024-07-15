@@ -15,6 +15,7 @@ export default function decorate(block) {
       const link = linkEl?.querySelector('a')?.href || '#';
   
       // Debugging information
+      console.log('block dataset:', block.dataset); // Debugging line to check the entire dataset
       console.log('data-reveal attribute:', block.dataset.reveal); // Debugging line
       console.log('reveal:', reveal); // Debugging line
       console.log('link:', link); // Debugging line
@@ -52,4 +53,14 @@ export default function decorate(block) {
     block.appendChild(dealerCard);
     setupEventListener(dealerCard);
   }
+  
+  // Testing setup for manual HTML testing
+  document.addEventListener('DOMContentLoaded', () => {
+    // Simulate a block for testing
+    const block = document.querySelector('.block');
+    block.dataset.reveal = 'true'; // Change to 'false' to test both cases
+  
+    // Call the decorate function
+    decorate(block);
+  });
   
