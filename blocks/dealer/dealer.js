@@ -35,7 +35,7 @@ export default function decorate(block) {
   
     function setupEventListener(dealerCard) {
       dealerCard.addEventListener('click', (event) => {
-        console.log(reveal);
+        console.log(reveal,hrefCondition,link);
         if (reveal) {
           // If reveal is true, do not redirect
           return;
