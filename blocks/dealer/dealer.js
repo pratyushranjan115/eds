@@ -16,8 +16,15 @@ export default function decorate(block) {
         const reveal = revealEl ? revealEl.textContent.trim() === 'true' : false;
 
         // Extract the condition value for the href component
-        const hrefConditionEl = block.querySelector('[data-name="href"]');
-        const hrefCondition = hrefConditionEl ? hrefConditionEl.dataset.condition === 'false' : false;
+        const hrefEl = block.querySelector('[data-name="href"]');
+        const hrefCondition = hrefEl && hrefEl.dataset.condition ? hrefEl.dataset.condition === 'false' : false;
+
+        // Debugging outputs
+        console.log('Reveal Element:', revealEl);
+        console.log('Reveal Condition:', reveal);
+        console.log('Href Element:', hrefEl);
+        console.log('Href Condition:', hrefCondition);
+        console.log('Link:', link);
 
         return { imageSrc, title, link, reveal, hrefCondition };
     }
@@ -38,16 +45,19 @@ export default function decorate(block) {
 
     function setupEventListener(dealerCard) {
         dealerCard.addEventListener('click', (event) => {
-            console.log(reveal, hrefCondition, link);
+            console.log('Click Event:', { reveal, hrefCondition, link });
             if (reveal) {
                 // If reveal is true, do not redirect
                 event.preventDefault();
-            } else if (!reveal && link !== '#') {
+                console.log('Reveal is true, not redirecting');
+            } else if (!reveal) {
                 // If reveal is false and link is valid, redirect
+                console.log('Reveal is false and link is valid, redirecting to', link);
                 window.location.href = link;
             } else {
                 // If none of the above conditions are met, prevent the default action
                 event.preventDefault();
+                console.log('No valid link or reveal condition not met, preventing default action');
             }
         });
     }
