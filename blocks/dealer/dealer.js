@@ -17,7 +17,7 @@ export default function decorate(block) {
 
         // Extract the condition value for the href component
         const hrefEl = block.querySelector('[data-name="href"]');
-        const hrefCondition = hrefEl && hrefEl.dataset.condition ? hrefEl.dataset.condition === 'false' : false;
+        const hrefCondition = hrefEl ? hrefEl.dataset.condition === 'false' : false;
 
         // Debugging outputs
         console.log('Reveal Element:', revealEl);
@@ -44,12 +44,13 @@ export default function decorate(block) {
     }
 
     function setupEventListener(dealerCard) {
-        dealerCard.addEventListener('click', (event) => {
+        dealerCard.addEventListener('click', () => {
             console.log('Click Event:', { reveal, hrefCondition, link });
+
             if (reveal) {
                 // If reveal is true, do not redirect
-                event.preventDefault();
                 console.log('Reveal is true, not redirecting');
+                return;  // Do nothing
             } else {
                 // If reveal is false, always redirect to the link
                 console.log('Reveal is false, redirecting to', link);
