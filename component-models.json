@@ -424,6 +424,13 @@
         "label": "Text 2",
         "name": "text2",
         "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "href",
+        "value": "",
+        "label": "Link"
       }
 
     ]
