@@ -7,19 +7,18 @@ export default function decorate(block) {
       const backgroundImgEl = backgroundImageContainer?.querySelector('img');
       const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
       const title = titleEl?.textContent?.trim() || 'Default Title';
+      const link = linkEl?.querySelector('a')?.href || '#';
   
       // Check the 'reveal' condition
       const reveal = block.querySelector('[data-name="reveal"]')?.textContent === 'true';
+      
+      // Extract the condition value for the href component
+      const hrefCondition = block.querySelector('[data-name="href"]')?.dataset.condition === 'false';
   
-      // Extract the href value and the condition for href
-      const hrefComponent = block.querySelector('[data-name="href"]');
-      const href = hrefComponent?.textContent?.trim() || '#';
-      const hrefCondition = hrefComponent?.dataset?.condition === 'false'; // assuming the condition is set as a data attribute
-  
-      return { imageSrc, title, href, reveal, hrefCondition };
+      return { imageSrc, title, link, reveal, hrefCondition };
     }
   
-    const { imageSrc, title, href, reveal, hrefCondition } = getDealerData(block);
+    const { imageSrc, title, link, reveal, hrefCondition } = getDealerData(block);
   
     function createDealerCard() {
       const dealerCard = document.createElement('div');
@@ -35,12 +34,15 @@ export default function decorate(block) {
   
     function setupEventListener(dealerCard) {
       dealerCard.addEventListener('click', (event) => {
-        if (reveal && hrefCondition) {
-          // If reveal is true and the href condition is false, do not redirect
+        if (reveal) {
+          // If reveal is true, do not redirect
+          return;
+        } else if (!reveal && hrefCondition && link !== '#') {
+          // If reveal is false, href condition is false, and link is valid, redirect
+          window.location.href = link;
+        } else {
+          // If none of the above conditions are met, prevent the default action
           event.preventDefault();
-        } else if (!reveal && href !== '#') {
-          // Otherwise, if reveal is false and href has a valid link, redirect
-          window.location.href = href;
         }
       });
     }
