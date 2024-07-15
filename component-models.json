@@ -424,14 +424,7 @@
         "label": "Text 2",
         "name": "text2",
         "valueType": "string"
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "tab2_href",
-        "value": "",
-        "label": "Tab 2 Link"
-      },
+      }
 
     ]
   },
