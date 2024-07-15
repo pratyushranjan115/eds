@@ -357,7 +357,6 @@
       }
     ]
   },
-  
   {
     "id": "dealer",
     "fields": [
@@ -389,10 +388,31 @@
         "valueType": "boolean"
       },
       {
-        "component": "text-input",
-        "label": "Hidden text field",
-        "name": "hidden-text",
-        "valueType": "string",
+        "id": "tab",
+        "fields": [
+          {
+            "component": "tab",
+            "label": "Tab 1",
+            "name": "tab1"
+          },
+          {
+            "component": "text-input",
+            "label": "Text 1",
+            "name": "text1",
+            "valueType": "string"
+          },
+          {
+            "component": "tab",
+            "label": "Tab 2",
+            "name": "tab2"
+          },
+          {
+            "component": "text-input",
+            "label": "Text 2",
+            "name": "text2",
+            "valueType": "string"
+          }
+        ],
         "condition": { "===": [{"var" : "reveal"}, true] }
       }
     ]
