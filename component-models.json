@@ -399,6 +399,13 @@
         "name": "text1",
         "valueType": "string"
       },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "background_image",
+        "label": "Background Image",
+        "multi": false
+      },
       
       {
         "component": "tab",
