@@ -393,7 +393,7 @@
         "component": "tab",
         "label": "Tab 1",
         "name": "tab1",
-        "condition": { "===": [{"var" : "reveal"}, false] }
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "reference",
@@ -423,7 +423,7 @@
         "component": "tab",
         "label": "Tab 2",
         "name": "tab2",
-        "condition": { "===": [{"var" : "reveal"}, false] }
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "reference",
