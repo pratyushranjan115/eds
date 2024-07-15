@@ -391,7 +391,8 @@
         "component": "tab",
         "label": "Tab 1",
         "name": "tab1",
-        "condition": { "===": [{"var": "reveal"}, true] }
+        "value":"",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       }
      
     ]
