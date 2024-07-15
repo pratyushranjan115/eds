@@ -374,18 +374,20 @@
         "value": "",
         "label": "Title"
       },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "href",
-        "value": "",
-        "label": "Link"
-      },
+      
       {
         "component": "boolean",
         "label": "Shall the text field be revealed?",
         "name": "reveal",
         "valueType": "boolean"
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "href",
+        "value": "",
+        "label": "Link",
+        "condition": { "===": [{"var" : "reveal"}, false] }
       },
       {
         "component": "tab",
