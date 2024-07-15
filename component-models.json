@@ -385,7 +385,6 @@
         "component": "tab",
         "label": "Tab 1",
         "name": "tab1",
-        "condition": { "===": [{"var": "reveal"}, true] },
         "fields": [
           {
             "component": "reference",
