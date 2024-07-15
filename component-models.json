@@ -386,21 +386,21 @@
         "label": "Shall the text field be revealed?",
         "name": "reveal",
         "valueType": "boolean",
-        "condition": { "===": [{"var" : "tab1","var1":"tab1_background_image"}, true] }
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "tab",
         "label": "Tab 1",
-        "name": "tab1"
-        //"condition": { "===": [{"var" : "reveal"}, true] }
+        "name": "tab1",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "reference",
         "valueType": "string",
         "name": "tab1_background_image",
         "label": "Tab 1 Background Image",
-        "multi": false
-       // "condition": { "===": [{"var" : "reveal"}, true] }
+        "multi": false,
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "text",
