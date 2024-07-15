@@ -428,9 +428,9 @@
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "href",
+        "name": "tab2_href",
         "value": "",
-        "label": "Link"
+        "label": " Tab 2 Link"
       }
 
     ]
