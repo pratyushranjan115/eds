@@ -1,7 +1,7 @@
 export default function decorate(block) {
     function getDealerData(block) {
       // Extract elements from the block
-      console.log(block);
+      console.log({a:block});
       const [backgroundImageContainer, titleEl, linkEl] = block.children;
   
       // Extract image, title, and link data
