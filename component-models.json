@@ -382,9 +382,16 @@
         "label": "Link"
       },
       {
+        "component": "boolean",
+        "label": "Shall the text field be revealed?",
+        "name": "reveal",
+        "valueType": "boolean"
+      },
+      {
         "component": "tab",
         "label": "Tab 1",
-        "name": "tab1"
+        "name": "tab1",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "reference",
@@ -410,7 +417,8 @@
       {
         "component": "tab",
         "label": "Tab 2",
-        "name": "tab2"
+        "name": "tab2",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "reference",
