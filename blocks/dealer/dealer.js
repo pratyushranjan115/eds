@@ -7,15 +7,19 @@ export default function decorate(block) {
       const backgroundImgEl = backgroundImageContainer?.querySelector('img');
       const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
       const title = titleEl?.textContent?.trim() || 'Default Title';
-      const link = linkEl?.querySelector('a')?.href || '#';
   
       // Check the 'reveal' condition
       const reveal = block.querySelector('[data-name="reveal"]')?.textContent === 'true';
-      
-      return { imageSrc, title, link, reveal };
+  
+      // Extract the href value and the condition for href
+      const hrefComponent = block.querySelector('[data-name="href"]');
+      const href = hrefComponent?.textContent?.trim() || '#';
+      const hrefCondition = hrefComponent?.dataset?.condition === 'false'; // assuming the condition is set as a data attribute
+  
+      return { imageSrc, title, href, reveal, hrefCondition };
     }
   
-    const { imageSrc, title, link, reveal } = getDealerData(block);
+    const { imageSrc, title, href, reveal, hrefCondition } = getDealerData(block);
   
     function createDealerCard() {
       const dealerCard = document.createElement('div');
@@ -31,12 +35,12 @@ export default function decorate(block) {
   
     function setupEventListener(dealerCard) {
       dealerCard.addEventListener('click', (event) => {
-        if (reveal) {
-          // Prevent the default action (redirection) if 'reveal' is true
-          event.preventDefault(); // This is where the preventDefault method is called
-        } else {
-          // Otherwise, redirect to the specified link
-          window.location.href = link;
+        if (reveal && hrefCondition) {
+          // If reveal is true and the href condition is false, do not redirect
+          event.preventDefault();
+        } else if (!reveal && href !== '#') {
+          // Otherwise, if reveal is false and href has a valid link, redirect
+          window.location.href = href;
         }
       });
     }
