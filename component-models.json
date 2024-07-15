@@ -413,6 +413,13 @@
         "name": "tab2"
       },
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "tab2_background_image",
+        "label": "Tab 2 Background Image",
+        "multi": false
+      },
+      {
         "component": "text-input",
         "label": "Text 2",
         "name": "text2",
