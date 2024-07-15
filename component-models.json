@@ -394,10 +394,25 @@
         "condition": { "===": [{"var": "reveal"}, true] },
         "fields": [
           {
-            "component": "text-input",
-            "label": "Text 2",
-            "name": "text2",
-            "valuType": "string"
+            "component": "reference",
+            "valueType": "string",
+            "name": "tab1_background_image",
+            "label": "Tab 1 Background Image",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "tab1_title",
+            "value": "",
+            "label": "Tab 1 Title"
+          },
+          {
+            "component": "aem-content",
+            "valueType": "string",
+            "name": "tab1_href",
+            "value": "",
+            "label": "Tab 1 Link"
           }
         ]
       },
