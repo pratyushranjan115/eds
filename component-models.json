@@ -390,11 +390,20 @@
         "condition": { "===": [{"var" : "reveal"}, false] }
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "popup_title",
+        "value": "",
+        "label": "Popup Title",
+        "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
         "component": "tab",
         "label": "Tab 1",
         "name": "tab1",
         "condition": { "===": [{"var" : "reveal"}, true] }
       },
+     
       {
         "component": "reference",
         "valueType": "string",
@@ -403,14 +412,15 @@
         "multi": false,
         "condition": { "===": [{"var" : "reveal"}, true] }
       },
+
       {
         "component": "text",
         "valueType": "string",
         "name": "tab1_title",
         "value": "",
-        "label": "Tab 1 Title",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "label": "Tab 1 Title"
       },
+     
       {
         "component": "aem-content",
         "valueType": "string",
