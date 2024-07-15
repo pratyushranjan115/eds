@@ -410,30 +410,15 @@
       {
         "component": "tab",
         "label": "Tab 2",
-        "name": "tab1"
+        "name": "tab2"
       },
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "tab2_background_image",
-        "label": "Tab 2 Background Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "tab2_title",
-        "value": "",
-        "label": "Tab 2 Title"
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "tab2_href",
-        "value": "",
-        "label": "Tab 2 Link"
+        "component": "text-input",
+        "label": "Text 2",
+        "name": "text2",
+        "valueType": "string"
       }
-
+      
 
     ]
   },
