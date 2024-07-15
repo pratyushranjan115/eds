@@ -398,21 +398,24 @@
         "valueType": "string",
         "name": "tab1_background_image",
         "label": "Tab 1 Background Image",
-        "multi": false
+        "multi": false,
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "text",
         "valueType": "string",
         "name": "tab1_title",
         "value": "",
-        "label": "Tab 1 Title"
+        "label": "Tab 1 Title",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "aem-content",
         "valueType": "string",
         "name": "tab1_href",
         "value": "",
-        "label": "Tab 1 Link"
+        "label": "Tab 1 Link",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "tab",
@@ -425,20 +428,23 @@
         "valueType": "string",
         "name": "tab2_background_image",
         "label": "Tab 2 Background Image",
-        "multi": false
+        "multi": false,
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "text-input",
         "label": "Text 2",
         "name": "text2",
-        "valueType": "string"
+        "valueType": "string",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
         "component": "aem-content",
         "valueType": "string",
         "name": "tab2_href",
         "value": "",
-        "label": " Tab 2 Link"
+        "label": " Tab 2 Link",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       }
 
     ]
