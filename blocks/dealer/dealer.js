@@ -1,31 +1,29 @@
 export default function decorate(block) {
     function getDealerData(block) {
-      // Extract elements from the block
       const [backgroundImageContainer, titleEl, linkEl] = block.children;
   
-      // Extract image, title, and link data
       const backgroundImgEl = backgroundImageContainer?.querySelector('img');
       const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
       const title = titleEl?.textContent?.trim() || 'Default Title';
   
-      // Extract the reveal field from the block's model
       let reveal = false;
       if (block.dataset.aueModel) {
         try {
           const model = JSON.parse(block.dataset.aueModel);
           reveal = model.reveal;
+          console.log('Parsed model:', model);
         } catch (error) {
           console.error('Failed to parse aueModel:', error);
         }
+      } else {
+        console.warn('No aueModel dataset found');
       }
   
-      // Extract the link value from the link element
       const link = linkEl?.querySelector('a')?.href || '#';
   
-      // Debugging information
-      console.log('block dataset:', block.dataset); // Debugging line to check the entire dataset
-      console.log('reveal:', reveal); // Debugging line
-      console.log('link:', link); // Debugging line
+      console.log('block dataset:', block.dataset);
+      console.log('reveal:', reveal);
+      console.log('link:', link);
   
       return { imageSrc, title, link, reveal };
     }
@@ -45,7 +43,6 @@ export default function decorate(block) {
     }
   
     function setupEventListener(dealerCard) {
-      // Add event listener only if `reveal` is false
       if (!reveal) {
         dealerCard.addEventListener('click', () => {
           window.location.href = link;
@@ -55,21 +52,17 @@ export default function decorate(block) {
   
     const dealerCard = createDealerCard();
   
-    // Clear the block and append the new dealer card
     block.innerHTML = '';
     block.appendChild(dealerCard);
     setupEventListener(dealerCard);
   }
   
-  // Testing setup for manual HTML testing
   document.addEventListener('DOMContentLoaded', () => {
-    // Simulate a block for testing
     const block = document.querySelector('.block');
     block.dataset.aueModel = JSON.stringify({
-      reveal: true, // Change to false to test both cases
+      reveal: true,
     });
   
-    // Call the decorate function
     decorate(block);
   });
   
