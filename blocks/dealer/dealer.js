@@ -50,14 +50,10 @@ export default function decorate(block) {
                 // If reveal is true, do not redirect
                 event.preventDefault();
                 console.log('Reveal is true, not redirecting');
-            } else if (!reveal) {
-                // If reveal is false and link is valid, redirect
-                console.log('Reveal is false and link is valid, redirecting to', link);
-                window.location.href = link;
             } else {
-                // If none of the above conditions are met, prevent the default action
-                event.preventDefault();
-                console.log('No valid link or reveal condition not met, preventing default action');
+                // If reveal is false, always redirect to the link
+                console.log('Reveal is false, redirecting to', link);
+                window.location.href = link;
             }
         });
     }
