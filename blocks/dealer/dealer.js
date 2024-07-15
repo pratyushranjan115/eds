@@ -9,8 +9,12 @@ export default function decorate(block) {
       const title = titleEl?.textContent?.trim() || 'Default Title';
       const link = linkEl?.querySelector('a')?.href || '#';
   
-      // Check the `reveal` field to determine whether to redirect or not
+      // Get the `reveal` field value from the block's data
+      // Check if the data-reveal attribute exists and is set to 'true'
       const reveal = block.dataset.reveal === 'true';
+  
+      console.log('reveal:', reveal); // Debugging line
+      console.log('link:', link);     // Debugging line
   
       return { imageSrc, title, link, reveal };
     }
