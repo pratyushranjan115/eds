@@ -8,15 +8,22 @@ export default function decorate(block) {
       const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
       const title = titleEl?.textContent?.trim() || 'Default Title';
   
-      // Extract the `data-reveal` attribute value
-      const reveal = block.dataset.reveal === 'true';
+      // Extract the reveal field from the block's model
+      let reveal = false;
+      if (block.dataset.aueModel) {
+        try {
+          const model = JSON.parse(block.dataset.aueModel);
+          reveal = model.reveal;
+        } catch (error) {
+          console.error('Failed to parse aueModel:', error);
+        }
+      }
   
       // Extract the link value from the link element
       const link = linkEl?.querySelector('a')?.href || '#';
   
       // Debugging information
       console.log('block dataset:', block.dataset); // Debugging line to check the entire dataset
-      console.log('data-reveal attribute:', block.dataset.reveal); // Debugging line
       console.log('reveal:', reveal); // Debugging line
       console.log('link:', link); // Debugging line
   
@@ -58,7 +65,9 @@ export default function decorate(block) {
   document.addEventListener('DOMContentLoaded', () => {
     // Simulate a block for testing
     const block = document.querySelector('.block');
-    block.dataset.reveal = 'true'; // Change to 'false' to test both cases
+    block.dataset.aueModel = JSON.stringify({
+      reveal: true, // Change to false to test both cases
+    });
   
     // Call the decorate function
     decorate(block);
