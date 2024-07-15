@@ -390,65 +390,63 @@
         "condition": { "===": [{"var" : "reveal"}, false] }
       },
       {
-        "component": "tab",
-        "label": "Tab 1",
-        "name": "tab1",
-        "condition": { "===": [{"var" : "reveal"}, true] }
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "tab1_background_image",
-        "label": "Tab 1 Background Image",
-        "multi": false,
-        "condition": { "===": [{"var" : "reveal"}, true] }
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "tab1_title",
-        "value": "",
-        "label": "Tab 1 Title",
-        "condition": { "===": [{"var" : "reveal"}, true] }
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "tab1_href",
-        "value": "",
-        "label": "Tab 1 Link",
-        "condition": { "===": [{"var" : "reveal"}, true] }
-      },
-      {
-        "component": "tab",
-        "label": "Tab 2",
-        "name": "tab2",
-        "condition": { "===": [{"var" : "reveal"}, true] }
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "tab2_background_image",
-        "label": "Tab 2 Background Image",
-        "multi": false,
-        "condition": { "===": [{"var" : "reveal"}, true] }
-      },
-      {
-        "component": "text-input",
-        "label": "Text 2",
-        "name": "text2",
-        "valueType": "string",
-        "condition": { "===": [{"var" : "reveal"}, true] }
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "tab2_href",
-        "value": "",
-        "label": " Tab 2 Link",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "component": "container",
+        "name": "tabs_container",
+        "condition": { "===": [{"var": "reveal"}, true] },
+        "fields": [
+          {
+            "component": "tab",
+            "label": "Tab 1",
+            "name": "tab1"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "tab1_background_image",
+            "label": "Tab 1 Background Image",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "tab1_title",
+            "value": "",
+            "label": "Tab 1 Title"
+          },
+          {
+            "component": "aem-content",
+            "valueType": "string",
+            "name": "tab1_href",
+            "value": "",
+            "label": "Tab 1 Link"
+          },
+          {
+            "component": "tab",
+            "label": "Tab 2",
+            "name": "tab2"
+          },
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "tab2_background_image",
+            "label": "Tab 2 Background Image",
+            "multi": false
+          },
+          {
+            "component": "text-input",
+            "label": "Text 2",
+            "name": "text2",
+            "valueType": "string"
+          },
+          {
+            "component": "aem-content",
+            "valueType": "string",
+            "name": "tab2_href",
+            "value": "",
+            "label": "Tab 2 Link"
+          }
+        ]
       }
-
     ]
   },
   
