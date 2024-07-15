@@ -399,27 +399,7 @@
         "name": "text1",
         "valueType": "string"
       },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "background_image",
-        "label": "Background Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "title",
-        "value": "",
-        "label": "Title"
-      },
-      {
-        "component": "aem-content",
-        "valueType": "string",
-        "name": "href",
-        "value": "",
-        "label": "Link"
-      },
+      
       {
         "component": "tab",
         "label": "Tab 2",
