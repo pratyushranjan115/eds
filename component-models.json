@@ -381,32 +381,32 @@
         "value": "",
         "label": "Link"
       },
-     
       {
         "component": "tab",
-        "label": "Tab 2",
-        "name": "tab2",
+        "label": "Tab 1",
+        "name": "tab1",
+        "condition": { "===": [{"var": "reveal"}, true] },
         "fields": [
           {
             "component": "reference",
             "valueType": "string",
-            "name": "tab2_background_image",
-            "label": "Tab 2 Background Image",
+            "name": "tab1_background_image",
+            "label": "Tab 1 Background Image",
             "multi": false
           },
           {
             "component": "text",
             "valueType": "string",
-            "name": "tab2_title",
+            "name": "tab1_title",
             "value": "",
-            "label": "Tab 2 Title"
+            "label": "Tab 1 Title"
           },
           {
             "component": "aem-content",
             "valueType": "string",
-            "name": "tab2_href",
+            "name": "tab1_href",
             "value": "",
-            "label": "Tab 2 Link"
+            "label": "Tab 1 Link"
           }
         ]
       }
