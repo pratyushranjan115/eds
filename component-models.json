@@ -391,21 +391,18 @@
         "component": "tab",
         "label": "Tab 1",
         "name": "tab1",
-        "condition": { "===": [{"var": "reveal"}, true] }
+        "condition": { "===": [{"var": "reveal"}, true] },
+        "fields": [
+          {
+            "component": "text-input",
+            "label": "Text 2",
+            "name": "text2",
+            "valuType": "string"
+          }
+        ]
       },
-      {
-        "component": "text-input",
-        "label": "Text 1",
-        "name": "text1",
-        "valueType": "string"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "background_image",
-        "label": "Background Image",
-        "multi": false
-      },
+      
+    
       
       {
         "component": "tab",
