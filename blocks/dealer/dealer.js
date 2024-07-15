@@ -1,22 +1,23 @@
 export default function decorate(block) {
     function getDealerData(block) {
         // Extract elements from the block
-        console.log({ a: block });
         const [backgroundImageContainer, titleEl, linkEl] = block.children;
 
         // Extract image, title, and link data
         const backgroundImgEl = backgroundImageContainer?.querySelector('img');
         const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
         const title = titleEl?.textContent?.trim() || 'Default Title';
+        
+        // Extract link
         const link = linkEl?.querySelector('a')?.href || '#';
 
         // Check the 'reveal' condition
-        const reveal = block.querySelector('[data-name="reveal"]')?.textContent === 'true';
-        console.log({ b: block.querySelector('[data-name="reveal"]')?.textContent });
+        const revealEl = block.querySelector('[data-name="reveal"]');
+        const reveal = revealEl ? revealEl.textContent.trim() === 'true' : false;
 
         // Extract the condition value for the href component
-        // Update hrefCondition to properly reflect the logic from the JSON model
-        const hrefCondition = reveal === false;
+        const hrefConditionEl = block.querySelector('[data-name="href"]');
+        const hrefCondition = hrefConditionEl ? hrefConditionEl.dataset.condition === 'false' : false;
 
         return { imageSrc, title, link, reveal, hrefCondition };
     }
@@ -41,7 +42,6 @@ export default function decorate(block) {
             if (reveal) {
                 // If reveal is true, do not redirect
                 event.preventDefault();
-                return;
             } else if (!reveal && link !== '#') {
                 // If reveal is false and link is valid, redirect
                 window.location.href = link;
