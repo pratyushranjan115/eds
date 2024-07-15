@@ -385,8 +385,7 @@
         "component": "boolean",
         "label": "Shall the text field be revealed?",
         "name": "reveal",
-        "valueType": "boolean",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "valueType": "boolean"
       },
       {
         "component": "tab",
