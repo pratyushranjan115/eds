@@ -381,18 +381,34 @@
         "value": "",
         "label": "Link"
       },
-      {
-        "component": "boolean",
-        "label": "Shall the text field be revealed?",
-        "name": "reveal",
-        "valueType": "boolean"
-      },
+     
       {
         "component": "tab",
-        "label": "Tab 1",
-        "name": "tab1",
-        "value":"",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "label": "Tab 2",
+        "name": "tab2",
+        "fields": [
+          {
+            "component": "reference",
+            "valueType": "string",
+            "name": "tab2_background_image",
+            "label": "Tab 2 Background Image",
+            "multi": false
+          },
+          {
+            "component": "text",
+            "valueType": "string",
+            "name": "tab2_title",
+            "value": "",
+            "label": "Tab 2 Title"
+          },
+          {
+            "component": "aem-content",
+            "valueType": "string",
+            "name": "tab2_href",
+            "value": "",
+            "label": "Tab 2 Link"
+          }
+        ]
       }
      
     ]
