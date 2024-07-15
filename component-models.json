@@ -415,10 +415,10 @@
 
       {
         "component": "text",
+        "label": "Text 1",
+        "name": "text1",
         "valueType": "string",
-        "name": "tab1_title",
-        "value": "",
-        "label": "Tab 1 Title"
+        "condition": { "===": [{"var" : "reveal"}, true] }
       },
      
       {
@@ -444,7 +444,7 @@
         "condition": { "===": [{"var" : "reveal"}, true] }
       },
       {
-        "component": "text-input",
+        "component": "text",
         "label": "Text 2",
         "name": "text2",
         "valueType": "string",
