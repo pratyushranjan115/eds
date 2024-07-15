@@ -388,7 +388,10 @@
         "valueType": "boolean"
       },
       {
-        "id": "tab",
+        "component": "container",
+        "label": "Tab Container",
+        "name": "tabContainer",
+        "condition": { "===": [{"var": "reveal"}, true] },
         "fields": [
           {
             "component": "tab",
@@ -412,8 +415,7 @@
             "name": "text2",
             "valueType": "string"
           }
-        ],
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        ]
       }
     ]
   },  
