@@ -391,29 +391,9 @@
         "component": "tab",
         "label": "Tab 1",
         "name": "tab1",
-        "condition": { "===": [{"var": "reveal"}, true] },
-        "fields": [
-          {
-            "component": "text-input",
-            "label": "Text 1",
-            "name": "text1",
-            "valueType": "string"
-          }
-        ]
-      },
-      {
-        "component": "tab",
-        "label": "Tab 2",
-        "name": "tab2",
-        "fields": [
-          {
-            "component": "text-input",
-            "label": "Text 2",
-            "name": "text2",
-            "valueType": "string"
-          }
-        ]
+        "condition": { "===": [{"var": "reveal"}, true] }
       }
+     
     ]
   },
   
