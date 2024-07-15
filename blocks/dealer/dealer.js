@@ -70,7 +70,8 @@ export default function decorate(block) {
         <p>${tab.text}</p>
       `;
 
-      tabEl.addEventListener('click', () => {
+      tabEl.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent click from bubbling up to the dealer card
         window.location.href = tab.link;
       });
 
@@ -88,7 +89,7 @@ export default function decorate(block) {
   }
 
   function setupEventListener(dealerCard, popup, link, reveal) {
-    dealerCard.addEventListener('click', () => {
+    dealerCard.addEventListener('click', (event) => {
       if (!reveal) {
         if (link && link !== '#') {
           window.location.href = link;
