@@ -52,15 +52,11 @@ export default function decorate(block) {
 
   function createPopup(tabsData, popupTitle) {
     const popup = document.createElement('div');
-    popup.className = 'modal';
-    popup.id = 'dealerModal';
+    popup.className = 'popup';
 
     const popupContent = document.createElement('div');
-    popupContent.className = 'modal-content';
-    popupContent.innerHTML = `
-      <span class="close">&times;</span>
-      <h3>${popupTitle}</h3>
-    `;
+    popupContent.className = 'popup-content';
+    popupContent.innerHTML = `<h3>${popupTitle}</h3>`;
 
     const tabsContainer = document.createElement('div');
     tabsContainer.className = 'tabs-container';
@@ -85,24 +81,15 @@ export default function decorate(block) {
     popupContent.appendChild(tabsContainer);
     popup.appendChild(popupContent);
 
-    // Close button
-    const span = popupContent.querySelector('.close');
-    span.onclick = function() {
+    popup.addEventListener('click', () => {
       popup.style.display = 'none';
-    };
-
-    // Close modal when clicking outside of it
-    window.onclick = function(event) {
-      if (event.target === popup) {
-        popup.style.display = 'none';
-      }
-    };
+    });
 
     return popup;
   }
 
   function setupEventListener(dealerCard, popup, link, reveal) {
-    dealerCard.addEventListener('click', () => {
+    dealerCard.addEventListener('click', (event) => {
       if (!reveal) {
         if (link && link !== '#') {
           window.location.href = link;
