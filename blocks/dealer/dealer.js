@@ -7,14 +7,17 @@ export default function decorate(block) {
       const backgroundImgEl = backgroundImageContainer?.querySelector('img');
       const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
       const title = titleEl?.textContent?.trim() || 'Default Title';
-      const link = linkEl?.querySelector('a')?.href || '#';
   
-      // Get the `reveal` field value from the block's data
-      // Check if the data-reveal attribute exists and is set to 'true'
+      // Extract the `data-reveal` attribute value
       const reveal = block.dataset.reveal === 'true';
   
+      // Extract the link value from the link element
+      const link = linkEl?.querySelector('a')?.href || '#';
+  
+      // Debugging information
+      console.log('data-reveal attribute:', block.dataset.reveal); // Debugging line
       console.log('reveal:', reveal); // Debugging line
-      console.log('link:', link);     // Debugging line
+      console.log('link:', link); // Debugging line
   
       return { imageSrc, title, link, reveal };
     }
