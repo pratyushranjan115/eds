@@ -68,7 +68,7 @@ export default function decorate(block) {
   if (dealerComponent.reveal) {
     // Create the popup HTML
     const popupHtml = `
-      <div class="popup">
+      <div class="popup" style="display:none;">
         <div class="popup-content">
           <span class="close-btn">&times;</span>
           <h2>${dealerComponent.popup.title}</h2>
@@ -94,7 +94,7 @@ export default function decorate(block) {
 
     // Event listener to show the popup
     block.addEventListener('click', (event) => {
-      event.stopPropagation();
+      event.preventDefault();
       popup.style.display = 'block';
     });
 
@@ -110,7 +110,8 @@ export default function decorate(block) {
     });
   } else {
     // Redirect to href
-    block.addEventListener('click', () => {
+    block.addEventListener('click', (event) => {
+      event.preventDefault();
       window.location.href = dealerComponent.href;
     });
   }
