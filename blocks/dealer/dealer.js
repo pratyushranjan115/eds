@@ -16,63 +16,25 @@ export default function decorate(block) {
       tab2HrefEl,
     ] = block.children;
 
-    // Log the extracted elements for debugging
-    console.log('Elements:', {
-      backgroundImageEl,
-      titleEl,
-      revealEl,
-      hrefEl,
-      popupTitleEl,
-      tab1El,
-      tab1BackgroundImageEl,
-      text1El,
-      tab1HrefEl,
-      tab2El,
-      tab2BackgroundImageEl,
-      text2El,
-      tab2HrefEl,
-    });
-
     const backgroundImage = backgroundImageEl?.querySelector('picture');
     const title = titleEl?.textContent?.trim();
     
-    // Extract reveal checkbox state
+
     const revealCheckbox = revealEl?.querySelector('input[type="checkbox"]');
     const reveal = revealCheckbox ? revealCheckbox.checked : true;
 
     const href = hrefEl?.querySelector('a')?.href;
 
-    // Extract popup title
     const popupTitle = popupTitleEl?.textContent?.trim();
-
-    // Extract tab1 fields
     const tab1 = tab1El?.textContent?.trim();
     const tab1BackgroundImage = tab1BackgroundImageEl?.querySelector('picture');
     const text1 = text1El?.textContent?.trim();
     const tab1Href = tab1HrefEl?.querySelector('a')?.href;
 
-    // Extract tab2 fields
     const tab2 = tab2El?.textContent?.trim();
     const tab2BackgroundImage = tab2BackgroundImageEl?.querySelector('picture');
     const text2 = text2El?.textContent?.trim();
     const tab2Href = tab2HrefEl?.querySelector('a')?.href;
-
-    // Log the extracted values for debugging
-    console.log('Extracted values:', {
-      backgroundImage,
-      title,
-      reveal,
-      href,
-      popupTitle,
-      tab1,
-      tab1BackgroundImage,
-      text1,
-      tab1Href,
-      tab2,
-      tab2BackgroundImage,
-      text2,
-      tab2Href,
-    });
 
     return {
       backgroundImage,
@@ -100,7 +62,7 @@ export default function decorate(block) {
   const dealerComponent = getDealerComponent();
   console.log('Dealer Component:', dealerComponent);
 
-  // Set the inner HTML of the block based on the reveal condition
+
   block.innerHTML = `
     ${(dealerComponent.backgroundImage) ? `<div class="dealer__image">${dealerComponent.backgroundImage.outerHTML}</div>` : ''}
     <div class="dealer__content">
@@ -111,28 +73,23 @@ export default function decorate(block) {
   if (dealerComponent.reveal) {
     console.log('Reveal is true, setting up popup');
 
-    // Create the popup HTML
     const popupHtml = `
       <div class="popup" style="display:none;">
         <div class="popup-content">
           <span class="close-btn">&times;</span>
-          <h2>${dealerComponent.popup.title || ''}</h2>
-          ${dealerComponent.popup.tab1.label ? `
-            <div class="tab">
-              <h3>${dealerComponent.popup.tab1.label || ''}</h3>
-              ${(dealerComponent.popup.tab1.backgroundImage) ? `<div class="tab__image">${dealerComponent.popup.tab1.backgroundImage.outerHTML}</div>` : ''}
-              <p>${dealerComponent.popup.tab1.text || ''}</p>
-              <a href="${dealerComponent.popup.tab1.href || '#'}" target="_blank">Link</a>
-            </div>
-          ` : ''}
-          ${dealerComponent.popup.tab2.label ? `
-            <div class="tab">
-              <h3>${dealerComponent.popup.tab2.label || ''}</h3>
-              ${(dealerComponent.popup.tab2.backgroundImage) ? `<div class="tab__image">${dealerComponent.popup.tab2.backgroundImage.outerHTML}</div>` : ''}
-              <p>${dealerComponent.popup.tab2.text || ''}</p>
-              <a href="${dealerComponent.popup.tab2.href || '#'}" target="_blank">Link</a>
-            </div>
-          ` : ''}
+          <h2>${dealerComponent.popup.title}</h2>
+          <div class="tab">
+            <h3>${dealerComponent.popup.tab1.label}</h3>
+            ${(dealerComponent.popup.tab1.backgroundImage) ? `<div class="tab__image">${dealerComponent.popup.tab1.backgroundImage.outerHTML}</div>` : ''}
+            <p>${dealerComponent.popup.tab1.text}</p>
+            <a href="${dealerComponent.popup.tab1.href}" target="_blank">Link</a>
+          </div>
+          <div class="tab">
+            <h3>${dealerComponent.popup.tab2.label}</h3>
+            ${(dealerComponent.popup.tab2.backgroundImage) ? `<div class="tab__image">${dealerComponent.popup.tab2.backgroundImage.outerHTML}</div>` : ''}
+            <p>${dealerComponent.popup.tab2.text}</p>
+            <a href="${dealerComponent.popup.tab2.href}" target="_blank">Link</a>
+          </div>
         </div>
       </div>
     `;
@@ -141,13 +98,13 @@ export default function decorate(block) {
     const popup = document.querySelector('.popup');
     const closeBtn = popup.querySelector('.close-btn');
 
-    // Event listener to show the popup
+    
     block.addEventListener('click', (event) => {
       event.preventDefault();
       popup.style.display = 'block';
     });
 
-    // Event listener to close the popup
+    
     closeBtn.addEventListener('click', () => {
       popup.style.display = 'none';
     });
@@ -160,7 +117,7 @@ export default function decorate(block) {
   } else {
     console.log('Reveal is false, setting up redirection');
 
-    // Redirect to href
+    
     block.addEventListener('click', (event) => {
       event.preventDefault();
       window.location.href = dealerComponent.href;
