@@ -21,7 +21,7 @@ export default function decorate(block) {
     
 
     const revealCheckbox = revealEl?.querySelector('input[type="checkbox"]');
-    const reveal = revealCheckbox ? revealCheckbox.checked : false;
+    const reveal = revealCheckbox ? revealCheckbox.checked : true;
 
     const href = hrefEl?.querySelector('a')?.href;
 
