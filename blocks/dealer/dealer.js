@@ -16,6 +16,7 @@ export default function decorate(block) {
       tab2HrefEl,
     ] = block.children;
 
+    // Log the extracted elements for debugging
     console.log('Elements:', {
       backgroundImageEl,
       titleEl,
@@ -35,23 +36,28 @@ export default function decorate(block) {
     const backgroundImage = backgroundImageEl?.querySelector('picture');
     const title = titleEl?.textContent?.trim();
     
-    // Ensure reveal is correctly extracted
+    // Extract reveal checkbox state
     const revealCheckbox = revealEl?.querySelector('input[type="checkbox"]');
     const reveal = revealCheckbox ? revealCheckbox.checked : true;
 
     const href = hrefEl?.querySelector('a')?.href;
 
+    // Extract popup title
     const popupTitle = popupTitleEl?.textContent?.trim();
+
+    // Extract tab1 fields
     const tab1 = tab1El?.textContent?.trim();
     const tab1BackgroundImage = tab1BackgroundImageEl?.querySelector('picture');
     const text1 = text1El?.textContent?.trim();
     const tab1Href = tab1HrefEl?.querySelector('a')?.href;
 
+    // Extract tab2 fields
     const tab2 = tab2El?.textContent?.trim();
     const tab2BackgroundImage = tab2BackgroundImageEl?.querySelector('picture');
     const text2 = text2El?.textContent?.trim();
     const tab2Href = tab2HrefEl?.querySelector('a')?.href;
 
+    // Log the extracted values for debugging
     console.log('Extracted values:', {
       backgroundImage,
       title,
@@ -113,7 +119,7 @@ export default function decorate(block) {
           <h2>${dealerComponent.popup.title || ''}</h2>
           ${dealerComponent.popup.tab1.label ? `
             <div class="tab">
-              <h3>${dealerComponent.popup.tab1.label}</h3>
+              <h3>${dealerComponent.popup.tab1.label || ''}</h3>
               ${(dealerComponent.popup.tab1.backgroundImage) ? `<div class="tab__image">${dealerComponent.popup.tab1.backgroundImage.outerHTML}</div>` : ''}
               <p>${dealerComponent.popup.tab1.text || ''}</p>
               <a href="${dealerComponent.popup.tab1.href || '#'}" target="_blank">Link</a>
