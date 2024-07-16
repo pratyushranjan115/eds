@@ -7,9 +7,11 @@ export default function decorate(block) {
       const title = titleEl?.textContent?.trim() || 'Default Title';
   
       let reveal = false;
+      console.log(block.dataset.aueModel);
       if (block.dataset.aueModel) {
         try {
           const model = JSON.parse(block.dataset.aueModel);
+          
           reveal = model.reveal;
           console.log('Parsed model:', model);
         } catch (error) {
@@ -18,6 +20,7 @@ export default function decorate(block) {
       } else {
         console.warn('No aueModel dataset found');
       }
+
   
       const link = linkEl?.querySelector('a')?.href || '#';
   
