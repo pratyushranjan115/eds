@@ -57,8 +57,16 @@ export default function decorate(block) {
 
   const dealerComponent = getDealerComponent();
   
+  // Set the inner HTML of the block based on the reveal condition
+  block.innerHTML = `
+    ${(dealerComponent.backgroundImage) ? `<div class="dealer__image">${dealerComponent.backgroundImage.outerHTML}</div>` : ''}
+    <div class="dealer__content">
+      <h2>${dealerComponent.title}</h2>
+    </div>
+  `;
+
   if (dealerComponent.reveal) {
-    // Create and display pop-up
+    // Create the popup HTML
     const popupHtml = `
       <div class="popup">
         <div class="popup-content">
@@ -79,21 +87,22 @@ export default function decorate(block) {
         </div>
       </div>
     `;
-    block.innerHTML = `
-      ${(dealerComponent.backgroundImage) ? `<div class="dealer__image">${dealerComponent.backgroundImage.outerHTML}</div>` : ''}
-      <div class="dealer__content">
-        <h2>${dealerComponent.title}</h2>
-      </div>
-    `;
     document.body.insertAdjacentHTML('beforeend', popupHtml);
+
     const popup = document.querySelector('.popup');
     const closeBtn = popup.querySelector('.close-btn');
-    block.addEventListener('click', () => {
+
+    // Event listener to show the popup
+    block.addEventListener('click', (event) => {
+      event.stopPropagation();
       popup.style.display = 'block';
     });
+
+    // Event listener to close the popup
     closeBtn.addEventListener('click', () => {
       popup.style.display = 'none';
     });
+
     window.addEventListener('click', (event) => {
       if (event.target === popup) {
         popup.style.display = 'none';
@@ -101,12 +110,6 @@ export default function decorate(block) {
     });
   } else {
     // Redirect to href
-    block.innerHTML = `
-      ${(dealerComponent.backgroundImage) ? `<div class="dealer__image">${dealerComponent.backgroundImage.outerHTML}</div>` : ''}
-      <div class="dealer__content">
-        <h2>${dealerComponent.title}</h2>
-      </div>
-    `;
     block.addEventListener('click', () => {
       window.location.href = dealerComponent.href;
     });
