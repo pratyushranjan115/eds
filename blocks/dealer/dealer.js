@@ -18,7 +18,11 @@ export default function decorate(block) {
 
     const backgroundImage = backgroundImageEl?.querySelector('picture');
     const title = titleEl?.textContent?.trim();
-    const reveal = revealEl?.querySelector('input[type="checkbox"]')?.checked;
+    
+    // Ensure reveal is correctly extracted
+    const revealCheckbox = revealEl?.querySelector('input[type="checkbox"]');
+    const reveal = revealCheckbox ? revealCheckbox.checked : false;
+
     const href = hrefEl?.querySelector('a')?.href;
 
     const popupTitle = popupTitleEl?.textContent?.trim();
