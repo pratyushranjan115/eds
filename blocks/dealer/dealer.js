@@ -56,7 +56,8 @@ export default function decorate(block) {
   }
 
   const dealerComponent = getDealerComponent();
-  
+  console.log('Dealer Component:', dealerComponent);
+
   // Set the inner HTML of the block based on the reveal condition
   block.innerHTML = `
     ${(dealerComponent.backgroundImage) ? `<div class="dealer__image">${dealerComponent.backgroundImage.outerHTML}</div>` : ''}
@@ -66,6 +67,8 @@ export default function decorate(block) {
   `;
 
   if (dealerComponent.reveal) {
+    console.log('Reveal is true, setting up popup');
+
     // Create the popup HTML
     const popupHtml = `
       <div class="popup" style="display:none;">
@@ -109,6 +112,8 @@ export default function decorate(block) {
       }
     });
   } else {
+    console.log('Reveal is false, setting up redirection');
+
     // Redirect to href
     block.addEventListener('click', (event) => {
       event.preventDefault();
