@@ -1,18 +1,20 @@
 export default function decorateTile(block) {
-    // Function to extract data from the block's DOM structure
-    function getTileData(block) {
+    function getTileData() {
       const [backgroundImageContainer, contentContainer] = block.children;
   
-      // Get the background image URL
+      // Extract the background image
       const backgroundImgEl = backgroundImageContainer.querySelector('picture');
       const backgroundImg = backgroundImgEl?.querySelector('img');
-      const backgroundImage = backgroundImg ? backgroundImg.src : '';
+      if (backgroundImg) {
+        backgroundImg.setAttribute('width', '100%');
+        backgroundImg.removeAttribute('height');
+      }
   
-      // Get the rich text content
+      // Extract the rich text content
       const textEl = contentContainer.querySelector('p');
       const text = textEl ? textEl.innerHTML.trim() : '';
   
-      // Extract the value of the select dropdown
+      // Extract the select dropdown value
       const selectEl = block.querySelector('select[name="select"]');
       const selectedOption = selectEl ? selectEl.value : '';
   
@@ -21,29 +23,29 @@ export default function decorateTile(block) {
       const href = hrefEl ? hrefEl.href : '';
   
       return {
-        backgroundImage,
+        backgroundImg,
         text,
         selectedOption,
         href
       };
     }
   
-    // Get data from the block
-    const tileData = getTileData(block);
+    // Get the data for the tile
+    const tileData = getTileData();
   
-    // Generate HTML for the tile component
+    // Construct the HTML for the tile component
     const tileHtml = `
-      <div class="tile" style="background-image: url('${tileData.backgroundImage}');">
+      <div class="tile" style="background-image: url('${tileData.backgroundImg ? tileData.backgroundImg.src : ''}');">
         <div class="tile__content">
           ${tileData.text}
         </div>
       </div>
     `;
   
-    // Set the generated HTML as the content of the block
+    // Set the HTML content of the block
     block.innerHTML = tileHtml;
   
-    // Add click event listener to redirect if option1 is selected
+    // Add a click event listener to handle redirection based on the select dropdown
     if (tileData.selectedOption === 'option1' && tileData.href) {
       block.addEventListener('click', () => {
         window.location.href = tileData.href;
