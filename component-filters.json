@@ -16,7 +16,8 @@
       "image",
       "button",
       "title",
-      "columns"
+      "columns",
+      "dealer"
     ]
   },
   {
@@ -33,6 +34,7 @@
       "custom-form",
       "teaser",
       "btn",
+      "dealer",
       "dealers",
       "select"
     ]
@@ -42,9 +44,6 @@
     "components": [
       "card"
     ]
-  },
-  {
-    "id": "dealers",
-    "components": []
   }
+ 
 ]
