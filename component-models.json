@@ -475,14 +475,15 @@
         ]
       },
       {
-        "component": "text-input",
-        "label": "Text Field for Option 1",
-        "name": "textFieldOption1",
+        "component": "aem-content",
         "valueType": "string",
+        "name": "href",
+        "label": "Link",
         "condition": { "===": [{ "var": "select" }, "option1"] }
       }
     ]
   }
+  
   
        
 ]
