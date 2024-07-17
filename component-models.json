@@ -465,6 +465,20 @@
     "id": "select",
     "fields": [
       {
+        "component": "reference",
+        "valueType": "string",
+        "name": "background_image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title"
+      },
+      {
         "component": "select",
         "label": "Select",
         "name": "select",
@@ -488,11 +502,28 @@
         "condition": { "===": [{ "var": "select" }, "option2"] }
       },
       {
-        "component": "text-input",
-        "label": "Text 1",
-        "name": "text1",
+        "component": "reference",
         "valueType": "string",
-        "condition": { "===": [{ "var": "select" }, "option2"] }
+        "name": "background_image",
+        "label": "Background Image",
+        "multi": false,
+		"condition": { "===": [{ "var": "select" }, "option2"] }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+		"condition": { "===": [{ "var": "select" }, "option2"] }
+      },
+	   {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "href",
+        "value": "",
+        "label": "Link",
+		"condition": { "===": [{ "var": "select" }, "option2"] }
       },
       {
         "component": "tab",
@@ -501,11 +532,28 @@
         "condition": { "===": [{ "var": "select" }, "option2"] }
       },
       {
-        "component": "text-input",
-        "label": "Text 2",
-        "name": "text2",
+        "component": "reference",
         "valueType": "string",
-        "condition": { "===": [{ "var": "select" }, "option2"] }
+        "name": "background_image",
+        "label": "Background Image",
+        "multi": false,
+		"condition": { "===": [{ "var": "select" }, "option2"] }
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+		"condition": { "===": [{ "var": "select" }, "option2"] }
+      },
+	   {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "href",
+        "value": "",
+        "label": "Link",
+		"condition": { "===": [{ "var": "select" }, "option2"] }
       }
     ]
   }
