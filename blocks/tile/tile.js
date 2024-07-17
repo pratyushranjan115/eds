@@ -1,75 +1,53 @@
-export default function decorate(block) {
-    const [...tileEl] = block.children;
-    const tiles = tileEl.map((item) => {
-      const currentElement = item?.firstElementChild;
-      if (
-        currentElement
-        && currentElement.childNodes.length > 0
-        && currentElement !== undefined
-      ) {
-        return currentElement;
-      }
-      return null;
-    });
+export default function decorateTile(block) {
+    // Function to extract data from the block's DOM structure
+    function getTileData(block) {
+      const [backgroundImageContainer, contentContainer] = block.children;
   
-    const filteredTiles = tiles.filter((tile) => tile);
+      // Get the background image URL
+      const backgroundImgEl = backgroundImageContainer.querySelector('picture');
+      const backgroundImg = backgroundImgEl?.querySelector('img');
+      const backgroundImage = backgroundImg ? backgroundImg.src : '';
   
-    // Destructuring all the filtered elements
-    const [
-      backgroundImg,
-      richText,
-      selectOption,
-      link,
-      tab1,
-      backgroundImgTab1,
-      titleTab1,
-      linkTab1,
-      tab2,
-      backgroundImgTab2,
-      titleTab2,
-      linkTab2
-    ] = filteredTiles;
+      // Get the rich text content
+      const textEl = contentContainer.querySelector('p');
+      const text = textEl ? textEl.innerHTML.trim() : '';
   
-    // Creating HTML structure for the Tile Component
-    const newHtml = `
-      <div class="tile-component">
-        ${backgroundImg ? `<div class="tile-background" style="background-image: url('${backgroundImg.querySelector('picture img').src}');"></div>` : ''}
-        <div class="tile-content">
-          ${richText ? richText.innerHTML : ''}
-          ${selectOption ? `<select class="select-option">${selectOption.innerHTML}</select>` : ''}
-          ${selectOption?.innerText === 'option1' && link ? `<a href="${link.innerText}" class="tile-link" target="_self">Link</a>` : ''}
-          ${selectOption?.innerText === 'option2' ? `
-            <div class="tab-content">
-              ${tab1 ? `<div class="tab1-content">${tab1.innerHTML}</div>` : ''}
-              ${backgroundImgTab1 ? `<div class="background-img-tab1" style="background-image: url('${backgroundImgTab1.querySelector('picture img').src}');"></div>` : ''}
-              ${titleTab1 ? `<div class="title-tab1">${titleTab1.innerText}</div>` : ''}
-              ${linkTab1 ? `<a href="${linkTab1.innerText}" class="tile-link" target="_self">Link</a>` : ''}
-              ${tab2 ? `<div class="tab2-content">${tab2.innerHTML}</div>` : ''}
-              ${backgroundImgTab2 ? `<div class="background-img-tab2" style="background-image: url('${backgroundImgTab2.querySelector('picture img').src}');"></div>` : ''}
-              ${titleTab2 ? `<div class="title-tab2">${titleTab2.innerText}</div>` : ''}
-              ${linkTab2 ? `<a href="${linkTab2.innerText}" class="tile-link" target="_self">Link</a>` : ''}
-            </div>
-          ` : ''}
+      // Extract the value of the select dropdown
+      const selectEl = block.querySelector('select[name="select"]');
+      const selectedOption = selectEl ? selectEl.value : '';
+  
+      // Extract the href value (only used if option1 is selected)
+      const hrefEl = block.querySelector('a[name="href"]');
+      const href = hrefEl ? hrefEl.href : '';
+  
+      return {
+        backgroundImage,
+        text,
+        selectedOption,
+        href
+      };
+    }
+  
+    // Get data from the block
+    const tileData = getTileData(block);
+  
+    // Generate HTML for the tile component
+    const tileHtml = `
+      <div class="tile" style="background-image: url('${tileData.backgroundImage}');">
+        <div class="tile__content">
+          ${tileData.text}
         </div>
       </div>
     `;
   
-    block.innerHTML = '';
-    block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(newHtml));
+    // Set the generated HTML as the content of the block
+    block.innerHTML = tileHtml;
   
-    // Handle Select Option
-    const selectElement = document.querySelector('.select-option');
-    selectElement?.addEventListener('change', (event) => {
-      const selectedValue = event.target.value;
-  
-      if (selectedValue === 'option1') {
-        document.querySelector('.tile-link')?.setAttribute('target', '_self');
-      } else if (selectedValue === 'option2') {
-        // Show tab content for option2
-        document.querySelector('.tab-content')?.classList.add('show');
-      }
-    });
-  
-    // Optional: Add any additional JavaScript logic for your component here
+    // Add click event listener to redirect if option1 is selected
+    if (tileData.selectedOption === 'option1' && tileData.href) {
+      block.addEventListener('click', () => {
+        window.location.href = tileData.href;
+      });
+    }
   }
   
