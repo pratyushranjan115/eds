@@ -367,91 +367,91 @@
         "label": "Background Image",
         "multi": false
       },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title"
+      },
       
       {
-        "component": "boolean",
-        "label": "Shall the text field be revealed?",
-        "name": "reveal",
-        "valueType": "boolean"
+        "component": "select",
+        "label": "Select",
+        "name": "select",
+        "valueType": "string",
+        "options": [
+          { "name": "Option 1", "value": "option1" },
+          { "name": "Option 2", "value": "option2" }
+        ]
       },
       {
         "component": "aem-content",
         "valueType": "string",
         "name": "href",
-        "value": "",
         "label": "Link",
-        "condition": { "===": [{"var" : "reveal"}, false] }
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "popup_title",
-        "value": "",
-        "label": "Popup Title",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "condition": { "===": [{ "var": "select" }, "option1"] }
       },
       {
         "component": "tab",
         "label": "Tab 1",
         "name": "tab1",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
-     
       {
         "component": "reference",
         "valueType": "string",
-        "name": "tab1_background_image",
-        "label": "Tab 1 Background Image",
+        "name": "background_image_tab1",
+        "label": "Background Image",
         "multi": false,
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
-
       {
         "component": "text",
-        "label": "Text 1",
-        "name": "text1",
         "valueType": "string",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "name": "title_tab1",
+        "value": "",
+        "label": "Title",
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
-     
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "tab1_href",
+        "name": "href_tab1",
         "value": "",
-        "label": "Tab 1 Link",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "label": "Link",
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
       {
         "component": "tab",
         "label": "Tab 2",
         "name": "tab2",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
       {
         "component": "reference",
         "valueType": "string",
-        "name": "tab2_background_image",
-        "label": "Tab 2 Background Image",
+        "name": "background_image_tab2",
+        "label": "Background Image",
         "multi": false,
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
       {
         "component": "text",
-        "label": "Text 2",
-        "name": "text2",
         "valueType": "string",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "name": "title_tab2",
+        "value": "",
+        "label": "Title",
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
       {
         "component": "aem-content",
         "valueType": "string",
-        "name": "tab2_href",
+        "name": "href_tab2",
         "value": "",
-        "label": " Tab 2 Link",
-        "condition": { "===": [{"var" : "reveal"}, true] }
+        "label": "Link",
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       }
-
     ]
   },
   {
