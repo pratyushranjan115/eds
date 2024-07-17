@@ -504,26 +504,26 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "background_image",
+        "name": "background_image_tab1",
         "label": "Background Image",
         "multi": false,
-		"condition": { "===": [{ "var": "select" }, "option2"] }
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "title",
+        "name": "title_tab1",
         "value": "",
         "label": "Title",
-		"condition": { "===": [{ "var": "select" }, "option2"] }
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
-	   {
+      {
         "component": "aem-content",
         "valueType": "string",
-        "name": "href",
+        "name": "href_tab1",
         "value": "",
         "label": "Link",
-		"condition": { "===": [{ "var": "select" }, "option2"] }
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
       {
         "component": "tab",
@@ -534,26 +534,26 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "background_image",
+        "name": "background_image_tab2",
         "label": "Background Image",
         "multi": false,
-		"condition": { "===": [{ "var": "select" }, "option2"] }
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "title",
+        "name": "title_tab2",
         "value": "",
         "label": "Title",
-		"condition": { "===": [{ "var": "select" }, "option2"] }
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       },
-	   {
+      {
         "component": "aem-content",
         "valueType": "string",
-        "name": "href",
+        "name": "href_tab2",
         "value": "",
         "label": "Link",
-		"condition": { "===": [{ "var": "select" }, "option2"] }
+        "condition": { "===": [{ "var": "select" }, "option2"] }
       }
     ]
   }
