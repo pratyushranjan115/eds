@@ -465,11 +465,11 @@
         "multi": false
       },
       {
-        "component": "text",
+        "component": "richtext",
         "valueType": "string",
         "name": "text",
         "value": "",
-        "label": "Text"
+        "label": "Rich Text"
       },
       {
         "component": "select",
