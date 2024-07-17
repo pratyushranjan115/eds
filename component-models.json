@@ -470,33 +470,36 @@
         "name": "radio",
         "valueType": "string",
         "options": [
-          { 
-            "name": "Option 1", 
+          {
+            "name": "Option 1",
             "value": "option1",
-            "conditionalFields": [
-              {
-                "component": "text-field",
-                "label": "Text Field for Option 1",
-                "name": "textOption1",
-                "valueType": "string"
-              }
-            ]
+            "dialog": {
+              "fields": [
+                {
+                  "component": "text-field",
+                  "label": "Text Field for Option 1",
+                  "name": "textOption1",
+                  "valueType": "string"
+                }
+              ]
+            }
           },
-          { 
-            "name": "Option 2", 
+          {
+            "name": "Option 2",
             "value": "option2",
-            "conditionalFields": [
-              {
-                "component": "text-field",
-                "label": "Text Field for Option 2",
-                "name": "textOption2",
-                "valueType": "string"
-              }
-            ]
+            "dialog": {
+              "fields": [
+                {
+                  "component": "text-field",
+                  "label": "Text Field for Option 2",
+                  "name": "textOption2",
+                  "valueType": "string"
+                }
+              ]
+            }
           }
         ]
       }
     ]
-  }  
-        
+  }        
 ]
