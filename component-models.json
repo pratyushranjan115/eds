@@ -455,7 +455,7 @@
     ]
   },
   {
-    "id": "select",
+    "id": "tile",
     "fields": [
       {
         "component": "reference",
