@@ -237,7 +237,7 @@
     },
     {
       "title": "Dealer Component",
-      "id": "blocks",
+      "id": "dealer",
       "components": [
         {
           "title": "Dealer",
@@ -258,7 +258,7 @@
     },
     {
       "title": "Dealers Component",
-      "id": "blocks",
+      "id": "dealers",
       "components": [
         {
           "title": "Dealers",
