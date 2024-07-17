@@ -262,7 +262,7 @@
       "components": [
         {
           "title": "Radio Group",
-          "id": "radio-group",
+          "id": "select",
           "plugins": {
             "xwalk": {
               "page": {
