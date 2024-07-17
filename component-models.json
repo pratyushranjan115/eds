@@ -461,38 +461,42 @@
 
     ]
   },
-  
   {
-    "id": "contactCard",
+    "id": "radio-group",
     "fields": [
-        {
-            "component": "reference",
-            "valueType": "string",
-            "name": "profile_image",
-            "label": "Profile Image",
-            "multi": false
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "title",
-          "value": "",
-          "label": "Title"
-        },
-        {
-            "component": "text",
-            "valueType": "string",
-            "name": "post",
-            "label": "Post"
-        },
-        {
-            "component": "text",
-            "valueType": "string",
-            "name": "address",
-            "label": "Address"
-        }
-      
+      {
+        "component": "radio-group",
+        "label": "Radio Group",
+        "name": "radio",
+        "valueType": "string",
+        "options": [
+          { 
+            "name": "Option 1", 
+            "value": "option1",
+            "conditionalFields": [
+              {
+                "component": "text-field",
+                "label": "Text Field for Option 1",
+                "name": "textOption1",
+                "valueType": "string"
+              }
+            ]
+          },
+          { 
+            "name": "Option 2", 
+            "value": "option2",
+            "conditionalFields": [
+              {
+                "component": "text-field",
+                "label": "Text Field for Option 2",
+                "name": "textOption2",
+                "valueType": "string"
+              }
+            ]
+          }
+        ]
+      }
     ]
-}
+  }  
         
 ]
