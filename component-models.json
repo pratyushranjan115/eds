@@ -467,9 +467,9 @@
       {
         "component": "text",
         "valueType": "string",
-        "name": "title",
+        "name": "text",
         "value": "",
-        "label": "Title"
+        "label": "Text"
       },
       {
         "component": "select",
