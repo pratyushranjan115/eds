@@ -471,12 +471,18 @@
         "valueType": "string",
         "options": [
           { "name": "Option 1", "value": "option1" },
-       
-
           { "name": "Option 2", "value": "option2" }
         ]
+      },
+      {
+        "component": "text-input",
+        "label": "Text Field for Option 1",
+        "name": "textFieldOption1",
+        "valueType": "string",
+        "condition": { "===": [{ "var": "select" }, "option1"] }
       }
     ]
   }
+  
        
 ]
