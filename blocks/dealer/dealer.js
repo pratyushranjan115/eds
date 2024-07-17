@@ -2,7 +2,7 @@ export default function decorate(block) {
   function getDealerComponent() {
     const [
       backgroundImageEl,
-      titleEl,
+      textEl,
       revealEl,
       hrefEl,
       popupTitleEl,
@@ -17,7 +17,7 @@ export default function decorate(block) {
     ] = block.children;
 
     const backgroundImage = backgroundImageEl?.querySelector('picture');
-    const title = titleEl?.textContent?.trim();
+    const text = textEl?.textContent?.trim();
     
 
     const revealCheckbox = revealEl?.querySelector('input[type="checkbox"]');
@@ -38,7 +38,7 @@ export default function decorate(block) {
 
     return {
       backgroundImage,
-      title,
+      text,
       reveal,
       href,
       popup: {
@@ -66,7 +66,7 @@ export default function decorate(block) {
   block.innerHTML = `
     ${(dealerComponent.backgroundImage) ? `<div class="dealer__image">${dealerComponent.backgroundImage.outerHTML}</div>` : ''}
     <div class="dealer__content">
-      <h2>${dealerComponent.title}</h2>
+      <h2>${dealerComponent.text}</h2>
     </div>
   `;
 

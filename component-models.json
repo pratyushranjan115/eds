@@ -368,11 +368,11 @@
         "multi": false
       },
       {
-        "component": "text",
+        "component": "richtext",
         "valueType": "string",
-        "name": "title",
+        "name": "text",
         "value": "",
-        "label": "Title"
+        "label": "Rich Text"
       },
       
       {
@@ -464,13 +464,7 @@
         "label": "Background Image",
         "multi": false
       },
-      {
-        "component": "richtext",
-        "valueType": "string",
-        "name": "text",
-        "value": "",
-        "label": "Rich Text"
-      },
+     
       {
         "component": "select",
         "label": "Select",
