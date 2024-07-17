@@ -33,9 +33,12 @@ export default function decorateTile(block) {
     // Get the data for the tile
     const tileData = getTileData();
   
+    // Generate the background image style
+    const backgroundImageStyle = tileData.backgroundImg ? `background-image: url('${tileData.backgroundImg.src}');` : '';
+  
     // Construct the HTML for the tile component
     const tileHtml = `
-      <div class="tile" style="background-image: url('${tileData.backgroundImg ? tileData.backgroundImg.src : ''}');">
+      <div class="tile" style="${backgroundImageStyle}">
         <div class="tile__content">
           ${tileData.text}
         </div>
