@@ -367,13 +367,6 @@
         "label": "Background Image",
         "multi": false
       },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "title",
-        "value": "",
-        "label": "Title"
-      },
       
       {
         "component": "boolean",
@@ -472,7 +465,7 @@
         "multi": false
       },
       {
-        "component": "text-input",
+        "component": "text",
         "valueType": "string",
         "name": "title",
         "value": "",
