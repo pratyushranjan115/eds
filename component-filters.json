@@ -44,9 +44,7 @@
     ]
   },
   {
-    "id": "dealer",
-    "components": [
-      "dealers"
-    ]
+    "id": "dealers",
+    "components": []
   }
 ]
