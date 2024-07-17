@@ -485,6 +485,7 @@
         "component": "aem-content",
         "valueType": "string",
         "name": "href",
+        "value": "",
         "label": "Link",
         "condition": { "===": [{ "var": "select" }, "option1"] }
       },
