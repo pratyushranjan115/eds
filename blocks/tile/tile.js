@@ -1,67 +1,50 @@
-import utility from '../../utility/utility.js';
-
-export default function decorate(block) {
-  function handleOptionSelect(cards, isOption2) {
-    cards.forEach((card) => {
-      const link = card.querySelector('.tile__link');
-      if (isOption2) {
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          showPopup(card);
-        });
-      } else {
-        link.removeEventListener('click', (e) => {
-          e.preventDefault();
-          showPopup(card);
-        });
+export default function decorateTile(block) {
+    function getTileData(block) {
+      const [backgroundImageContainer, contentContainer] = block.children;
+  
+      const backgroundImgEl = backgroundImageContainer.querySelector('picture');
+      const backgroundImgAltEl = backgroundImgEl?.querySelector('img');
+  
+      const richTextEl = contentContainer.querySelector('[data-name="text"]');
+      const selectEl = contentContainer.querySelector('[data-name="select"]');
+      const hrefEl = contentContainer.querySelector('[data-name="href"]');
+  
+      const backgroundImg = backgroundImgEl?.querySelector('img');
+      if (backgroundImg) {
+        backgroundImg.removeAttribute('width');
+        backgroundImg.removeAttribute('height');
+        const alt = backgroundImgAltEl?.getAttribute('alt') || 'image';
+        backgroundImg.setAttribute('alt', alt);
       }
-    });
+  
+      const richText = richTextEl?.innerHTML.trim();
+      const selectValue = selectEl?.value;
+      const href = selectValue === 'option1' ? hrefEl?.textContent.trim() : null;
+  
+      return {
+        backgroundImg,
+        richText,
+        href
+      };
+    }
+  
+    const tileData = getTileData(block);
+  
+    const tileHtml = `
+      <div class="tile__wrapper">
+        ${(tileData.backgroundImg) ? tileData.backgroundImg.outerHTML : ''}
+        <div class="tile__content">
+          ${(tileData.richText) ? `<div class="rich-text">${tileData.richText}</div>` : ''}
+        </div>
+      </div>
+    `;
+  
+    block.innerHTML = tileHtml;
+  
+    if (tileData.href) {
+      block.addEventListener('click', () => {
+        window.location.href = tileData.href;
+      });
+    }
   }
-
-  function showPopup(card) {
-    const popup = document.createElement('div');
-    popup.classList.add('tile__popup');
-    const tabs = card.querySelectorAll('.tile__tab');
-    tabs.forEach((tab) => {
-      popup.appendChild(tab.cloneNode(true));
-    });
-    document.body.appendChild(popup);
-    popup.addEventListener('click', () => {
-      popup.remove();
-    });
-  }
-
-  const [backgroundImageEl, richTextEl, selectEl, ...rest] = block.children;
-  const backgroundImage = backgroundImageEl?.querySelector('img')?.src || '';
-  const richText = richTextEl?.innerHTML?.trim() || '';
-
-  const select = selectEl?.querySelector('select') || '';
-  const options = select?.options || [];
-
-  const tabs = rest.map((tab) => {
-    const tabContainer = document.createElement('div');
-    tabContainer.classList.add('tile__tab');
-    tabContainer.innerHTML = tab.innerHTML;
-    return tabContainer;
-  });
-
-  const cardHTML = `
-    <div class="tile__card">
-      <img src="${backgroundImage}" alt="Background Image" class="tile__image"/>
-      <div class="tile__content">${richText}</div>
-      <a href="#" class="tile__link">Read More</a>
-    </div>
-  `;
-
-  block.innerHTML = utility.sanitizeHtml(cardHTML);
-  const card = block.querySelector('.tile__card');
-  tabs.forEach((tab) => card.appendChild(tab));
-
-  const isOption2 = select?.value === 'option2';
-  handleOptionSelect([card], isOption2);
-
-  select.addEventListener('change', () => {
-    const isOption2 = select?.value === 'option2';
-    handleOptionSelect([card], isOption2);
-  });
-}
+  
