@@ -1,11 +1,10 @@
-
 .dealer-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 16px;
 }
 
-.dealer-card {
+.dealer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,26 +12,40 @@
   cursor: pointer;
   border: 1px solid #ccc;
   padding: 16px;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
   text-align: center;
   background: #fff;
   max-width: 300px;
   overflow: hidden;
   box-sizing: border-box;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.dealer-card:hover {
+.dealer:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
 }
 
-.dealer-content {
+.dealer__background {
+  margin-bottom: 10px;
+}
+
+.dealer__background img {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  object-fit: cover;
+  border: 3px solid #333;
+}
+
+.dealer__content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.dealer-content h2 {
+.dealer__content h3 {
   margin: 10px 0 0;
   font-size: 1.2rem;
   color: #333;
@@ -41,13 +54,4 @@
   line-height: 1.3;
   text-align: center;
   max-width: 100%;
-}
-
-.dealer-content img {
-  width: 80px;
-  height: 80px;
-  border-radius: 100%;
-  object-fit: cover;
-  border: 3px solid #333;
-  margin-bottom: 10px;
 }
