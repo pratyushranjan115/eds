@@ -24,7 +24,6 @@ export default function decorate(block) {
   }
 
   function handleClick(event) {
-    // Make sure the click is on the dealer div itself
     const dealerElement = event.currentTarget;
     const href = dealerElement.getAttribute('data-href');
     if (href) {
@@ -35,7 +34,6 @@ export default function decorate(block) {
   const dealerListData = block.dataset.dealerListData;
   const dealers = JSON.parse(dealerListData);
 
-  // Clear existing HTML and render new dealer list
   block.innerHTML = renderDealerList(dealers);
 
   // Attach click event listener to each dealer
