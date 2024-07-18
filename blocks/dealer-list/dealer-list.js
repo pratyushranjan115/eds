@@ -41,6 +41,6 @@ export default function decorate(block) {
 
   // Clear the block and append the new dealer list
   block.innerHTML = '';
-  const dealerList = renderDealerList(dealers);
+  // const dealerList = renderDealerList(dealers);
   block.appendChild(dealerList);
 }
