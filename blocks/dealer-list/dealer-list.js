@@ -3,7 +3,7 @@ export default function decorate(block) {
     const { background_image, title } = dealerData;
 
     return `
-      <div class="dealer" data-href="${dealerData.href}">
+      
         <div class="dealer__background">
           <img src="${background_image}" alt="Background Image">
         </div>
