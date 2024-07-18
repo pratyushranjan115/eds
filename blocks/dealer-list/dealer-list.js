@@ -1,7 +1,6 @@
 export default function decorate(block) {
-  // Function to get dealer data from a block
   function getDealerData(dealerBlock) {
-    // Extract elements from the block
+    // Extract elements from the dealer block
     const [backgroundImageContainer, titleEl, linkEl] = dealerBlock.children;
 
     // Extract image, title, and link data
@@ -13,7 +12,6 @@ export default function decorate(block) {
     return { imageSrc, title, link };
   }
 
-  // Function to create a dealer card
   function createDealerCard({ imageSrc, title, link }) {
     const dealerCard = document.createElement('div');
     dealerCard.className = 'dealer-card';
@@ -29,7 +27,6 @@ export default function decorate(block) {
     return dealerCard;
   }
 
-  // Function to render a list of dealer cards
   function renderDealerList(dealers) {
     const dealerCards = dealers.map(dealerData => createDealerCard(dealerData));
     const dealerList = document.createElement('div');
@@ -38,28 +35,12 @@ export default function decorate(block) {
     return dealerList;
   }
 
-  // Check if there's dealer list data in the dataset attribute
+  // Get dealer data from the block
   const dealerListData = block.dataset.dealerListData;
-  if (dealerListData) {
-    try {
-      // Parse the dealer list data
-      const dealers = JSON.parse(dealerListData);
-      console.log('Parsed Dealers:', dealers);
+  const dealers = JSON.parse(dealerListData);
 
-      // Clear the block and append the new dealer list
-      block.innerHTML = '';
-      const dealerList = renderDealerList(dealers);
-      block.appendChild(dealerList);
-    } catch (error) {
-      console.error('Error parsing dealer list data:', error);
-    }
-  } else {
-    // If no dealer list data, use the block's children as dealer data
-    const dealerData = getDealerData(block);
-
-    // Clear the block and append the new dealer card
-    block.innerHTML = '';
-    const dealerCard = createDealerCard(dealerData);
-    block.appendChild(dealerCard);
-  }
+  // Clear the block and append the new dealer list
+  block.innerHTML = '';
+  const dealerList = renderDealerList(dealers);
+  block.appendChild(dealerList);
 }
