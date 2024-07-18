@@ -1,24 +1,19 @@
 export default function decorate(block) {
   function getDealerData(dealerBlock) {
     // Extract elements from the dealer block
-    const backgroundImageContainer = dealerBlock.querySelector('.background-image');
-    const titleEl = dealerBlock.querySelector('.title');
-    const linkEl = dealerBlock.querySelector('.link');
-
-    // Logging to debug the elements found
-    console.log('Background Image Container:', backgroundImageContainer);
-    console.log('Title Element:', titleEl);
-    console.log('Link Element:', linkEl);
-
+    const [backgroundImageContainer, titleEl, linkEl] = dealerBlock.children;
+    
+    console.log('dealerBlock children:', dealerBlock.children);
+    
     // Extract image, title, and link data
     const backgroundImgEl = backgroundImageContainer?.querySelector('img');
     const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
     const title = titleEl?.textContent?.trim() || 'Default Title';
     const link = linkEl?.querySelector('a')?.href || '#';
-
+    
     return { imageSrc, title, link };
   }
-
+  
   function createDealerCard({ imageSrc, title, link }) {
     const dealerCard = document.createElement('div');
     dealerCard.className = 'dealer-card';
@@ -28,23 +23,21 @@ export default function decorate(block) {
         <h2>${title}</h2>
       </div>
     `;
-
+    
     dealerCard.addEventListener('click', () => {
       window.location.href = link;
     });
-
+    
     return dealerCard;
   }
-
+  
   // Process each dealer within the dealer-list block
   const dealerBlocks = [...block.children];
-
-  console.log('Dealer Blocks:', dealerBlocks);
-
-  // Clear the block
-  block.innerHTML = '';
-
-  // Process each dealer block
+  
+  console.log('dealerBlocks:', dealerBlocks);
+  
+  block.innerHTML = '';  // Clear the block
+  
   dealerBlocks.forEach(dealerBlock => {
     const dealerData = getDealerData(dealerBlock);
     const dealerCard = createDealerCard(dealerData);
