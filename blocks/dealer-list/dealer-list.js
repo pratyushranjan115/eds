@@ -38,19 +38,16 @@ export default function decorate(block) {
 
   // Process each dealer within the dealer-list block
   const dealerBlocks = [...block.children];
-  
+
   console.log('Dealer Blocks:', dealerBlocks);
 
-  // Ensure we are clearing and re-adding to the correct element
-  const originalBlock = block.cloneNode(true);
-  block.innerHTML = '';  // Clear the block
+  // Clear the block
+  block.innerHTML = '';
 
+  // Process each dealer block
   dealerBlocks.forEach(dealerBlock => {
     const dealerData = getDealerData(dealerBlock);
     const dealerCard = createDealerCard(dealerData);
     block.appendChild(dealerCard);
   });
-
-  // Re-attach the original block structure for AEM editor visibility
-  document.body.appendChild(originalBlock);
 }
