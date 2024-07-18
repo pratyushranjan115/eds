@@ -3,7 +3,7 @@ export default function decorate(block) {
     const { background_image, title } = dealerData;
 
     return `
-      
+      <div class="dealer" data-href="${dealerData.href}">
         <div class="dealer__background">
           <img src="${background_image}" alt="Background Image">
         </div>
@@ -25,7 +25,7 @@ export default function decorate(block) {
 
   function handleClick(event) {
     const dealerElement = event.currentTarget;
-    const href = dealerElement.getAttribute('data-href');
+    const href = dealerElement.getAttribute('href');
     if (href) {
       window.location.href = href;
     }
