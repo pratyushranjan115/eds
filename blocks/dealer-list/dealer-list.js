@@ -1,7 +1,7 @@
 export default function decorate(block) {
   function getDealerData(dealerBlock) {
     
-    const [backgroundImageContainer, titleEl, linkEl] = dealerBlock.children;
+    const [backgroundImageContainer, titleEl, linkEl] = block.children;
 
     
     const backgroundImgEl = backgroundImageContainer?.querySelector('img');
