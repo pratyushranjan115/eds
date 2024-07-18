@@ -27,13 +27,13 @@ export default function decorate(block) {
     return dealerCard;
   }
 
-  function renderDealerList(dealers) {
-    const dealerCards = dealers.map(dealerData => createDealerCard(dealerData));
-    const dealerList = document.createElement('div');
-    dealerList.className = 'dealer-list';
-    dealerCards.forEach(card => dealerList.appendChild(card));
-    return dealerList;
-  }
+  // function renderDealerList(dealers) {
+  //   const dealerCards = dealers.map(dealerData => createDealerCard(dealerData));
+  //   const dealerList = document.createElement('div');
+  //   dealerList.className = 'dealer-list';
+  //   dealerCards.forEach(card => dealerList.appendChild(card));
+  //   return dealerList;
+  // }
 
   // Get dealer data from the block
   const dealerListData = block.dataset.dealerListData;
