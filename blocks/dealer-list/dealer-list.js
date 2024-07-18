@@ -35,7 +35,7 @@
     const dealerCard = createDealerCard();
   
     // Clear the block and append the new dealer card
-    block.innerHTML = '';
+    delear.innerHTML = '';
     dealer.appendChild(dealerCard);
     setupEventListener(dealerCard);
   }
