@@ -4,7 +4,7 @@ export default function decorate(block) {
     const backgroundImageContainer = dealerBlock.querySelector('.background-image');
     const titleEl = dealerBlock.querySelector('.title');
     const linkEl = dealerBlock.querySelector('.link');
-    
+
     // Logging to debug the elements found
     console.log('Background Image Container:', backgroundImageContainer);
     console.log('Title Element:', titleEl);
@@ -37,10 +37,12 @@ export default function decorate(block) {
   }
 
   // Process each dealer within the dealer-list block
-  const dealerBlocks = [...block.children].filter(child => child.classList.contains('dealer'));
+  const dealerBlocks = [...block.children];
   
   console.log('Dealer Blocks:', dealerBlocks);
 
+  // Ensure we are clearing and re-adding to the correct element
+  const originalBlock = block.cloneNode(true);
   block.innerHTML = '';  // Clear the block
 
   dealerBlocks.forEach(dealerBlock => {
@@ -48,4 +50,7 @@ export default function decorate(block) {
     const dealerCard = createDealerCard(dealerData);
     block.appendChild(dealerCard);
   });
+
+  // Re-attach the original block structure for AEM editor visibility
+  document.body.appendChild(originalBlock);
 }
