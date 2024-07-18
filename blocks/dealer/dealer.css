@@ -1,4 +1,3 @@
-/* Main container for the dealer card */
 .dealer-card {
   display: flex;
   flex-direction: column;
@@ -6,26 +5,19 @@
   justify-content: center;
   cursor: pointer;
   border: 1px solid #ccc;
-  padding: 12px; /* Reduced padding */
+  padding: 16px;
   transition: box-shadow 0.3s ease;
   text-align: center;
   background: #fff;
-  max-width: 250px; /* Reduced max-width */
+  max-width: 300px;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-/* Hover effect for the dealer card */
 .dealer-card:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Reduced shadow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Image container */
-.dealer__image {
-  margin-bottom: 8px; /* Reduced margin */
-}
-
-/* Content container for the dealer card */
 .dealer-content {
   display: flex;
   flex-direction: column;
@@ -33,94 +25,22 @@
   justify-content: center;
 }
 
-/* Title styling */
 .dealer-content h2 {
-  margin: 8px 0 0; /* Reduced margin */
-  font-size: 1rem; /* Reduced font-size */
+  margin: 10px 0 0;
+  font-size: 1.2rem;
   color: #333;
   word-break: break-word;
   overflow-wrap: break-word;
-  line-height: 1.2; /* Reduced line-height */
+  line-height: 1.3;
   text-align: center;
   max-width: 100%;
 }
 
-/* Image styling */
 .dealer-content img {
-  width: 60px; /* Reduced width */
-  height: 60px; /* Reduced height */
-  border-radius: 50%; /* Circular image */
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
   object-fit: cover;
-  border: 2px solid #333; /* Thinner border */
-  margin-bottom: 8px; /* Reduced margin */
-}
-
-/* Popup styles */
-.popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-/* Popup content styles */
-.popup-content {
-  background: #fff;
-  padding: 15px; /* Reduced padding */
-  border-radius: 5px;
-  width: 70%; /* Reduced width */
-  max-width: 500px; /* Reduced max-width */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Reduced shadow */
-  position: relative;
-}
-
-/* Close button styling */
-.close-btn {
-  position: absolute;
-  top: 8px; /* Adjusted position */
-  right: 8px; /* Adjusted position */
-  font-size: 1.2rem; /* Reduced font-size */
-  cursor: pointer;
-}
-
-/* Tab styles */
-.tab {
-  margin-bottom: 15px; /* Reduced margin */
-}
-
-/* Tab image styles */
-.tab__image {
-  margin-bottom: 8px; /* Reduced margin */
-}
-
-/* Tab label styles */
-.tab h3 {
-  margin: 0;
-  font-size: 1rem; /* Reduced font-size */
-  color: #333;
-}
-
-/* Tab text styles */
-.tab p {
-  margin: 8px 0; /* Reduced margin */
-  font-size: 0.8rem; /* Reduced font-size */
-  color: #666;
-}
-
-/* Link styles */
-.tab a {
-  display: inline-block;
-  margin-top: 5px;
-  color: #007BFF;
-  text-decoration: none;
-}
-
-.tab a:hover {
-  text-decoration: underline;
+  border: 3px solid #333;
+  margin-bottom: 10px;
 }
