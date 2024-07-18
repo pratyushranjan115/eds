@@ -15,19 +15,19 @@ export default function decorate(block) {
   }
   
   function createDealerCard({ imageSrc, title, link }) {
-    const dealerCard = document.createElement('li');
+    const dealerCard = document.createElement('div');
+    dealerCard.className = 'dealer-card';
     dealerCard.innerHTML = `
-      <a href="${link}">
-        <div class="d-grid-item">
-          <div class="d-grid-item-icon">
-            <img src="${imageSrc}" alt="${title}" title="${title}">
-          </div>
-          <div class="d-grid-item-title">
-            ${title}
-          </div>
-        </div>
-      </a>
+      <div class="dealer-content">
+        <img src="${imageSrc}" alt="${title}">
+        <h2>${title}</h2>
+      </div>
     `;
+    
+    dealerCard.addEventListener('click', () => {
+      window.location.href = link;
+    });
+    
     return dealerCard;
   }
   
@@ -38,22 +38,9 @@ export default function decorate(block) {
   
   block.innerHTML = '';  // Clear the block
   
-  const rowDiv = document.createElement('div');
-  rowDiv.className = 'row';
-  
-  const colDiv = document.createElement('div');
-  colDiv.className = 'col-sm-12';
-  
-  const ul = document.createElement('ul');
-  ul.className = 'dealer-menu';
-  
   dealerBlocks.forEach(dealerBlock => {
     const dealerData = getDealerData(dealerBlock);
     const dealerCard = createDealerCard(dealerData);
-    ul.appendChild(dealerCard);
+    block.appendChild(dealerCard);
   });
-  
-  colDiv.appendChild(ul);
-  rowDiv.appendChild(colDiv);
-  block.appendChild(rowDiv);
 }
