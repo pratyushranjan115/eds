@@ -1,42 +1,46 @@
 export default function decorate(block) {
-  function renderDealer(dealerData) {
-    const { background_image, title } = dealerData;
+  function getDealerData(dealerBlock) {
+    // Extract elements from the dealer block
+    const [backgroundImageContainer, titleEl, linkEl] = dealerBlock.children;
 
-    return `
-      <div class="dealer" data-href="${dealerData.href}">
-        <div class="dealer__background">
-          <img src="${background_image}" alt="Background Image">
-        </div>
-        
+    // Extract image, title, and link data
+    const backgroundImgEl = backgroundImageContainer?.querySelector('img');
+    const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
+    const title = titleEl?.textContent?.trim() || 'Default Title';
+    const link = linkEl?.querySelector('a')?.href || '#';
+
+    return { imageSrc, title, link };
+  }
+
+  function createDealerCard({ imageSrc, title, link }) {
+    const dealerCard = document.createElement('div');
+    dealerCard.className = 'dealer-card';
+    dealerCard.innerHTML = `
+      <div class="dealer-content">
+        <img src="${imageSrc}" alt="${title}">
+        <h2>${title}</h2>
       </div>
     `;
+    dealerCard.addEventListener('click', () => {
+      window.location.href = link;
+    });
+    return dealerCard;
   }
 
   function renderDealerList(dealers) {
-    const dealersHtml = dealers.map((dealerData) => renderDealer(dealerData));
-    return `
-      <div class="dealer-list">
-        ${dealersHtml.join('')}
-      </div>
-    `;
+    const dealerCards = dealers.map(dealerData => createDealerCard(dealerData));
+    const dealerList = document.createElement('div');
+    dealerList.className = 'dealer-list';
+    dealerCards.forEach(card => dealerList.appendChild(card));
+    return dealerList;
   }
 
-  function handleClick(event) {
-    const dealerElement = event.currentTarget;
-    const href = dealerElement.getAttribute('data-href');
-    if (href) {
-      window.location.href = href;
-    }
-  }
-
+  // Get dealer data from the block
   const dealerListData = block.dataset.dealerListData;
   const dealers = JSON.parse(dealerListData);
 
-  block.innerHTML = renderDealerList(dealers);
-
-  // Attach click event listener to each dealer
-  const dealerElements = block.querySelectorAll('.dealer');
-  dealerElements.forEach(dealer => {
-    dealer.addEventListener('click', handleClick);
-  });
+  // Clear the block and append the new dealer list
+  block.innerHTML = '';
+  const dealerList = renderDealerList(dealers);
+  block.appendChild(dealerList);
 }
