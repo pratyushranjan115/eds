@@ -35,14 +35,20 @@
       "teaser",
       "btn",
       "dealer",
-      "dealers",
-      "tile"
+      "tile",
+      "dealer-list"
     ]
   },
   {
     "id": "cards",
     "components": [
       "card"
+    ]
+  },
+  {
+    "id": "dealer-list",
+    "components": [
+      "dealer"
     ]
   }
  
