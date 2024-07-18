@@ -1,9 +1,9 @@
 export default function decorate(block) {
   function renderDealer(dealerData) {
-    const { background_image, title, href } = dealerData;
+    const { background_image, title } = dealerData;
 
     return `
-      <div class="dealer" data-href="${href}">
+      <div class="dealer" data-href="${dealerData.href}">
         <div class="dealer__background">
           <img src="${background_image}" alt="Background Image">
         </div>
