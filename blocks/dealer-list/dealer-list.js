@@ -33,12 +33,11 @@ export default function decorate(block) {
     return dealerCard;
   }
 
+  // Clear existing content in block
+  block.innerHTML = '';
+
   // Process each dealer within the dealer-list block
-  const dealerBlocks = [...block.children];
-
-  block.innerHTML = '';  // Clear the block
-
-  dealerBlocks.forEach(dealerBlock => {
+  [...block.children].forEach(dealerBlock => {
     const dealerData = getDealerData(dealerBlock);
     const dealerCard = createDealerCard(dealerData);
     block.appendChild(dealerCard);
