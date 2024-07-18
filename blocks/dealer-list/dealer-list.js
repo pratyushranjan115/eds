@@ -24,8 +24,24 @@ export default function decorate(block) {
     `;
   }
 
+  function handleDealerClick(event) {
+    const dealerLink = event.currentTarget.querySelector('.dealer__link');
+    if (dealerLink) {
+      const href = dealerLink.getAttribute('href');
+      if (href) {
+        window.location.href = href; // Redirect to the specified href link
+      }
+    }
+  }
+
   const dealerListData = block.dataset.dealerListData;
   const dealers = JSON.parse(dealerListData);
 
   block.innerHTML = renderDealerList(dealers);
+
+  // Add event listener to handle clicks on dealer components
+  const dealerElements = block.querySelectorAll('.dealer');
+  dealerElements.forEach((dealerElement) => {
+    dealerElement.addEventListener('click', handleDealerClick);
+  });
 }
