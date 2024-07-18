@@ -1,7 +1,9 @@
 export default function decorate(block) {
   function getDealerData(dealerBlock) {
     // Extract elements from the dealer block
-    const [backgroundImageContainer, titleEl, linkEl] = dealerBlock.children;
+    const backgroundImageContainer = dealerBlock.querySelector('.background-image');
+    const titleEl = dealerBlock.querySelector('.title');
+    const linkEl = dealerBlock.querySelector('.link');
     
     console.log('dealerBlock children:', dealerBlock.children);
     
@@ -32,7 +34,7 @@ export default function decorate(block) {
   }
   
   // Process each dealer within the dealer-list block
-  const dealerBlocks = [...block.children];
+  const dealerBlocks = [...block.querySelectorAll('.dealer')];
   
   console.log('dealerBlocks:', dealerBlocks);
   
