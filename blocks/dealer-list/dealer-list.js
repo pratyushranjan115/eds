@@ -9,15 +9,23 @@ console.log(block);
    console.log(dealerListEl);
   
   const dealersHTML = dealerListEl.map((dealer) => {
-    const backgroundImage = dealer.querySelector('img')?.src || '';
+    const image = dealer.querySelector('picture');
+    
     const title = dealer.querySelector('p')?.textContent?.trim() || '';
     const href = dealer.querySelector('a')?.href || '';
+
+    if (image) {
+      const img = image.querySelector('img');
+      img.removeAttribute('width');
+      img.removeAttribute('height');
+  }
+
     return `
     <li>
     <a href=${href} >
         <div class="d-grid-item">
             <div class="d-grid-item-icon">
-                    <img src=${backgroundImage} alt="" title="New Finance Journey">
+                    ${(image) ? `<div class="feature__image">${image.outerHTML}</div>` : ''}
             </div>
 
             <div class="d-grid-item-title">
