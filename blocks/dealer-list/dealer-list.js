@@ -5,52 +5,52 @@ export default function decorate(block) {
   console.log(block);
 
 
-  const [...dealerListEl] = block.children;
-  console.log(dealerListEl);
+//   const [...dealerListEl] = block.children;
+//   console.log(dealerListEl);
 
-  const dealersHTML = dealerListEl.map((dealer) => {
-    const image = dealer.querySelector('picture');
+//   const dealersHTML = dealerListEl.map((dealer) => {
+//     const image = dealer.querySelector('picture');
 
-    const title = dealer.querySelector('p')?.textContent?.trim() || '';
-    const href = dealer.querySelector('a')?.href || '';
+//     const title = dealer.querySelector('p')?.textContent?.trim() || '';
+//     const href = dealer.querySelector('a')?.href || '';
 
-      if (image) {
-        // const img = image.querySelector('img');
-        // img.removeAttribute('width');
-        // img.removeAttribute('height');
-        console.log()
-    }
+//       if (image) {
+//         // const img = image.querySelector('img');
+//         // img.removeAttribute('width');
+//         // img.removeAttribute('height');
+//         console.log()
+//     }
 
-    return `
-    <li>
-    <a href=${href} >
-        <div class="d-grid-item">
-            <div class="d-grid-item-icon">
-                    ${(image) ? `<div class="feature__image">${image.outerHTML}</div>` : ''}
-            </div>
+//     return `
+//     <li>
+//     <a href=${href} >
+//         <div class="d-grid-item">
+//             <div class="d-grid-item-icon">
+//                     ${(image) ? `<div class="feature__image">${image.outerHTML}</div>` : ''}
+//             </div>
 
-            <div class="d-grid-item-title">
-                <h2>${title}</h2>
-            </div>
-        </div>
-    </a>
-</li>
-  `;
-  }).join('');
-   console.log(dealersHTML);
+//             <div class="d-grid-item-title">
+//                 <h2>${title}</h2>
+//             </div>
+//         </div>
+//     </a>
+// </li>
+//   `;
+//   }).join('');
+//    console.log(dealersHTML);
 
-  const newHtml = `<div class="row">
-    <div class="col-sm-12">
-        <ul class="dealer-menu">
-               ${dealersHTML}
-        </ul>
-    </div>
-</div>
-</div>`
-  block.innerHTML = '';
-  block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(newHtml));
-  // block.appendChild(dealersHTML)
- console.log(block);
+//   const newHtml = `<div class="row">
+//     <div class="col-sm-12">
+//         <ul class="dealer-menu">
+//                ${dealersHTML}
+//         </ul>
+//     </div>
+// </div>
+// </div>`
+//   block.innerHTML = '';
+//   block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(newHtml));
+//   // block.appendChild(dealersHTML)
+//  console.log(block);
 
 
 
