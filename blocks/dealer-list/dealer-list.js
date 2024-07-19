@@ -1,7 +1,7 @@
 export default function decorate(block) {
 
 
-console.log(block.children[0].innerHTML);
+console.log(block);
 
 
    const dealerElements = Array.from(block.children);
@@ -63,7 +63,7 @@ console.log(block.children[0].innerHTML);
   //   dealerElement.innerHTML = dealerInnerElement.innerHTML;
   // });
 
-    block.innerHTML = `<div class="row">
+    block.innerHTML = `<div class="row dealer-list block" data-block-name="dealer-list" data-block-status="loaded">
     <div class="col-sm-12">
         <ul class="dealer-menu">
                ${dealersHTML}
