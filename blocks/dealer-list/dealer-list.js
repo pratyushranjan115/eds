@@ -1,58 +1,75 @@
 import utility from '../../utility/utility.js';
 export default function decorate(block) {
 
+  function initImage(image, altTextEl) {
+    const img = image.querySelector('img');
+    img.removeAttribute('width');
+    img.removeAttribute('height');
+    const alt = altTextEl?.textContent?.trim() || 'image';
+    img.setAttribute('alt', alt);
+  }
+  
+  const cards = [...block.children]
+    .map((child) => {
+      const [
+        backgroundImageEl,
+        backgroundAltTextEl,
+        titleEl,
+        ctaLinkEl
+      ] = child.children;
+  
+      const backgroundImage = backgroundImageEl?.querySelector('picture');
+      if (backgroundImage) {
+        initImage(backgroundImage, backgroundAltTextEl);
+      }
+  
+     
+  
+      const title = titleEl?.textContent?.trim();
+      const primaryCta = ctaUtils.getLink(
+        ctaLinkEl,
+        '',
+        "__blank",
+        'primary__btn',
+      );
+      let ctaHtml = '';
+      if (primaryCta) {
+        ctaHtml = `
+          <div class="dealer__actions">
+            ${primaryCta ? primaryCta.outerHTML : ''}
+          </div>
+        `;
+      }
+      if (title) {
+        title.removeAttribute('id');
+        title.classList.add('dealer__title');
+      }
+      child.innerHTML = '';
+      child.insertAdjacentHTML(
+        'beforeend',
+        utility.sanitizeHtml(`
+          ${backgroundImage ? `<div class="dealer__backgroundImage">${backgroundImage.outerHTML}</div>` : ''}
+          <div class="dealer__content">
+            <div class="dealer__info">
+             
+              ${(title) ? `${title.outerHTML}` : ''}
+             
+            </div>
+            ${ctaHtml}
+          </div>
+          
+        `),
+      );
+      child.classList.add('dealer__card');
+      return child.outerHTML;
+    })
+    .join('');
+  block.innerHTML = '';
+  block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(cards));
+
 
   console.log(block);
 
 
-//   const [...dealerListEl] = block.children;
-//   console.log(dealerListEl);
 
-//   const dealersHTML = dealerListEl.map((dealer) => {
-//     const image = dealer.querySelector('picture');
-
-//     const title = dealer.querySelector('p')?.textContent?.trim() || '';
-//     const href = dealer.querySelector('a')?.href || '';
-
-//       if (image) {
-//         // const img = image.querySelector('img');
-//         // img.removeAttribute('width');
-//         // img.removeAttribute('height');
-//         console.log()
-//     }
-
-//     return `
-//     <li>
-//     <a href=${href} >
-//         <div class="d-grid-item">
-//             <div class="d-grid-item-icon">
-//                     ${(image) ? `<div class="feature__image">${image.outerHTML}</div>` : ''}
-//             </div>
-
-//             <div class="d-grid-item-title">
-//                 <h2>${title}</h2>
-//             </div>
-//         </div>
-//     </a>
-// </li>
-//   `;
-//   }).join('');
-//    console.log(dealersHTML);
-
-//   const newHtml = `<div class="row">
-//     <div class="col-sm-12">
-//         <ul class="dealer-menu">
-//                ${dealersHTML}
-//         </ul>
-//     </div>
-// </div>
-// </div>`
-//   block.innerHTML = '';
-//   block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(newHtml));
-//   // block.appendChild(dealersHTML)
-//  console.log(block);
-
-
-
-  // Any additional logic (like slider initialization) can be added here
 }
