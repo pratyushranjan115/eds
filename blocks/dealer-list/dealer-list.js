@@ -1,46 +1,55 @@
 import utility from '../../utility/utility.js';
 
 export default function decorate(block) {
-  console.log(block);
+  function getDealerData(block) {
+    const dealerListEl = [...block.children];
+    return dealerListEl.map((dealer) => {
+      const image = dealer.querySelector('picture');
+      const title = dealer.querySelector('p')?.textContent?.trim() || '';
+      const href = dealer.querySelector('a')?.href || '';
 
-  const dealerListEl = [...block.children];
-  console.log(dealerListEl);
+      if (image) {
+        const img = image.querySelector('img');
+        img.removeAttribute('width');
+        img.removeAttribute('height');
+      }
 
-  const dealersHTML = dealerListEl.map((dealer) => {
-    const image = dealer.querySelector('picture');
-    const title = dealer.querySelector('p')?.textContent?.trim() || '';
-    const href = dealer.querySelector('a')?.href || '';
+      return {
+        imageHTML: image ? image.outerHTML : '',
+        title,
+        href,
+      };
+    });
+  }
 
-    const imageHTML = image ? image.outerHTML : '';
+  const dealersData = getDealerData(block);
 
-    return `
-      <li>
-        <a href=${href}>
-          <div class="d-grid-item">
-            <div class="d-grid-item-icon">
-              ${imageHTML ? `<div class="feature__image">${imageHTML}</div>` : ''}
-            </div>
-            <div class="d-grid-item-title">
-              <h2>${title}</h2>
-            </div>
+  const dealersHTML = dealersData.map((dealer) => `
+    <li>
+      <a href="${dealer.href}">
+        <div class="d-grid-item">
+          <div class="d-grid-item-icon">
+            ${dealer.imageHTML ? `<div class="feature__image">${dealer.imageHTML}</div>` : ''}
           </div>
-        </a>
-      </li>
-    `;
-  }).join('');
-
-  const newHtml = `
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 col-sm-8 col-sm-10">
-          ${dealersHTML}
+          <div class="d-grid-item-title">
+            <h2>${dealer.title}</h2>
+          </div>
         </div>
+      </a>
+    </li>
+  `).join('');
+
+  const newHtml = utility.sanitizeHtml(`
+    <div class="row">
+      <div class="col-sm-12">
+        <ul class="dealer-menu">
+          ${dealersHTML}
+        </ul>
       </div>
     </div>
-  `;
+  `);
 
-  block.innerHTML = '';
-  block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(newHtml));
+  block.innerHTML = newHtml;
 
   // Any additional logic (like slider initialization) can be added here
 }
