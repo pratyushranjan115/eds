@@ -63,7 +63,7 @@ console.log(block);
   //   dealerElement.innerHTML = dealerInnerElement.innerHTML;
   // });
 
-    block.innerHTML = `<div class="row dealer-list block" data-block-name="dealer-list" data-block-status="loaded">
+    block.innerHTML = `<div class="row">
     <div class="col-sm-12">
         <ul class="dealer-menu">
                ${dealersHTML}
