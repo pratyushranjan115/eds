@@ -45,8 +45,8 @@ export default function decorate(block) {
     dealerElement.innerHTML = dealerInnerElement.innerHTML;
   });
 
-  block.innerHTML = '';
-  block.appendChild(dealerListElement);
+  // block.innerHTML = '';
+  // block.appendChild(dealerListElement);
 
   // Any additional logic (like slider initialization) can be added here
 }
