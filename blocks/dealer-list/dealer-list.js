@@ -32,7 +32,7 @@ export default function decorate(block) {
       const primaryCta = ctaUtils.getLink(
         ctaLinkEl,
         '',
-        "__blank",
+        '__blank',
         'primary__btn',
       );
       let ctaHtml = '';
@@ -40,26 +40,34 @@ export default function decorate(block) {
         ctaHtml = `
           <div class="dealer__actions">
             ${primaryCta ? primaryCta.outerHTML : ''}
+            
           </div>
         `;
       }
       if (title) {
-        title.classList.add('dealer__title');
+        
+        // title.classList.add('dealer__title');
+        console.log(title);
+
       }
+      console.log(primaryCta);
       child.innerHTML = '';
+      const link = primaryCta.href;
+      console.log(link);
       child.insertAdjacentHTML(
         'beforeend',
         utility.sanitizeHtml(`
+          <a href=${link}>
           ${backgroundImage ? `<div class="dealer__backgroundImage">${backgroundImage.outerHTML}</div>` : ''}
           <div class="dealer__content">
             <div class="dealer__info">
              
-              ${(title) ? `${title.outerHTML}` : ''}
+            ${title ? `<div class="dealer__title"><p>${title}</p></div>` : ''}
              
             </div>
-            ${ctaHtml}
+           
           </div>
-          
+          </a>
         `),
       );
       child.classList.add('dealer__card');
