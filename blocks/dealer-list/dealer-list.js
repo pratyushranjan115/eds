@@ -56,16 +56,14 @@ export default function decorate(block) {
       child.insertAdjacentHTML(
         'beforeend',
         utility.sanitizeHtml(`
-        <div class="dealer">
-        ${backgroundImage ? `<div class="dealer__backgroundImage">${backgroundImage.outerHTML}</div>` : ''}
-        <div class="dealer__content">
-          ${title ? `<div class="dealer__title"><h2>${title}</h2></div>` : ''}
-          <div class="dealer__info">
-            <!-- Other dealer content goes here -->
+          <a href=${link}>
+          ${backgroundImage ? `<div class="dealer__backgroundImage">${backgroundImage.outerHTML}</div>` : ''}
+          <div class="dealer__content">
+            <div class="dealer__info">
+            ${title ? `<div class="dealer__title"><h2>${title}</h2></div>` : ''}
+            </div>
           </div>
-          <a href="${link}" class="dealer__link" style="display:none;"></a>
-        </div>
-      </div>
+          </a>
         `),
       );
       child.classList.add('dealer__card');
