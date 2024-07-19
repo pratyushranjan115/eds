@@ -1,8 +1,8 @@
 export default function decorate(block) {
   function getDealerData(dealerElement) {
-    const backgroundImage = dealerElement.querySelector('[name="background_image"]')?.src || '';
-    const title = dealerElement.querySelector('[name="title"]')?.textContent?.trim() || '';
-    const href = dealerElement.querySelector('[name="href"]')?.href || '';
+    const backgroundImage = dealerElement.querySelector('[data-name="background_image"]')?.dataset.src || '';
+    const title = dealerElement.querySelector('[data-name="title"]')?.textContent?.trim() || '';
+    const href = dealerElement.querySelector('[data-name="href"]')?.dataset.href || '';
 
     return {
       backgroundImage,
@@ -23,7 +23,7 @@ export default function decorate(block) {
       </div>
       <div class="dealer__content">
         <h3>${title}</h3>
-        <a href="${href}" class="dealer__link"></a>
+        <a href="${href}" class="dealer__link">Link</a>
       </div>
     `;
     return dealerHTML;
@@ -41,9 +41,11 @@ export default function decorate(block) {
     return dealerListElement;
   }
 
+  // Extract dealer data from block's child elements
   const dealerElements = block.querySelectorAll('.dealer');
   const dealers = Array.from(dealerElements).map(getDealerData);
-  
+
+  // Render the dealer list
   const dealerListElement = renderDealerList(dealers);
   block.innerHTML = '';
   block.appendChild(dealerListElement);
