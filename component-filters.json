@@ -44,10 +44,14 @@
   {
     "id": "cards",
     "components": [
-      "card",
+      "card"
+    ]
+  },
+  {
+    "id": "dealer-list",
+    "components": [
       "dealer"
     ]
   }
- 
  
 ]
