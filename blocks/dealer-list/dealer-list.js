@@ -1,5 +1,5 @@
 export default function decorate(block) {
-  function renderDealer(dealerData) {
+  function renderDealer() {
     const { background_image, title, href } = dealerData;
 
     return `
