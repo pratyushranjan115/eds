@@ -1,28 +1,52 @@
 export default function decorate(block) {
-  function renderDealer(dealerData) {
-    const { background_image, title, href } = dealerData;
+  const dealerElements = Array.from(block.children);
+  
+  const dealers = dealerElements.map(dealer => {
+    const backgroundImage = dealer.querySelector('[data-name="background_image"]')?.dataset.src || '';
+    const title = dealer.querySelector('[data-name="title"]')?.textContent?.trim() || '';
+    const href = dealer.querySelector('[data-name="href"]')?.dataset.href || '';
 
+    return { backgroundImage, title, href };
+  });
+
+  function renderDealer({ backgroundImage, title, href }) {
     return `
       <div class="dealer">
         <div class="dealer__background">
-          <img src="${background_image}" alt="Background Image">
+          <img src="${backgroundImage}" alt="Background Image">
         </div>
-       
+        <div class="dealer__content">
+          <h3>${title}</h3>
+          <a href="${href}" class="dealer__link">Link</a>
+        </div>
       </div>
     `;
   }
 
-  function renderDealerList(dealers) {
-    const dealersHtml = dealers.map((dealerData) => renderDealer(dealerData));
-    return `
-      <div class="dealer-list">
-        ${dealersHtml.join('')}
-      </div>
-    `;
-  }
+  const dealersHtml = dealers.map(renderDealer).join('');
+  
+  const dealerListHtml = `
+    <div class="dealer-list">
+      ${dealersHtml}
+    </div>
+  `;
+  
+  const parser = new DOMParser();
+  const doc = parser.parseFromString(dealerListHtml, 'text/html');
+  const dealerListElement = doc.body.firstElementChild;
+  
+  // Maintain the dialog box structure
+  dealerElements.forEach((dealerElement, index) => {
+    const dealerData = dealers[index];
+    const dealerHtml = renderDealer(dealerData);
+    const dealerDoc = parser.parseFromString(dealerHtml, 'text/html');
+    const dealerInnerElement = dealerDoc.body.firstElementChild;
+    
+    dealerElement.innerHTML = dealerInnerElement.innerHTML;
+  });
 
-  const dealerListData = block.dataset.dealerListData;
-  const dealers = JSON.parse(dealerListData);
+  block.innerHTML = '';
+  block.appendChild(dealerListElement);
 
-  block.innerHTML = renderDealerList(dealers);
+  // Any additional logic (like slider initialization) can be added here
 }
