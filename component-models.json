@@ -396,11 +396,58 @@
       },
       {
         "component": "text-input",
-        "label": "Hidden text field",
+        "label": "Popup Tiltle  ",
+        "name": "popup-text",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image_tile1",
+        "label": "Tile 1 Image ",
+        "multi": false,
+        "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "text-input",
+        "label": "Tile 1 Tiltle  ",
         "name": "hidden-text",
         "valueType": "string",
         "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "href_tile1",
+        "value": "",
+        "label": "Tile 1 Link",
+        "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image_tile2",
+        "label": "Tile 2 Image ",
+        "multi": false,
+        "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "text-input",
+        "label": "Tile 2 Tiltle  ",
+        "name": "hidden-tile2",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "href_tile2",
+        "value": "",
+        "label": "Tile 2 Link",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       }
+
     ] 
   },
   {
