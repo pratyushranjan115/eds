@@ -18,7 +18,7 @@ export default function decorate(block) {
         titleEl,
         ctaLinkEl
       ] = child.children;
-      console.log(child.children);
+      
   
       const backgroundImage = backgroundImageEl?.querySelector('picture');
       if (backgroundImage) {
@@ -40,14 +40,13 @@ export default function decorate(block) {
         ctaHtml = `
           <div class="dealer__actions">
             ${primaryCta ? primaryCta.outerHTML : ''}
-            
           </div>
         `;
       }
       if (title) {
         
         // title.classList.add('dealer__title');
-        console.log(title);
+       
 
       }
       console.log(primaryCta);
@@ -57,14 +56,16 @@ export default function decorate(block) {
       child.insertAdjacentHTML(
         'beforeend',
         utility.sanitizeHtml(`
-          <a href=${link}>
-          ${backgroundImage ? `<div class="dealer__backgroundImage">${backgroundImage.outerHTML}</div>` : ''}
-          <div class="dealer__content">
-            <div class="dealer__info">
-            ${title ? `<div class="dealer__title"><h2>${title}</h2></div>` : ''}
-            </div>
+        <div class="dealer">
+        ${backgroundImage ? `<div class="dealer__backgroundImage">${backgroundImage.outerHTML}</div>` : ''}
+        <div class="dealer__content">
+          ${title ? `<div class="dealer__title"><h2>${title}</h2></div>` : ''}
+          <div class="dealer__info">
+            <!-- Other dealer content goes here -->
           </div>
-          </a>
+          <a href="${link}" class="dealer__link" style="display:none;"></a>
+        </div>
+      </div>
         `),
       );
       child.classList.add('dealer__card');
