@@ -39,16 +39,18 @@ export default function decorate(block) {
   }).join('');
    console.log(dealersHTML);
 
-//   const newHtml = `<div class="row">
-//     <div class="col-sm-12">
-//         <ul class="dealer-menu">
-//                ${dealersHTML}
-//         </ul>
-//     </div>
-// </div>
-// </div>`
-//   block.innerHTML = '';
-//   block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(newHtml));
+  const newHtml = `<div class="row">
+    <div class="col-sm-12">
+        <ul class="dealer-menu">
+               ${dealersHTML}
+        </ul>
+    </div>
+</div>
+</div>`
+  block.innerHTML = '';
+  block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(newHtml));
+  // block.appendChild(dealersHTML)
+ console.log(block);
 
 
 
