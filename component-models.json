@@ -370,7 +370,7 @@
       {
         "component": "text-input",
         "valueType": "string",
-        "name": "imageAlt",
+        "name": "altText",
         "label": "Image Alt Text",
         "multi":false
       },
