@@ -29,14 +29,14 @@ console.log(block);
 
  
 
-//     block.innerHTML = `<div class="row">
-//     <div class="col-sm-12">
-//         <ul class="dealer-menu">
-//                ${dealersHTML}
-//         </ul>
-//     </div>
-// </div>
-// </div>`;
+    block.innerHTML = `<div class="row">
+    <div class="col-sm-12">
+        <ul class="dealer-menu">
+               ${dealersHTML}
+        </ul>
+    </div>
+</div>
+</div>`;
   
 
   // Any additional logic (like slider initialization) can be added here
