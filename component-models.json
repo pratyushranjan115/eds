@@ -363,16 +363,9 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "image",
-        "label": "Image",
+        "name": "background_image",
+        "label": "Background Image",
         "multi": false
-      },
-      {
-        "component": "text-input",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Image Alt Text",
-        "multi":false
       },
       {
         "component": "text",
@@ -387,8 +380,21 @@
         "name": "href",
         "value": "",
         "label": "Link"
+      },
+      {
+        "component": "boolean",
+        "label": "Shall the text field be revealed?",
+        "name": "reveal",
+        "valueType": "boolean"
+      },
+      {
+        "component": "text-input",
+        "label": "Hidden text field",
+        "name": "hidden-text",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       }
-    ] 
+    ]
   },
   {
     "id": "tile",
