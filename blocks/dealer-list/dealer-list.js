@@ -37,7 +37,7 @@ console.log(block);
     </div>
 </div>
 </div>`;
-  // block.appendChild(dealerListElement);
+  
 
   // Any additional logic (like slider initialization) can be added here
 }
