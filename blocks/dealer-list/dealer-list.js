@@ -4,7 +4,7 @@ export default function decorate(block) {
 console.log(block);
 
 
-   const dealerElements = Array.from(block.children);
+   const dealerElements = Array.from(dealer.children);
   
   const dealersHTML = dealerElements.map(dealer => {
     const backgroundImage = dealer.querySelector('img')?.src || '';
@@ -19,7 +19,7 @@ console.log(block);
             </div>
 
             <div class="d-grid-item-title">
-                <p>${title}</p>
+                <h2>${title}</h2>
             </div>
         </div>
     </a>
