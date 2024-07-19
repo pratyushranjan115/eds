@@ -1,17 +1,31 @@
 export default function decorate(block) {
 
 
-console.log(block.outerHTML);
+console.log(block.children[0].innerHTML);
 
-  // const dealerElements = Array.from(block.children);
+
+   const dealerElements = Array.from(block.children);
   
-  // const dealers = dealerElements.map(dealer => {
-  //   const backgroundImage = dealer.querySelector('[data-name="background_image"]')?.dataset.src || '';
-  //   const title = dealer.querySelector('[data-name="title"]')?.textContent?.trim() || '';
-  //   const href = dealer.querySelector('[data-name="href"]')?.dataset.href || '';
+  const dealersHTML = dealerElements.map(dealer => {
+    const backgroundImage = dealer.querySelector('img')?.src || '';
+    const title = dealer.querySelector('p')?.textContent?.trim() || '';
+    const href = dealer.querySelector('a')?.href || '';
+    return `
+    <li>
+    <a href=${href} >
+        <div class="d-grid-item">
+            <div class="d-grid-item-icon">
+                    <img src=${backgroundImage} alt="" title="New Finance Journey">
+            </div>
 
-  //   return { backgroundImage, title, href };
-  // });
+            <div class="d-grid-item-title">
+                <p>${title}</p>
+            </div>
+        </div>
+    </a>
+</li>
+  `;
+  }).join('');
 
   // function renderDealer({ backgroundImage, title, href }) {
   //   return `
@@ -49,7 +63,14 @@ console.log(block.outerHTML);
   //   dealerElement.innerHTML = dealerInnerElement.innerHTML;
   // });
 
-  // block.innerHTML = '';
+    block.innerHTML = `<div class="row">
+    <div class="col-sm-12">
+        <ul class="dealer-menu">
+               ${dealersHTML}
+        </ul>
+    </div>
+</div>
+</div>`;
   // block.appendChild(dealerListElement);
 
   // Any additional logic (like slider initialization) can be added here
