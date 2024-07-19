@@ -1,4 +1,5 @@
 import utility from '../../utility/utility.js';
+import ctaUtils from '../../utility/ctaUtils.js';
 export default function decorate(block) {
 
   function initImage(image, altTextEl) {
@@ -17,6 +18,7 @@ export default function decorate(block) {
         titleEl,
         ctaLinkEl
       ] = child.children;
+      console.log(child.children);
   
       const backgroundImage = backgroundImageEl?.querySelector('picture');
       if (backgroundImage) {
@@ -26,6 +28,7 @@ export default function decorate(block) {
      
   
       const title = titleEl?.textContent?.trim();
+      console.log(title);
       const primaryCta = ctaUtils.getLink(
         ctaLinkEl,
         '',
@@ -41,7 +44,6 @@ export default function decorate(block) {
         `;
       }
       if (title) {
-        title.removeAttribute('id');
         title.classList.add('dealer__title');
       }
       child.innerHTML = '';
