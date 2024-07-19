@@ -368,11 +368,11 @@
         "multi": false
       },
       {
-        "component": "text",
+        "component": "text-input",
         "valueType": "string",
         "name": "imageAlt",
-        "value": "",
-        "label": "Image Alt Text"
+        "label": "Image Alt Text",
+        "multi":false
       },
       {
         "component": "text",
