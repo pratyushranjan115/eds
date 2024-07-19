@@ -4,7 +4,7 @@ export default function decorate(block) {
 console.log(block);
 
 
-   const dealerElements = Array.from(block.children);
+   const dealerElements = Array.from(dealer.children);
   
   const dealersHTML = dealerElements.map(dealer => {
     const backgroundImage = dealer.querySelector('img')?.src || '';
@@ -27,50 +27,16 @@ console.log(block);
   `;
   }).join('');
 
-  // function renderDealer({ backgroundImage, title, href }) {
-  //   return `
-  //     <div class="dealer">
-  //       <div class="dealer__background">
-  //         <img src="${backgroundImage}" alt="Background Image">
-  //       </div>
-  //       <div class="dealer__content">
-  //         <h3>${title}</h3>
-  //         <a href="${href}" class="dealer__link">Link</a>
-  //       </div>
-  //     </div>
-  //   `;
-  // }
+ 
 
-  // const dealersHtml = dealers.map(renderDealer).join('');
-  
-  // const dealerListHtml = `
-  //   <div class="dealer-list">
-  //     ${dealersHtml}
-  //   </div>
-  // `;
-  
-  // const parser = new DOMParser();
-  // const doc = parser.parseFromString(dealerListHtml, 'text/html');
-  // const dealerListElement = doc.body.firstElementChild;
-  
-  // // Maintain the dialog box structure
-  // dealerElements.forEach((dealerElement, index) => {
-  //   const dealerData = dealers[index];
-  //   const dealerHtml = renderDealer(dealerData);
-  //   const dealerDoc = parser.parseFromString(dealerHtml, 'text/html');
-  //   const dealerInnerElement = dealerDoc.body.firstElementChild;
-    
-  //   dealerElement.innerHTML = dealerInnerElement.innerHTML;
-  // });
-
-    block.innerHTML = `<div class="row">
-    <div class="col-sm-12">
-        <ul class="dealer-menu">
-               ${dealersHTML}
-        </ul>
-    </div>
-</div>
-</div>`;
+//     block.innerHTML = `<div class="row">
+//     <div class="col-sm-12">
+//         <ul class="dealer-menu">
+//                ${dealersHTML}
+//         </ul>
+//     </div>
+// </div>
+// </div>`;
   // block.appendChild(dealerListElement);
 
   // Any additional logic (like slider initialization) can be added here
