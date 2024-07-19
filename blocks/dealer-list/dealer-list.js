@@ -61,11 +61,8 @@ export default function decorate(block) {
           ${backgroundImage ? `<div class="dealer__backgroundImage">${backgroundImage.outerHTML}</div>` : ''}
           <div class="dealer__content">
             <div class="dealer__info">
-             
-            ${title ? `<div class="dealer__title"><p>${title}</p></div>` : ''}
-             
+            ${title ? `<div class="dealer__title"><h2>${title}</h2></div>` : ''}
             </div>
-           
           </div>
           </a>
         `),
