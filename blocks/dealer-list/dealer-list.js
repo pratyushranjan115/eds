@@ -7,10 +7,7 @@ export default function decorate(block) {
         <div class="dealer__background">
           <img src="${background_image}" alt="Background Image">
         </div>
-        <div class="dealer__content">
-          <h3>${title}</h3>
-          <a href="${href}" class="dealer__link"></a>
-        </div>
+       
       </div>
     `;
   }
