@@ -4,7 +4,7 @@ export default function decorate(block) {
 console.log(block);
 
 
-   const dealerElements = Array.from(dealer.children);
+   const dealerElements = Array.from(block.children);
   
   const dealersHTML = dealerElements.map(dealer => {
     const backgroundImage = dealer.querySelector('img')?.src || '';
