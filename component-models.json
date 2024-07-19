@@ -363,9 +363,16 @@
       {
         "component": "reference",
         "valueType": "string",
-        "name": "background_image",
-        "label": "Background Image",
+        "name": "image",
+        "label": "Image",
         "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Image Alt Text"
       },
       {
         "component": "text",
