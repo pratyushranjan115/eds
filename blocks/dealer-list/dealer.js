@@ -1,55 +1,41 @@
-import utility from '../../utility/utility.js';
 export default function decorate(block) {
+  function getDealerData(block) {
+    // Extract elements from the block
+    const [backgroundImageContainer, titleEl, linkEl] = block.children;
 
+    // Extract image, title, and link data
+    const backgroundImgEl = backgroundImageContainer?.querySelector('img');
+    const imageSrc = backgroundImgEl?.src || 'https://via.placeholder.com/150';
+    const title = titleEl?.textContent?.trim() || 'Default Title';
+    const link = linkEl?.querySelector('a')?.href || '#';
 
-console.log(block);
-
-
-  const [...dealerListEl]=block.children;
-   console.log(dealerListEl);
-  
-  const dealersHTML = dealerListEl.map((dealer) => {
-    const image = dealer.querySelector('picture');
-    
-    const title = dealer.querySelector('p')?.textContent?.trim() || '';
-    const href = dealer.querySelector('a')?.href || '';
-
-    if (image) {
-      const img = image.querySelector('img');
-      img.removeAttribute('width');
-      img.removeAttribute('height');
+    return { imageSrc, title, link };
   }
 
-    return `
-    <li>
-    <a href=${href} >
-        <div class="d-grid-item">
-            <div class="d-grid-item-icon">
-                    ${(image) ? `<div class="feature__image">${image.outerHTML}</div>` : ''}
-            </div>
+  const { imageSrc, title, link } = getDealerData(block);
 
-            <div class="d-grid-item-title">
-                <h2>${title}</h2>
-            </div>
-        </div>
-    </a>
-</li>
-  `;
-  }).join('');
+  function createDealerCard() {
+    const dealerCard = document.createElement('div');
+    dealerCard.className = 'dealer-card';
+    dealerCard.innerHTML = `
+      <div class="dealer-content">
+        <img src="${imageSrc}" alt="${title}">
+        <h2>${title}</h2>
+      </div>
+    `;
+    return dealerCard;
+  }
 
- 
-    const newHtml= `<div class="row">
-    <div class="col-sm-12">
-        <ul class="dealer-menu">
-               ${dealersHTML}
-        </ul>
-    </div>
-</div>
-</div>`
-    block.innerHTML = '';
-    block.insertAdjacentHTML('beforeend', utility.sanitizeHtml(newHtml));
+  function setupEventListener(dealerCard) {
+    dealerCard.addEventListener('click', () => {
+      window.location.href = link;
+    });
+  }
 
-  
+  const dealerCard = createDealerCard();
 
-  // Any additional logic (like slider initialization) can be added here
+  // Clear the block and append the new dealer card
+  block.innerHTML = '';
+  block.appendChild(dealerCard);
+  setupEventListener(dealerCard);
 }
