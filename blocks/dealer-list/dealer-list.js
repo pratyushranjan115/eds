@@ -3,15 +3,7 @@ export default function decorate(block) {
     const { background_image, title, href } = dealerData;
 
     return `
-      <div class="dealer">
-        <div class="dealer__background">
-          <img src="${background_image}" alt="Background Image">
-        </div>
-        <div class="dealer__content">
-          <h3>${title}</h3>
-          <a href="${href}" class="dealer__link"></a>
-        </div>
-      </div>
+     
     `;
   }
 
