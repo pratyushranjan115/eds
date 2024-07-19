@@ -20,21 +20,7 @@ console.log(block);
       img.removeAttribute('height');
   }
 
-    return `
-    <li>
-    <a href=${href} >
-        <div class="d-grid-item">
-            <div class="d-grid-item-icon">
-                    ${(image) ? `<div class="feature__image">${image.outerHTML}</div>` : ''}
-            </div>
-
-            <div class="d-grid-item-title">
-                <h2>${title}</h2>
-            </div>
-        </div>
-    </a>
-</li>
-  `;
+   
   }).join('');
 
  
