@@ -400,6 +400,13 @@
         "name": "hidden-text",
         "valueType": "string",
         "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "reference",
+        "label": "Pop Tile 1 Image",
+        "name": "hidden-img",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       }
     ] 
   },
