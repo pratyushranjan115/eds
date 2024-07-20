@@ -396,7 +396,7 @@
       },
       {
         "component": "text-input",
-        "label": "Hidden text field",
+        "label": "Pop Title",
         "name": "hidden-text",
         "valueType": "string",
         "condition": { "===": [{"var" : "reveal"}, true] }
