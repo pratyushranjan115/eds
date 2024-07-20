@@ -22,7 +22,7 @@
 
 .grey-bg .dealer-menu li a {
     display: flex;
-    flex-direction: row;
+    flex-direction: column; /* Changed from row to column */
     align-items: center;
     justify-content: start;
     padding: 1rem;
@@ -40,10 +40,10 @@
 
 .grey-bg .dealer-menu li a .d-grid-item {
     display: flex;
-    flex-direction: row;
-    text-align: left;
+    flex-direction: column; /* Changed from row to column */
+    text-align: center; /* Changed from left to center */
     max-width: 100%;
-    align-items: center;
+    align-items: center; /* Changed from center */
 }
 
 .grey-bg .dealer-menu li a .d-grid-item .d-grid-item-icon {
@@ -68,11 +68,10 @@
 
 .grey-bg .dealer-menu li a .d-grid-item .d-grid-item-title {
     font-size: 1rem;
-    margin-top: 0;
+    margin-top: 10px; /* Added margin-top to create space between image and title */
     color: #000000;
     font-weight: 500;
     line-height: 20px;
-    margin-left: 10px;
 }
 
 .grey-bg .dealer-menu li a:hover {

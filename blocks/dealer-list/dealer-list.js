@@ -40,10 +40,11 @@ export default function decorate(block) {
         utility.sanitizeHtml(`
           <li>
             <a href="${link}">
-              ${backgroundImage ? `<div class="d-grid-item-icon">${backgroundImage.outerHTML}</div>` : ''}
+              ${backgroundImage ? `<div class="d-grid-item"><div class="d-grid-item-icon">${backgroundImage.outerHTML}</div>` : ''}
               <div class="d-grid-item">
                 ${title ? `<div class="d-grid-item-title"><h2>${title}</h2></div>` : ''}
               </div>
+            </div> 
             </a>
           </li>
         `),
