@@ -404,7 +404,14 @@
       {
         "component": "reference",
         "label": "Pop Tile 1 Image",
-        "name": "hidden-img",
+        "name": "hidden-img1",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "text-input",
+        "label": "Tile Title 1",
+        "name": "hidden-tile1",
         "valueType": "string",
         "condition": { "===": [{"var" : "reveal"}, true] }
       }
