@@ -86,3 +86,78 @@
 .grey-bg .dealer-menu li a:hover .d-grid-item .d-grid-item-title {
     color: #fff;
 }
+@media (min-width:999px) {
+    .grey-bg {
+        padding: 4.375rem;
+    }
+
+    .grey-bg .user-information-box {
+        margin-bottom: 50px;
+        padding: 0;
+    }
+
+    .grey-bg .user-information-box .user-details {
+        flex-direction: row;
+    }
+
+    .grey-bg .user-information-box .user-details .user_logout {
+        align-self: flex-end;
+        margin-top: 0;
+    }
+
+    .grey-bg .user-information-box .user-details .user_logout a:hover {
+        text-decoration: none
+    }
+
+    .grey-bg .dealer-menu li {
+      flex-basis: 25%;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .grey-bg .dealer-menu li:nth-child(-n+4) {
+        margin-bottom: 24px
+    }
+
+    .grey-bg .dealer-menu li a {
+        flex-direction: column;
+        align-items: center;
+        padding: 26px 40px 34px 40px;
+        min-height: 206px;
+    }
+
+    .grey-bg .dealer-menu li a .d-grid-item {
+
+        align-items: center;
+        flex-direction: column;
+        max-width: 130px;
+        text-align: center
+    }
+
+    .grey-bg .dealer-menu li a .d-grid-item .d-grid-item-icon {
+        height: 86px;
+        width: 86px;
+        padding: 0;
+    }
+
+    .grey-bg .dealer-menu li a .d-grid-item .d-grid-item-title {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 999px) {
+    .grey-bg .dealer-menu li:last-child {
+        margin-bottom: 0
+    }
+}
+.arena-style{
+    .grey-bg .dealer-menu li a:hover {
+        background-color: #164b91;
+        color: #fff
+    }
+    .user_logout #logoutButton{
+        background-color: #164b91;
+    }
+}
+
