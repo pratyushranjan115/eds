@@ -414,6 +414,13 @@
         "name": "hidden-tile1",
         "valueType": "string",
         "condition": { "===": [{"var" : "reveal"}, true] }
+      },
+      {
+        "component": "aem-content",
+        "label": "Tile Link 1",
+        "name": "href-tile1",
+        "valueType": "string",
+        "condition": { "===": [{"var" : "reveal"}, true] }
       }
     ] 
   },
