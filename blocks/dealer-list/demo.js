@@ -29,37 +29,31 @@ export default function decorate(block) {
       const primaryCta = ctaUtils.getLink(
         ctaLinkEl,
         '',
-        '__blank',
+        '_blank',
         'primary__btn',
       );
 
-      child.innerHTML = '';
       const link = primaryCta?.href || '#';
-      child.insertAdjacentHTML(
-        'beforeend',
-        utility.sanitizeHtml(`
-        
-        <a href="${link}">
-          <div class="d-grid-item">
-            ${backgroundImage ? `<div class="d-grid-item-icon">${backgroundImage.outerHTML}</div>` : ''}
-            ${title ? `<div class="d-grid-item-title">${title}</div>` : ''}
-          </div>
-        </a>
-      
-        `),
-      );
-      return child.outerHTML;
+
+      return `
+        <li>
+          <a href="${link}">
+            <div class="d-grid-item">
+              ${backgroundImage ? `<div class="d-grid-item-icon">${backgroundImage.outerHTML}</div>` : ''}
+              ${title ? `<div class="d-grid-item-title">${title}</div>` : ''}
+            </div>
+          </a>
+        </li>
+      `;
     })
     .join('');
 
   block.innerHTML = `
-  <div class="col-sm-12">
+    <div class="col-sm-12">
       <ul class="dealer-menu">
         ${cards}
       </ul>
-  </div>
-`;
+    </div>
+  `;
   block.classList.add('grey-bg');
 }
-
-// Assuming your CSS is in a separate file, make sure it is properly imported and applied.
