@@ -53,11 +53,9 @@ export default function decorate(block) {
     .join('');
 
   block.innerHTML = `
-  <div class="col-sm-12">
-      <ul class="dealer-menu">
-        ${cards}
-      </ul>
-    </div>
+  <ul class="dealer-menu">
+    ${cards}
+  </ul>
 `;
   block.classList.add('grey-bg');
 }
