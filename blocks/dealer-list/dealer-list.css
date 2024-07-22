@@ -50,7 +50,7 @@
     width: 60px;
     height: 60px;
     background: rgba(241, 241, 241, 0.7);
-    border-radius: 50%;
+    border-radius: 50%; /* Ensuring the container is always circular */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,6 +64,7 @@
 .grey-bg .dealer-menu div a .d-grid-item .d-grid-item-icon img {
     display: block;
     max-width: 100%;
+    height: auto; /* Ensuring the image maintains its aspect ratio */
 }
 
 .grey-bg .dealer-menu div a .d-grid-item .d-grid-item-title {
@@ -72,6 +73,10 @@
     color: #000000;
     font-weight: 700; /* Increased font-weight to make the title bolder */
     line-height: 20px;
+    text-align: center;
+    display: block;
+    word-wrap: break-word; /* Ensure words break if necessary */
+    max-width: 100%;
 }
 
 .grey-bg .dealer-menu div a:hover {
@@ -137,12 +142,18 @@
     .grey-bg .dealer-menu div a .d-grid-item .d-grid-item-icon {
         height: 86px;
         width: 86px;
-        padding: 0;
+        padding: 15px; /* Ensure padding to maintain aspect ratio */
+    }
+
+    .grey-bg .dealer-menu div a .d-grid-item .d-grid-item-icon img {
+        max-width: 80%; /* Ensuring the image fits within the container */
+        height: auto;
     }
 
     .grey-bg .dealer-menu div a .d-grid-item .d-grid-item-title {
         margin-left: 0;
         margin-top: 20px;
+        max-width: 100%; /* Ensure text wraps within the container */
     }
 }
 
