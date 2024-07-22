@@ -70,7 +70,7 @@
     font-size: 1rem;
     margin-top: 10px; /* Added margin-top to create space between image and title */
     color: #000000;
-    font-weight: 500;
+    font-weight: 700; /* Increased font-weight to make the title bolder */
     line-height: 20px;
 }
 
