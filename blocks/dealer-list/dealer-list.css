@@ -15,12 +15,12 @@
     align-items: stretch;
 }
 
-.grey-bg .dealer-menu li {
+.grey-bg .dealer-menu div {
     width: 100%;
     margin-bottom: 10px !important;
 }
 
-.grey-bg .dealer-menu li a {
+.grey-bg .dealer-menu div a {
     display: flex;
     flex-direction: column; /* Changed from row to column */
     align-items: center;
@@ -34,11 +34,11 @@
     height: 100%;
 }
 
-.grey-bg .dealer-menu li:nth-child(-n+4) {
+.grey-bg .dealer-menu div:nth-child(-n+4) {
     margin-bottom: unset;
 }
 
-.grey-bg .dealer-menu li a .d-grid-item {
+.grey-bg .dealer-menu div a .d-grid-item {
     display: flex;
     flex-direction: column; /* Changed from row to column */
     text-align: center; /* Changed from left to center */
@@ -46,7 +46,7 @@
     align-items: center; /* Changed from center */
 }
 
-.grey-bg .dealer-menu li a .d-grid-item .d-grid-item-icon {
+.grey-bg .dealer-menu div a .d-grid-item .d-grid-item-icon {
     width: 60px;
     height: 60px;
     background: rgba(241, 241, 241, 0.7);
@@ -61,12 +61,12 @@
     padding: 15px;
 }
 
-.grey-bg .dealer-menu li a .d-grid-item .d-grid-item-icon img {
+.grey-bg .dealer-menu div a .d-grid-item .d-grid-item-icon img {
     display: block;
     max-width: 100%;
 }
 
-.grey-bg .dealer-menu li a .d-grid-item .d-grid-item-title {
+.grey-bg .dealer-menu div a .d-grid-item .d-grid-item-title {
     font-size: 1rem;
     margin-top: 10px; /* Added margin-top to create space between image and title */
     color: #000000;
@@ -74,19 +74,20 @@
     line-height: 20px;
 }
 
-.grey-bg .dealer-menu li a:hover {
+.grey-bg .dealer-menu div a:hover {
     background-color: #000000;
     color: #fff;
 }
 
-.grey-bg .dealer-menu li a:hover .d-grid-item .d-grid-item-icon {
+.grey-bg .dealer-menu div a:hover .d-grid-item .d-grid-item-icon {
     background-color: #fff !important;
 }
 
-.grey-bg .dealer-menu li a:hover .d-grid-item .d-grid-item-title {
+.grey-bg .dealer-menu div a:hover .d-grid-item .d-grid-item-title {
     color: #fff;
 }
-@media (min-width:999px) {
+
+@media (min-width: 999px) {
     .grey-bg {
         padding: 4.375rem;
     }
@@ -106,58 +107,57 @@
     }
 
     .grey-bg .user-information-box .user-details .user_logout a:hover {
-        text-decoration: none
+        text-decoration: none;
     }
 
-    .grey-bg .dealer-menu li {
-      flex-basis: 25%;
+    .grey-bg .dealer-menu div {
+        flex-basis: 25%;
         padding-left: 12px;
         padding-right: 12px;
     }
 
-    .grey-bg .dealer-menu li:nth-child(-n+4) {
-        margin-bottom: 24px
+    .grey-bg .dealer-menu div:nth-child(-n+4) {
+        margin-bottom: 24px;
     }
 
-    .grey-bg .dealer-menu li a {
+    .grey-bg .dealer-menu div a {
         flex-direction: column;
         align-items: center;
         padding: 26px 40px 34px 40px;
         min-height: 206px;
     }
 
-    .grey-bg .dealer-menu li a .d-grid-item {
-
+    .grey-bg .dealer-menu div a .d-grid-item {
         align-items: center;
         flex-direction: column;
         max-width: 130px;
-        text-align: center
+        text-align: center;
     }
 
-    .grey-bg .dealer-menu li a .d-grid-item .d-grid-item-icon {
+    .grey-bg .dealer-menu div a .d-grid-item .d-grid-item-icon {
         height: 86px;
         width: 86px;
         padding: 0;
     }
 
-    .grey-bg .dealer-menu li a .d-grid-item .d-grid-item-title {
+    .grey-bg .dealer-menu div a .d-grid-item .d-grid-item-title {
         margin-left: 0;
         margin-top: 20px;
     }
 }
 
 @media (max-width: 999px) {
-    .grey-bg .dealer-menu li:last-child {
-        margin-bottom: 0
-    }
-}
-.arena-style{
-    .grey-bg .dealer-menu li a:hover {
-        background-color: #164b91;
-        color: #fff
-    }
-    .user_logout #logoutButton{
-        background-color: #164b91;
+    .grey-bg .dealer-menu div:last-child {
+        margin-bottom: 0;
     }
 }
 
+.arena-style {
+    .grey-bg .dealer-menu div a:hover {
+        background-color: #164b91;
+        color: #fff;
+    }
+    .user_logout #logoutButton {
+        background-color: #164b91;
+    }
+}
