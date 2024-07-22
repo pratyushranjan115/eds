@@ -38,16 +38,14 @@ export default function decorate(block) {
       child.insertAdjacentHTML(
         'beforeend',
         utility.sanitizeHtml(`
-          <li>
-            <a href="${link}">
-           
-              ${backgroundImage ? `<div class="d-grid-item-icon">${backgroundImage.outerHTML}</div>` : ''}
-              <div class="d-grid-item">
-                ${title ? `<div class="d-grid-item-title"><h2 style="font-size: 12px !important;">${title}</h2></div>` : ''}
-              </div>
-          
-            </a>
-          </li>
+        <li>
+        <a href="${link}">
+          <div class="d-grid-item">
+            ${backgroundImage ? `<div class="d-grid-item-icon">${backgroundImage.outerHTML}</div>` : ''}
+            ${title ? `<div class="d-grid-item-title">${title}</div>` : ''}
+          </div>
+        </a>
+      </li>
         `),
       );
       return child.outerHTML;
